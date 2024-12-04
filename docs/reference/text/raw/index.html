@@ -1,0 +1,1492 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Raw Text / Code – Typstドキュメント日本語版</title>
+  <meta name="description" content="Documentation for the `raw` function.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#239dad">
+  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/text/raw/">
+  <meta property="og:title" content="Raw Text / Code – Typstドキュメント日本語版">
+  <meta property="og:site_name" content="Typst">
+  <meta property="og:description" content="Documentation for the `raw` function.">
+  <meta property="og:type">
+  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@typstapp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/text/raw/">
+  <meta name="twitter:image:alt"
+    content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico"> -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#239dad">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="stylesheet" href="/styles/default.css?bust=20230913?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/docs.css?bust=20230915?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/custom.css">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Regular.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Bold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-SemiBold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/CascadiaMono-Regular-Sub.woff2" as="font">
+  <link rel="preload" href="/assets/images/blur.webp" as="image">
+  
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js"), document.addEventListener("DOMContentLoaded", (() => { const e = document.cookie.split("; ").find((e => e.startsWith("INSECURE_SIGNED_IN=")))?.split("=")[1].toLowerCase(); if ("1" === e || "true" === e || "yes" === e) { document.documentElement.classList.add("signed-in"); const e = document.querySelector("header nav a.nav-btn"), t = document.querySelector("header nav a.sign-in"); e && (e.innerHTML = "Go to app", e.setAttribute("href", "/app/")), t && (t.innerHTML = "Sign out", t.setAttribute("href", "https://api.typst.app/v1/auth/logout")) } }))</script>
+</head>
+
+<body class="no-js docs has-outline">
+  <div class="alert">
+    <div class="alert-content">
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <br />
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+    </div>
+    <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+  </div>
+  <header class="boring">
+    <div><a href="/docs" class="logo-box"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label">
+          <title id="logo-label">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a><button class="hamburger"><img alt="Open navigation"
+          src="/assets/icons/16-hamburger-dark.svg" width="16" height="16"></button>
+      <nav>
+        <ul>
+          <li class="social"><a href="https://x.com/mkpoli/status/1802227029447725538" title="関連ツイート"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-twitter-label">
+                <title id="svg-twitter-label">Twitter</title>
+                <use href="/assets/icons/social.svg#twitter"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://discord.gg/9xF7k4aAuH" title="「くみはんクラブ」Discordサーバー"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-discord-label">
+                <title id="svg-discord-label">Discord</title>
+                <use href="/assets/icons/social.svg#discord"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://github.com/typst-jp/typst-jp.github.io" title="本プロジェクトのGitHubレポジトリ"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-github-label">
+                <title id="svg-github-label">GitHub</title>
+                <use href="/assets/icons/social.svg#github"></use>
+              </svg></a></li>
+          <li class="secondary"><a href="https://typst.app/">Typst公式サイト</a></li>
+          <li class="secondary"><a href="https://typst.app/docs/">Typst公式ドキュメント</a></li>
+          <!-- <li class="secondary"><a href="/signin/" class="sign-in">Sign in</a></li>
+          <li><a href="/signup" id="header-btn" class="nav-btn btn">Sign up</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="main-grid">
+    <nav class="folding"><a href="/docs" class="title-row"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label-nav">
+          <title id="logo-label-nav">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a>
+      <button class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+      <div class="search"><img src="/assets/icons/16-search-gray.svg" alt="Search" width="16" height="16"><input
+          type="search" placeholder="検索" id="docs-search"></div>
+      <ul class="search-results hidden" id="search-results"></ul>
+      <ul>
+        
+        
+        <li>
+          <a href="/docs/" >Typstについて</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/tutorial/" >チュートリアル</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/tutorial/writing-in-typst/" >Typstで執筆するには</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/formatting/" >書式を設定する</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/advanced-styling/" >高度なスタイリング</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/making-a-template/" >テンプレートを作成する</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/japanese/" >日本語ユーザーガイド</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/reference/" >リファレンス</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li class="category">Language</li>
+            
+            <li>
+              <a href="/docs/reference/syntax/" >構文</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/styling/" >スタイル設定</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/scripting/" >スクリプト記述</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/context/" >コンテキスト</a>
+              
+            </li>
+            
+            
+            <li class="category">Library</li>
+            
+            <li>
+              <a href="/docs/reference/foundations/" >Foundations</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/foundations/arguments/" >Arguments</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/array/" >Array</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/assert/" >Assert</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/auto/" >Auto</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bool/" >Boolean</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bytes/" >Bytes</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/calc" >Calculation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/content/" >Content</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/datetime/" >Datetime</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/decimal/" >Decimal</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/dictionary/" >Dictionary</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/duration/" >Duration</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/eval/" >Evaluate</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/float/" >Float</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/function/" >Function</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/int/" >Integer</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/label/" >Label</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/module/" >Module</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/none/" >None</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/panic/" >Panic</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/plugin/" >Plugin</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/regex/" >Regex</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/repr/" >Representation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/selector/" >Selector</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/str/" >String</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/type/" >Type</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/version/" >Version</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/model/" >Model</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/model/bibliography/" >Bibliography</a></li>
+                
+                
+                <li><a href="/docs/reference/model/list/" >Bullet List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/cite/" >Cite</a></li>
+                
+                
+                <li><a href="/docs/reference/model/document/" >Document</a></li>
+                
+                
+                <li><a href="/docs/reference/model/emph/" >Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/figure/" >Figure</a></li>
+                
+                
+                <li><a href="/docs/reference/model/footnote/" >Footnote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/heading/" >Heading</a></li>
+                
+                
+                <li><a href="/docs/reference/model/link/" >Link</a></li>
+                
+                
+                <li><a href="/docs/reference/model/enum/" >Numbered List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/numbering/" >Numbering</a></li>
+                
+                
+                <li><a href="/docs/reference/model/outline/" >Outline</a></li>
+                
+                
+                <li><a href="/docs/reference/model/par/" >Paragraph</a></li>
+                
+                
+                <li><a href="/docs/reference/model/parbreak/" >Paragraph Break</a></li>
+                
+                
+                <li><a href="/docs/reference/model/quote/" >Quote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/ref/" >Reference</a></li>
+                
+                
+                <li><a href="/docs/reference/model/strong/" >Strong Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/table/" >Table</a></li>
+                
+                
+                <li><a href="/docs/reference/model/terms/" >Term List</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/text/" >Text</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/text/highlight/" >Highlight</a></li>
+                
+                
+                <li><a href="/docs/reference/text/linebreak/" >Line Break</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lorem/" >Lorem</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lower/" >Lowercase</a></li>
+                
+                
+                <li><a href="/docs/reference/text/overline/" >Overline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/raw/"  aria-current="page" >Raw Text / Code</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smallcaps/" >Small Capitals</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smartquote/" >Smartquote</a></li>
+                
+                
+                <li><a href="/docs/reference/text/strike/" >Strikethrough</a></li>
+                
+                
+                <li><a href="/docs/reference/text/sub/" >Subscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/super/" >Superscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/text/" >Text</a></li>
+                
+                
+                <li><a href="/docs/reference/text/underline/" >Underline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/upper/" >Uppercase</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/math/" >Math</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/math/accent/" >Accent</a></li>
+                
+                
+                <li><a href="/docs/reference/math/attach" >Attach</a></li>
+                
+                
+                <li><a href="/docs/reference/math/binom/" >Binomial</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cancel/" >Cancel</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cases/" >Cases</a></li>
+                
+                
+                <li><a href="/docs/reference/math/class/" >Class</a></li>
+                
+                
+                <li><a href="/docs/reference/math/equation/" >Equation</a></li>
+                
+                
+                <li><a href="/docs/reference/math/frac/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/math/lr" >Left/Right</a></li>
+                
+                
+                <li><a href="/docs/reference/math/mat/" >Matrix</a></li>
+                
+                
+                <li><a href="/docs/reference/math/primes/" >Primes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/roots" >Roots</a></li>
+                
+                
+                <li><a href="/docs/reference/math/sizes" >Sizes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/stretch/" >Stretch</a></li>
+                
+                
+                <li><a href="/docs/reference/math/styles" >Styles</a></li>
+                
+                
+                <li><a href="/docs/reference/math/op/" >Text Operator</a></li>
+                
+                
+                <li><a href="/docs/reference/math/underover" >Under/Over</a></li>
+                
+                
+                <li><a href="/docs/reference/math/variants" >Variants</a></li>
+                
+                
+                <li><a href="/docs/reference/math/vec/" >Vector</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/symbols/" >Symbols</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/symbols/sym/" >General</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/layout/" >Layout</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/layout/align/" >Align</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/alignment/" >Alignment</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/angle/" >Angle</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/block/" >Block</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/box/" >Box</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/colbreak/" >Column Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/columns/" >Columns</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/direction/" >Direction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/fraction/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/grid/" >Grid</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/hide/" >Hide</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/layout/" >Layout</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/length/" >Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/measure/" >Measure</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/move/" >Move</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pad/" >Padding</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/page/" >Page</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pagebreak/" >Page Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/place/" >Place</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/ratio/" >Ratio</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/relative/" >Relative Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/repeat/" >Repeat</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/rotate/" >Rotate</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/scale/" >Scale</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/skew/" >Skew</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/h/" >Spacing (H)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/v/" >Spacing (V)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/stack/" >Stack</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/visualize/" >Visualize</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/visualize/circle/" >Circle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/color/" >Color</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/gradient/" >Gradient</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/image/" >Image</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/line/" >Line</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/path/" >Path</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/rect/" >Rectangle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/square/" >Square</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/introspection/" >Introspection</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/introspection/counter/" >Counter</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/here/" >Here</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/locate/" >Locate</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/location/" >Location</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/metadata/" >Metadata</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/query/" >Query</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/state/" >State</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/data-loading/" >Data Loading</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/data-loading/cbor/" >CBOR</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/csv/" >CSV</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/json/" >JSON</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/read/" >Read</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/toml/" >TOML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/xml/" >XML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/yaml/" >YAML</a></li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/guides/" >Guides</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/guides/guide-for-latex-users/" >Guide for LaTeX users</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/page-setup-guide/" >Page setup guide</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/table-guide/" >Table guide</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/changelog/" >Changelog</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.12.0/" >0.12.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.1/" >0.11.1</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.0/" >0.11.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.10.0/" >0.10.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.9.0/" >0.9.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.8.0/" >0.8.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.7.0/" >0.7.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.6.0/" >0.6.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.5.0/" >0.5.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.4.0/" >0.4.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.3.0/" >0.3.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.2.0/" >0.2.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.1.0/" >0.1.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/earlier/" >Earlier</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/glossary/" >用語集</a>
+          
+        </li>
+        
+      </ul>
+
+    </nav>
+    <main>
+      <ul class="breadcrumbs" aria-label="Breadcrumbs">
+        <li class="root"><a href="/docs/"><img src="/assets/icons/16-docs-dark.svg" alt="Docs" width="16"
+              height="16"></a></li>
+
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/">リファレンス</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/text/">Text</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/text/raw/">Raw Text / Code</a></li>
+        
+      </ul>
+
+      
+
+<h1 id="summary"><code>raw</code><small>
+<span aria-describedby="-tooltip">Element</span>
+<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+    aria-labelledby="-tooltip-qm-label">
+    <title id="-tooltip-qm-label">Element functions can be customized with <code>set</code> and <code>show</code> rules.</title>
+    <use href="/assets/icons/12-tooltip.svg#icon"></use>
+  </svg>
+  <div role="tooltip" id="-tooltip" tabindex="-1">Element functions can be customized with <code>set</code> and <code>show</code> rules.</div>
+</div>
+</small></h1>
+<p>Raw text with optional syntax highlighting.</p>
+<p>Displays the text verbatim and in a monospace font. This is typically used
+to embed computer code into your document.</p>
+<h2 id="example">Example</h2>
+<div class="previewed-code"><pre><code>Adding <span class="typ-raw">`rbx`</span> to <span class="typ-raw">`rcx`</span> gives
+the desired result.
+
+What is <span class="typ-raw">```rust fn main()```</span> in Rust
+would be <span class="typ-raw">```c int main()```</span> in C.
+
+<span class="typ-raw">```rust
+fn main() {
+    println!(&quot;Hello World!&quot;);
+}
+```</span>
+
+This has <span class="typ-raw">``` `backticks` ```</span> in it
+(but the spaces are trimmed). And
+<span class="typ-raw">``` here```</span> the leading space is
+also trimmed.
+</code></pre><div class="preview"><img src="/assets/docs/4d059815fc030797337a320eb65c3828.png" alt="Preview" width="480" height="190"/></div></div>
+<p>You can also construct a <a href="/docs/reference/text/raw/" title="`raw`"><code>raw</code></a> element programmatically from a string (and
+provide the language tag via the optional <a href="/docs/reference/text/raw/#parameters-lang"><code>lang</code></a> argument).</p>
+<div class="previewed-code"><pre><code><span class="typ-func">#</span><span class="typ-func">raw</span><span class="typ-punct">(</span><span class="typ-str">&quot;fn &quot;</span> <span class="typ-op">+</span> <span class="typ-str">&quot;main() {}&quot;</span><span class="typ-punct">,</span> lang<span class="typ-punct">:</span> <span class="typ-str">&quot;rust&quot;</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/ddf3515e87fd846986faee6794064f83.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="syntax">Syntax</h2>
+<p>This function also has dedicated syntax. You can enclose text in 1 or 3+
+backticks (<code>`</code>) to make it raw. Two backticks produce empty raw text.
+This works both in markup and code.</p>
+<p>When you use three or more backticks, you can additionally specify a
+language tag for syntax highlighting directly after the opening backticks.
+Within raw blocks, everything (except for the language tag, if applicable)
+is rendered as is, in particular, there are no escape sequences.</p>
+<p>The language tag is an identifier that directly follows the opening
+backticks only if there are three or more backticks. If your text starts
+with something that looks like an identifier, but no syntax highlighting is
+needed, start the text with a single space (which will be trimmed) or use
+the single backtick syntax. If your text should start or end with a
+backtick, put a space before or after it (it will be trimmed).</p>
+<h2 id="parameters">
+  
+<span aria-describedby="parameters-tooltip">Parameters</span>
+<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+    aria-labelledby="parameters-tooltip-qm-label">
+    <title id="parameters-tooltip-qm-label">Parameters are the inputs to a function. They are specified in parentheses after the function name.</title>
+    <use href="/assets/icons/12-tooltip.svg#icon"></use>
+  </svg>
+  <div role="tooltip" id="parameters-tooltip" tabindex="-1">Parameters are the inputs to a function. They are specified in parentheses after the function name.</div>
+</div>
+
+</h2>
+
+<div class="code code-definition "><span
+    class="typ-func">raw</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/str" class="pill pill-str">str</a>, </span><span
+      class="overview-param"><a href="#parameters-block">block<!-- -->: </a><a href="/docs/reference/types/bool" class="pill pill-bool">bool</a>, </span><span
+      class="overview-param"><a href="#parameters-lang">lang<!-- -->: </a><a href="/docs/reference/types/none" class="pill pill-kw">none</a><a href="/docs/reference/types/str" class="pill pill-str">str</a>, </span><span
+      class="overview-param"><a href="#parameters-align">align<!-- -->: </a><a href="/docs/reference/types/alignment" class="pill pill-obj">alignment</a>, </span><span
+      class="overview-param"><a href="#parameters-syntaxes">syntaxes<!-- -->: </a><a href="/docs/reference/types/str" class="pill pill-str">str</a><a href="/docs/reference/types/array" class="pill pill-obj">array</a>, </span><span
+      class="overview-param"><a href="#parameters-theme">theme<!-- -->: </a><a href="/docs/reference/types/none" class="pill pill-kw">none</a><a href="/docs/reference/types/auto" class="pill pill-kw">auto</a><a href="/docs/reference/types/str" class="pill pill-str">str</a>, </span><span
+      class="overview-param"><a href="#parameters-tab-size">tab-size<!-- -->: </a><a href="/docs/reference/types/int" class="pill pill-num">int</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/content" class="pill pill-con">content</a></div>
+
+
+
+
+<h4 id="raw-raw-parameters-text"><code>text</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="raw-raw-parameters-text-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-text-positional-tooltip-qm-label">
+          <title id="raw-raw-parameters-text-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-text-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The raw text.</p>
+<p>You can also use raw blocks creatively to create custom syntaxes for
+your automations.</p>
+
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-comment">// Parse numbers in raw blocks with the</span>
+<span class="typ-comment">// `mydsl` tag and sum them up.</span>
+<span class="typ-key">#</span><span class="typ-key">show</span> raw<span class="typ-punct">.</span><span class="typ-func">where</span><span class="typ-punct">(</span>lang<span class="typ-punct">:</span> <span class="typ-str">&quot;mydsl&quot;</span><span class="typ-punct">)</span><span class="typ-punct">:</span> it <span class="typ-op">=&gt;</span> <span class="typ-punct">{</span>
+  <span class="typ-key">let</span> sum <span class="typ-op">=</span> <span class="typ-num">0</span>
+  <span class="typ-key">for</span> part <span class="typ-key">in</span> it<span class="typ-punct">.</span>text<span class="typ-punct">.</span><span class="typ-func">split</span><span class="typ-punct">(</span><span class="typ-str">&quot;+&quot;</span><span class="typ-punct">)</span> <span class="typ-punct">{</span>
+    sum <span class="typ-op">+=</span> <span class="typ-func">int</span><span class="typ-punct">(</span>part<span class="typ-punct">.</span><span class="typ-func">trim</span><span class="typ-punct">(</span><span class="typ-punct">)</span><span class="typ-punct">)</span>
+  <span class="typ-punct">}</span>
+  sum
+<span class="typ-punct">}</span>
+
+<span class="typ-raw">```mydsl
+1 + 2 + 3 + 4 + 5
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/bde85482e73ea5451d489ec50b6d23ba.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-block"><code>block</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/bool" class="pill pill-bool">bool</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-block-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-block-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-block-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-block-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>Whether the raw text is displayed as a separate block.</p>
+<p>In markup mode, using one-backtick notation makes this <code><span class="typ-key">false</span></code>.
+Using three-backtick notation makes it <code><span class="typ-key">true</span></code> if the enclosed content
+contains at least one line break.</p>
+
+
+<p>Default:<code><span class="typ-key">false</span></code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-comment">// Display inline code in a small box</span>
+<span class="typ-comment">// that retains the correct baseline.</span>
+<span class="typ-key">#</span><span class="typ-key">show</span> raw<span class="typ-punct">.</span><span class="typ-func">where</span><span class="typ-punct">(</span>block<span class="typ-punct">:</span> <span class="typ-key">false</span><span class="typ-punct">)</span><span class="typ-punct">:</span> box<span class="typ-punct">.</span><span class="typ-func">with</span><span class="typ-punct">(</span>
+  fill<span class="typ-punct">:</span> <span class="typ-func">luma</span><span class="typ-punct">(</span><span class="typ-num">240</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  inset<span class="typ-punct">:</span> <span class="typ-punct">(</span>x<span class="typ-punct">:</span> <span class="typ-num">3pt</span><span class="typ-punct">,</span> y<span class="typ-punct">:</span> <span class="typ-num">0pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  outset<span class="typ-punct">:</span> <span class="typ-punct">(</span>y<span class="typ-punct">:</span> <span class="typ-num">3pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  radius<span class="typ-punct">:</span> <span class="typ-num">2pt</span><span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-comment">// Display block code in a larger block</span>
+<span class="typ-comment">// with more padding.</span>
+<span class="typ-key">#</span><span class="typ-key">show</span> raw<span class="typ-punct">.</span><span class="typ-func">where</span><span class="typ-punct">(</span>block<span class="typ-punct">:</span> <span class="typ-key">true</span><span class="typ-punct">)</span><span class="typ-punct">:</span> block<span class="typ-punct">.</span><span class="typ-func">with</span><span class="typ-punct">(</span>
+  fill<span class="typ-punct">:</span> <span class="typ-func">luma</span><span class="typ-punct">(</span><span class="typ-num">240</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  inset<span class="typ-punct">:</span> <span class="typ-num">10pt</span><span class="typ-punct">,</span>
+  radius<span class="typ-punct">:</span> <span class="typ-num">4pt</span><span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+With <span class="typ-raw">`rg`</span>, you can search through your files quickly.
+This example searches the current directory recursively
+for the text <span class="typ-raw">`Hello World`</span>:
+
+<span class="typ-raw">```bash
+rg &quot;Hello World&quot;
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/12f58e9211d4d9c5d586630e143971a2.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-lang"><code>lang</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/none" class="pill pill-kw">none</a>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-lang-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-lang-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-lang-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-lang-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The language to syntax-highlight in.</p>
+<p>Apart from typical language tags known from Markdown, this supports the
+<code><span class="typ-str">&quot;typ&quot;</span></code>, <code><span class="typ-str">&quot;typc&quot;</span></code>, and <code><span class="typ-str">&quot;typm&quot;</span></code> tags for
+<a href="/docs/reference/syntax/#markup">Typst markup</a>,
+<a href="/docs/reference/syntax/#code">Typst code</a>, and
+<a href="/docs/reference/syntax/#math">Typst math</a>, respectively.</p>
+
+
+<p>Default:<code><span class="typ-key">none</span></code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-raw">```typ
+This is *Typst!*
+```</span>
+
+This is <span class="typ-raw">```typ also *Typst*```</span>, but inline!
+</code></pre><div class="preview"><img src="/assets/docs/1d8174ac34248a5e5715acf2490b2cba.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-align"><code>align</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/alignment" class="pill pill-obj">alignment</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-align-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-align-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-align-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-align-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The horizontal alignment that each line in a raw block should have.
+This option is ignored if this is not a raw block (if specified
+<code>block: false</code> or single backticks were used in markup mode).</p>
+<p>By default, this is set to <code>start</code>, meaning that raw text is
+aligned towards the start of the text direction inside the block
+by default, regardless of the current context's alignment (allowing
+you to center the raw block itself without centering the text inside
+it, for example).</p>
+
+
+<p>Default:<code>start</code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">raw</span><span class="typ-punct">(</span>align<span class="typ-punct">:</span> center<span class="typ-punct">)</span>
+
+<span class="typ-raw">```typc
+let f(x) = x
+code = &quot;centered&quot;
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/3329ad5b36132aa190d787eb5927b1aa.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-syntaxes"><code>syntaxes</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+      <a href="/docs/reference/types/array" class="pill pill-obj">array</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-syntaxes-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-syntaxes-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-syntaxes-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-syntaxes-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>One or multiple additional syntax definitions to load. The syntax
+definitions should be in the
+<a href="https://www.sublimetext.com/docs/syntax.html"><code>sublime-syntax</code> file format</a>.</p>
+
+
+<p>Default:<code><span class="typ-punct">(</span><span class="typ-punct">)</span></code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">raw</span><span class="typ-punct">(</span>syntaxes<span class="typ-punct">:</span> <span class="typ-str">&quot;SExpressions.sublime-syntax&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-raw">```sexp
+(defun factorial (x)
+  (if (zerop x)
+    ; with a comment
+    1
+    (* x (factorial (- x 1)))))
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/7777214ef3477bb1fc911fc35cf324cc.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-theme"><code>theme</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/none" class="pill pill-kw">none</a>
+      
+      <a href="/docs/reference/types/auto" class="pill pill-kw">auto</a>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-theme-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-theme-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-theme-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-theme-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The theme to use for syntax highlighting. Theme files should be in the
+<a href="https://www.sublimetext.com/docs/color_schemes_tmtheme.html"><code>tmTheme</code> file format</a>.</p>
+<p>Applying a theme only affects the color of specifically highlighted
+text. It does not consider the theme's foreground and background
+properties, so that you retain control over the color of raw text. You
+can apply the foreground color yourself with the <a href="/docs/reference/text/text/" title="`text`"><code>text</code></a> function and
+the background with a <a href="/docs/reference/layout/block/#parameters-fill">filled block</a>. You could also use
+the <a href="/docs/reference/data-loading/xml/" title="`xml`"><code>xml</code></a> function to extract these properties from the theme.</p>
+<p>Additionally, you can set the theme to <code><span class="typ-key">none</span></code> to disable highlighting.</p>
+
+
+<p>Default:<code><span class="typ-key">auto</span></code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">raw</span><span class="typ-punct">(</span>theme<span class="typ-punct">:</span> <span class="typ-str">&quot;halcyon.tmTheme&quot;</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">show</span> <span class="typ-func">raw</span><span class="typ-punct">:</span> it <span class="typ-op">=&gt;</span> <span class="typ-func">block</span><span class="typ-punct">(</span>
+  fill<span class="typ-punct">:</span> <span class="typ-func">rgb</span><span class="typ-punct">(</span><span class="typ-str">&quot;#1d2433&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  inset<span class="typ-punct">:</span> <span class="typ-num">8pt</span><span class="typ-punct">,</span>
+  radius<span class="typ-punct">:</span> <span class="typ-num">5pt</span><span class="typ-punct">,</span>
+  <span class="typ-func">text</span><span class="typ-punct">(</span>fill<span class="typ-punct">:</span> <span class="typ-func">rgb</span><span class="typ-punct">(</span><span class="typ-str">&quot;#a2aabc&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span> it<span class="typ-punct">)</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-raw">```typ
+= Chapter 1
+#let hi = &quot;Hello World&quot;
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/9009911872ae520fd503c1609b962bc8.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+<h4 id="raw-raw-parameters-tab-size"><code>tab-size</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/int" class="pill pill-num">int</a>
+      
+    </div>
+    <small><span
+        aria-describedby="raw-raw-parameters-tab-size-settable-tooltip">Settable</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="raw-raw-parameters-tab-size-settable-tooltip-qm-label">
+          <title id="raw-raw-parameters-tab-size-settable-tooltip-qm-label">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="raw-raw-parameters-tab-size-settable-tooltip"
+          tabindex="-1">Settable parameters can be customized for all following uses of the function with a <code>set</code> rule.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The size for a tab stop in spaces. A tab is replaced with enough spaces to
+align with the next multiple of the size.</p>
+
+
+<p>Default:<code><span class="typ-num">2</span></code></p>
+
+
+<details class="folding-example">
+  <summary><img src="/assets/icons/16-arrow-right.svg" alt="" width="16" height="16">View example</summary>
+  <div class="folding">
+    <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">raw</span><span class="typ-punct">(</span>tab-size<span class="typ-punct">:</span> <span class="typ-num">8</span><span class="typ-punct">)</span>
+<span class="typ-raw">```tsv
+Year	Month	Day
+2000	2	3
+2001	2	1
+2002	3	10
+```</span>
+</code></pre><div class="preview"><img src="/assets/docs/a9fc7c872c3de1fc9b7c46043d34e867.png" alt="Preview" width="480" height="190"/></div></div>
+  </div>
+</details>
+
+
+
+
+
+
+<h2 id="definitions">
+  
+<span aria-describedby="definitions-tooltip">Definitions</span>
+<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+    aria-labelledby="definitions-tooltip-qm-label">
+    <title id="definitions-tooltip-qm-label">Functions and types and can have associated definitions. These are accessed by specifying the function or type, followed by a period, and then the definition's name.</title>
+    <use href="/assets/icons/12-tooltip.svg#icon"></use>
+  </svg>
+  <div role="tooltip" id="definitions-tooltip" tabindex="-1">Functions and types and can have associated definitions. These are accessed by specifying the function or type, followed by a period, and then the definition's name.</div>
+</div>
+
+</h2>
+
+
+  <h3 id="-line" class="method-head"><span><code>line</code></span></h3>
+  
+<p>A highlighted line of raw text.</p>
+<p>This is a helper element that is synthesized by <a href="/docs/reference/text/raw/" title="`raw`"><code>raw</code></a> elements.</p>
+<p>It allows you to access various properties of the line, such as the line
+number, the raw non-highlighted text, the highlighted text, and whether it
+is the first or last line of the raw block.</p>
+
+<div class="code code-definition ">raw.<span
+    class="typ-func">line</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/int" class="pill pill-num">int</a>, </span><span
+      class="overview-param"><a href="/docs/reference/types/int" class="pill pill-num">int</a>, </span><span
+      class="overview-param"><a href="/docs/reference/types/str" class="pill pill-str">str</a>, </span><span
+      class="overview-param"><a href="/docs/reference/types/content" class="pill pill-con">content</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/content" class="pill pill-con">content</a></div>
+
+
+
+
+
+<h4 id="definitions-line-line-parameters-number"><code>number</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/int" class="pill pill-num">int</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-line-line-parameters-number-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-line-line-parameters-number-positional-tooltip-qm-label">
+          <title id="definitions-line-line-parameters-number-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-line-line-parameters-number-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The line number of the raw line inside of the raw block, starts at 1.</p>
+
+
+
+
+<h4 id="definitions-line-line-parameters-count"><code>count</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/int" class="pill pill-num">int</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-line-line-parameters-count-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-line-line-parameters-count-positional-tooltip-qm-label">
+          <title id="definitions-line-line-parameters-count-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-line-line-parameters-count-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The total number of lines in the raw block.</p>
+
+
+
+
+<h4 id="definitions-line-line-parameters-text"><code>text</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-line-line-parameters-text-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-line-line-parameters-text-positional-tooltip-qm-label">
+          <title id="definitions-line-line-parameters-text-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-line-line-parameters-text-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The line of raw text.</p>
+
+
+
+
+<h4 id="definitions-line-line-parameters-body"><code>body</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/content" class="pill pill-con">content</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-line-line-parameters-body-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-line-line-parameters-body-positional-tooltip-qm-label">
+          <title id="definitions-line-line-parameters-body-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-line-line-parameters-body-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The highlighted raw text.</p>
+
+
+
+
+
+
+
+
+
+
+      
+      <div class="page-end-buttons"><a href="/docs/reference/text/overline/" class="previous"><img
+            src="/assets/icons/16-arrow-right.svg" alt="←">
+          <div><span class="page-title">Overline</span><span class="hint">前に戻る</span></div>
+        </a><a href="/docs/reference/text/smallcaps/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
+          <div><span class="page-title">Small Capitals</span><span class="hint">次に進む</span></div>
+        </a></div>
+      
+    </main>
+
+    
+    <nav id="page-overview"><strong>目次</strong>
+      <ul>
+        
+        <li data-assoc="summary"><a href="#summary">Summary</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="example"><a href="#example">Example</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="syntax"><a href="#syntax">Syntax</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="parameters"><a href="#parameters">Parameters</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="definitions"><a href="#definitions">Definitions</a>
+          <ul></ul>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  </div>
+  <footer>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/">（公式）ホームページ</a></li>
+        <li><a href="https://typst.app/docs/">（公式）ドキュメント（英語）</a></li>
+        <li><a href="https://typst.app/universe/">（公式）拡張パッケージ・テンプレートの宇宙</a></li>
+        <li><a href="https://typst.app/about/">（公式）Typstについて</a></li>
+        <li><a href="https://typst.app/contact/">（公式）連絡先</a></li>
+        <li><a href="https://typst.app/privacy/">（公式）プライバシーポリシー</a></li>
+        <li><a href="https://typst.app/terms/">（公式）サービス規約</a></li>
+        <li><a href="https://typst.app/legal/">（公式）免責事項</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/tools/">（公式）ツール</a></li>
+        <li><a href="https://typst.app/blog/">（公式）ブログ</a></li>
+        <li><a href="https://twitter.com/typstapp/">（公式）Twitter</a></li>
+        <li><a href="https://discord.gg/2uDybryKPe">（公式）Discord</a></li>
+        <li><a rel="me" href="https://mastodon.social/@typst">（公式）Mastodon</a></li>
+        <li><a href="https://www.linkedin.com/company/typst/">（公式）LinkedIn</a></li>
+        <li><a href="https://instagram.com/typstapp/">（公式）Instagram</a></li>
+        <li><a href="https://github.com/typst/">（公式）GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <p>Made in Berlin</p>
+      <p>Translated by <a href="https://github.com/typst-jp">Typst Japan Community</a></p>
+    </div>
+  </footer>
+  <script src="/scripts/fuse.basic.min.js"></script>
+  <script src="/scripts/docs.js?bust=20230913"></script>
+  <script src="/scripts/analytics.js" defer></script>
+</body>
+
+</html>

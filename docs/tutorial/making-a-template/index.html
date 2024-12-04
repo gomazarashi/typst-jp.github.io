@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>テンプレートを作成する – Typstドキュメント日本語版</title>
+  <meta name="description" content="Typstチュートリアル">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#239dad">
+  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/tutorial/making-a-template/">
+  <meta property="og:title" content="テンプレートを作成する – Typstドキュメント日本語版">
+  <meta property="og:site_name" content="Typst">
+  <meta property="og:description" content="Typstチュートリアル">
+  <meta property="og:type">
+  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@typstapp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/tutorial/making-a-template/">
+  <meta name="twitter:image:alt"
+    content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico"> -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#239dad">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="stylesheet" href="/styles/default.css?bust=20230913?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/docs.css?bust=20230915?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/custom.css">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Regular.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Bold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-SemiBold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/CascadiaMono-Regular-Sub.woff2" as="font">
+  <link rel="preload" href="/assets/images/blur.webp" as="image">
+  
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js"), document.addEventListener("DOMContentLoaded", (() => { const e = document.cookie.split("; ").find((e => e.startsWith("INSECURE_SIGNED_IN=")))?.split("=")[1].toLowerCase(); if ("1" === e || "true" === e || "yes" === e) { document.documentElement.classList.add("signed-in"); const e = document.querySelector("header nav a.nav-btn"), t = document.querySelector("header nav a.sign-in"); e && (e.innerHTML = "Go to app", e.setAttribute("href", "/app/")), t && (t.innerHTML = "Sign out", t.setAttribute("href", "https://api.typst.app/v1/auth/logout")) } }))</script>
+</head>
+
+<body class="no-js docs has-outline">
+  <div class="alert">
+    <div class="alert-content">
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <br />
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+    </div>
+    <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+  </div>
+  <header class="boring">
+    <div><a href="/docs" class="logo-box"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label">
+          <title id="logo-label">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a><button class="hamburger"><img alt="Open navigation"
+          src="/assets/icons/16-hamburger-dark.svg" width="16" height="16"></button>
+      <nav>
+        <ul>
+          <li class="social"><a href="https://x.com/mkpoli/status/1802227029447725538" title="関連ツイート"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-twitter-label">
+                <title id="svg-twitter-label">Twitter</title>
+                <use href="/assets/icons/social.svg#twitter"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://discord.gg/9xF7k4aAuH" title="「くみはんクラブ」Discordサーバー"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-discord-label">
+                <title id="svg-discord-label">Discord</title>
+                <use href="/assets/icons/social.svg#discord"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://github.com/typst-jp/typst-jp.github.io" title="本プロジェクトのGitHubレポジトリ"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-github-label">
+                <title id="svg-github-label">GitHub</title>
+                <use href="/assets/icons/social.svg#github"></use>
+              </svg></a></li>
+          <li class="secondary"><a href="https://typst.app/">Typst公式サイト</a></li>
+          <li class="secondary"><a href="https://typst.app/docs/">Typst公式ドキュメント</a></li>
+          <!-- <li class="secondary"><a href="/signin/" class="sign-in">Sign in</a></li>
+          <li><a href="/signup" id="header-btn" class="nav-btn btn">Sign up</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="main-grid">
+    <nav class="folding"><a href="/docs" class="title-row"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label-nav">
+          <title id="logo-label-nav">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a>
+      <button class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+      <div class="search"><img src="/assets/icons/16-search-gray.svg" alt="Search" width="16" height="16"><input
+          type="search" placeholder="検索" id="docs-search"></div>
+      <ul class="search-results hidden" id="search-results"></ul>
+      <ul>
+        
+        
+        <li>
+          <a href="/docs/" >Typstについて</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/tutorial/" >チュートリアル</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/tutorial/writing-in-typst/" >Typstで執筆するには</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/formatting/" >書式を設定する</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/advanced-styling/" >高度なスタイリング</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/making-a-template/"  aria-current="page" >テンプレートを作成する</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/japanese/" >日本語ユーザーガイド</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/reference/" >リファレンス</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li class="category">Language</li>
+            
+            <li>
+              <a href="/docs/reference/syntax/" >構文</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/styling/" >スタイル設定</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/scripting/" >スクリプト記述</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/context/" >コンテキスト</a>
+              
+            </li>
+            
+            
+            <li class="category">Library</li>
+            
+            <li>
+              <a href="/docs/reference/foundations/" >Foundations</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/foundations/arguments/" >Arguments</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/array/" >Array</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/assert/" >Assert</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/auto/" >Auto</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bool/" >Boolean</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bytes/" >Bytes</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/calc" >Calculation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/content/" >Content</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/datetime/" >Datetime</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/decimal/" >Decimal</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/dictionary/" >Dictionary</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/duration/" >Duration</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/eval/" >Evaluate</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/float/" >Float</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/function/" >Function</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/int/" >Integer</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/label/" >Label</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/module/" >Module</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/none/" >None</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/panic/" >Panic</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/plugin/" >Plugin</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/regex/" >Regex</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/repr/" >Representation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/selector/" >Selector</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/str/" >String</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/type/" >Type</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/version/" >Version</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/model/" >Model</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/model/bibliography/" >Bibliography</a></li>
+                
+                
+                <li><a href="/docs/reference/model/list/" >Bullet List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/cite/" >Cite</a></li>
+                
+                
+                <li><a href="/docs/reference/model/document/" >Document</a></li>
+                
+                
+                <li><a href="/docs/reference/model/emph/" >Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/figure/" >Figure</a></li>
+                
+                
+                <li><a href="/docs/reference/model/footnote/" >Footnote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/heading/" >Heading</a></li>
+                
+                
+                <li><a href="/docs/reference/model/link/" >Link</a></li>
+                
+                
+                <li><a href="/docs/reference/model/enum/" >Numbered List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/numbering/" >Numbering</a></li>
+                
+                
+                <li><a href="/docs/reference/model/outline/" >Outline</a></li>
+                
+                
+                <li><a href="/docs/reference/model/par/" >Paragraph</a></li>
+                
+                
+                <li><a href="/docs/reference/model/parbreak/" >Paragraph Break</a></li>
+                
+                
+                <li><a href="/docs/reference/model/quote/" >Quote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/ref/" >Reference</a></li>
+                
+                
+                <li><a href="/docs/reference/model/strong/" >Strong Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/table/" >Table</a></li>
+                
+                
+                <li><a href="/docs/reference/model/terms/" >Term List</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/text/" >Text</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/text/highlight/" >Highlight</a></li>
+                
+                
+                <li><a href="/docs/reference/text/linebreak/" >Line Break</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lorem/" >Lorem</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lower/" >Lowercase</a></li>
+                
+                
+                <li><a href="/docs/reference/text/overline/" >Overline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/raw/" >Raw Text / Code</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smallcaps/" >Small Capitals</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smartquote/" >Smartquote</a></li>
+                
+                
+                <li><a href="/docs/reference/text/strike/" >Strikethrough</a></li>
+                
+                
+                <li><a href="/docs/reference/text/sub/" >Subscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/super/" >Superscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/text/" >Text</a></li>
+                
+                
+                <li><a href="/docs/reference/text/underline/" >Underline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/upper/" >Uppercase</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/math/" >Math</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/math/accent/" >Accent</a></li>
+                
+                
+                <li><a href="/docs/reference/math/attach" >Attach</a></li>
+                
+                
+                <li><a href="/docs/reference/math/binom/" >Binomial</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cancel/" >Cancel</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cases/" >Cases</a></li>
+                
+                
+                <li><a href="/docs/reference/math/class/" >Class</a></li>
+                
+                
+                <li><a href="/docs/reference/math/equation/" >Equation</a></li>
+                
+                
+                <li><a href="/docs/reference/math/frac/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/math/lr" >Left/Right</a></li>
+                
+                
+                <li><a href="/docs/reference/math/mat/" >Matrix</a></li>
+                
+                
+                <li><a href="/docs/reference/math/primes/" >Primes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/roots" >Roots</a></li>
+                
+                
+                <li><a href="/docs/reference/math/sizes" >Sizes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/stretch/" >Stretch</a></li>
+                
+                
+                <li><a href="/docs/reference/math/styles" >Styles</a></li>
+                
+                
+                <li><a href="/docs/reference/math/op/" >Text Operator</a></li>
+                
+                
+                <li><a href="/docs/reference/math/underover" >Under/Over</a></li>
+                
+                
+                <li><a href="/docs/reference/math/variants" >Variants</a></li>
+                
+                
+                <li><a href="/docs/reference/math/vec/" >Vector</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/symbols/" >Symbols</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/symbols/sym/" >General</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/layout/" >Layout</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/layout/align/" >Align</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/alignment/" >Alignment</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/angle/" >Angle</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/block/" >Block</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/box/" >Box</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/colbreak/" >Column Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/columns/" >Columns</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/direction/" >Direction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/fraction/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/grid/" >Grid</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/hide/" >Hide</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/layout/" >Layout</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/length/" >Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/measure/" >Measure</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/move/" >Move</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pad/" >Padding</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/page/" >Page</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pagebreak/" >Page Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/place/" >Place</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/ratio/" >Ratio</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/relative/" >Relative Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/repeat/" >Repeat</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/rotate/" >Rotate</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/scale/" >Scale</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/skew/" >Skew</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/h/" >Spacing (H)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/v/" >Spacing (V)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/stack/" >Stack</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/visualize/" >Visualize</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/visualize/circle/" >Circle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/color/" >Color</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/gradient/" >Gradient</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/image/" >Image</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/line/" >Line</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/path/" >Path</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/rect/" >Rectangle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/square/" >Square</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/introspection/" >Introspection</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/introspection/counter/" >Counter</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/here/" >Here</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/locate/" >Locate</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/location/" >Location</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/metadata/" >Metadata</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/query/" >Query</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/state/" >State</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/data-loading/" >Data Loading</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/data-loading/cbor/" >CBOR</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/csv/" >CSV</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/json/" >JSON</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/read/" >Read</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/toml/" >TOML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/xml/" >XML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/yaml/" >YAML</a></li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/guides/" >Guides</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/guides/guide-for-latex-users/" >Guide for LaTeX users</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/page-setup-guide/" >Page setup guide</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/table-guide/" >Table guide</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/changelog/" >Changelog</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.12.0/" >0.12.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.1/" >0.11.1</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.0/" >0.11.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.10.0/" >0.10.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.9.0/" >0.9.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.8.0/" >0.8.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.7.0/" >0.7.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.6.0/" >0.6.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.5.0/" >0.5.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.4.0/" >0.4.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.3.0/" >0.3.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.2.0/" >0.2.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.1.0/" >0.1.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/earlier/" >Earlier</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/glossary/" >用語集</a>
+          
+        </li>
+        
+      </ul>
+
+    </nav>
+    <main>
+      <ul class="breadcrumbs" aria-label="Breadcrumbs">
+        <li class="root"><a href="/docs/"><img src="/assets/icons/16-docs-dark.svg" alt="Docs" width="16"
+              height="16"></a></li>
+
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/tutorial/">チュートリアル</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/tutorial/making-a-template/">テンプレートを作成する</a></li>
+        
+      </ul>
+
+      
+
+<h1>テンプレートを作成する</h1>
+<p>In the previous three chapters of this tutorial, you have learned how to write a
+document in Typst, apply basic styles, and customize its appearance in-depth to
+comply with a publisher's style guide. Because the paper you wrote in the
+previous chapter was a tremendous success, you have been asked to write a
+follow-up article for the same conference. This time, you want to take the style
+you created in the previous chapter and turn it into a reusable template. In
+this chapter you will learn how to create a template that you and your team can
+use with just one show rule. Let's get started!</p>
+<h2 id="toy-template">A toy template</h2>
+<p>In Typst, templates are functions in which you can wrap your whole document. To
+learn how to do that, let's first review how to write your very own functions.
+They can do anything you want them to, so why not go a bit crazy?</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">amazed</span><span class="typ-punct">(</span>term<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-func">box</span><span class="typ-punct">[</span>✨ <span class="typ-pol">#</span><span class="typ-pol">term</span> ✨<span class="typ-punct">]</span>
+
+You are <span class="typ-func">#</span><span class="typ-func">amazed</span><span class="typ-punct">[</span>beautiful<span class="typ-punct">]</span>!
+</code></pre><div class="preview"><img src="/assets/docs/f55a5389282e58c6cefb7ae2329cc761.png" alt="Preview" width="480" height="190"/></div></div>
+<p>This function takes a single argument, <code>term</code>, and returns a content block with
+the <code>term</code> surrounded by sparkles. We also put the whole thing in a box so that
+the term we are amazed by cannot be separated from its sparkles by a line break.</p>
+<p>Many functions that come with Typst have optional named parameters. Our
+functions can also have them. Let's add a parameter to our function that lets us
+choose the color of the text. We need to provide a default color in case the
+parameter isn't given.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">amazed</span><span class="typ-punct">(</span>term<span class="typ-punct">,</span> color<span class="typ-punct">:</span> blue<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">{</span>
+  <span class="typ-func">text</span><span class="typ-punct">(</span>color<span class="typ-punct">,</span> <span class="typ-func">box</span><span class="typ-punct">[</span>✨ <span class="typ-pol">#</span><span class="typ-pol">term</span> ✨<span class="typ-punct">]</span><span class="typ-punct">)</span>
+<span class="typ-punct">}</span>
+
+You are <span class="typ-func">#</span><span class="typ-func">amazed</span><span class="typ-punct">[</span>beautiful<span class="typ-punct">]</span>!
+I am <span class="typ-func">#</span><span class="typ-func">amazed</span><span class="typ-punct">(</span>color<span class="typ-punct">:</span> purple<span class="typ-punct">)</span><span class="typ-punct">[</span>amazed<span class="typ-punct">]</span>!
+</code></pre><div class="preview"><img src="/assets/docs/c9ce0a0f4a0e86c783e77271ca2f92a9.png" alt="Preview" width="480" height="190"/></div></div>
+<p>Templates now work by wrapping our whole document in a custom function like
+<code>amazed</code>. But wrapping a whole document in a giant function call would be
+cumbersome! Instead, we can use an &quot;everything&quot; show rule to achieve the same
+with cleaner code. To write such a show rule, put a colon directly behind the
+show keyword and then provide a function. This function is given the rest of the
+document as a parameter. The function can then do anything with this content.
+Since the <code>amazed</code> function can be called with a single content argument, we can
+just pass it by name to the show rule. Let's try it:</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">show</span><span class="typ-punct">:</span> <span class="typ-func">amazed</span>
+I choose to focus on the good
+in my life and let go of any
+negative thoughts or beliefs.
+In fact, I am amazing!
+</code></pre><div class="preview"><img src="/assets/docs/6e34fb6913212950a231d345d81c51f0.png" alt="Preview" width="480" height="190"/></div></div>
+<p>Our whole document will now be passed to the <code>amazed</code> function, as if we wrapped
+it around it. Of course, this is not especially useful with this particular
+function, but when combined with set rules and named arguments, it can be very
+powerful.</p>
+<h2 id="set-and-show-rules">Embedding set and show rules</h2>
+<p>To apply some set and show rules to our template, we can use <code>set</code> and <code>show</code>
+within a content block in our function and then insert the document into
+that content block.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">template</span><span class="typ-punct">(</span>doc<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">[</span>
+  <span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">text</span><span class="typ-punct">(</span>font<span class="typ-punct">:</span> <span class="typ-str">&quot;Inria Serif&quot;</span><span class="typ-punct">)</span>
+  <span class="typ-key">#</span><span class="typ-key">show</span> <span class="typ-str">&quot;something cool&quot;</span><span class="typ-punct">:</span> <span class="typ-punct">[</span>Typst<span class="typ-punct">]</span>
+  <span class="typ-pol">#</span><span class="typ-pol">doc</span>
+<span class="typ-punct">]</span>
+
+<span class="typ-key">#</span><span class="typ-key">show</span><span class="typ-punct">:</span> <span class="typ-func">template</span>
+I am learning something cool today.
+It&#39;s going great so far!
+</code></pre><div class="preview"><img src="/assets/docs/6e9bfdb0ecedf2ac3a531b167f29927f.png" alt="Preview" width="480" height="190"/></div></div>
+<p>Just like we already discovered in the previous chapter, set rules will apply to
+everything within their content block. Since the everything show rule passes our
+whole document to the <code>template</code> function, the text set rule and string show
+rule in our template will apply to the whole document. Let's use this knowledge
+to create a template that reproduces the body style of the paper we wrote in the
+previous chapter.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">conf</span><span class="typ-punct">(</span>title<span class="typ-punct">,</span> doc<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">{</span>
+  <span class="typ-key">set</span> <span class="typ-func">page</span><span class="typ-punct">(</span>
+    paper<span class="typ-punct">:</span> <span class="typ-str">&quot;us-letter&quot;</span><span class="typ-punct">,</span>
+    header<span class="typ-punct">:</span> <span class="typ-func">align</span><span class="typ-punct">(</span>
+      right <span class="typ-op">+</span> horizon<span class="typ-punct">,</span>
+      title
+    <span class="typ-punct">)</span><span class="typ-punct">,</span>
+    columns<span class="typ-punct">:</span> <span class="typ-num">2</span><span class="typ-punct">,</span>
+    <span class="typ-op">..</span><span class="typ-punct">.</span>
+  <span class="typ-punct">)</span>
+  <span class="typ-key">set</span> <span class="typ-func">par</span><span class="typ-punct">(</span>justify<span class="typ-punct">:</span> <span class="typ-key">true</span><span class="typ-punct">)</span>
+  <span class="typ-key">set</span> <span class="typ-func">text</span><span class="typ-punct">(</span>
+    font<span class="typ-punct">:</span> <span class="typ-str">&quot;Libertinus Serif&quot;</span><span class="typ-punct">,</span>
+    size<span class="typ-punct">:</span> <span class="typ-num">11pt</span><span class="typ-punct">,</span>
+  <span class="typ-punct">)</span>
+
+  <span class="typ-comment">// Heading show rules.</span>
+  ...
+
+  doc
+<span class="typ-punct">}</span>
+
+<span class="typ-key">#</span><span class="typ-key">show</span><span class="typ-punct">:</span> doc <span class="typ-op">=&gt;</span> <span class="typ-func">conf</span><span class="typ-punct">(</span>
+  <span class="typ-punct">[</span>Paper title<span class="typ-punct">]</span><span class="typ-punct">,</span>
+  doc<span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">90</span><span class="typ-punct">)</span>
+
+<span class="typ-escape">...</span>
+</code></pre><div class="preview"><img src="/assets/docs/13df4f0eef432cb9dec67b26b1056464.png" alt="Preview" width="480" height="190"/></div></div>
+<p>We copy-pasted most of that code from the previous chapter. The two differences
+are this:</p>
+<ol>
+<li>
+<p>We wrapped everything in the function <code>conf</code> using an everything show rule.
+The function applies a few set and show rules and echoes the content it has
+been passed at the end.</p>
+</li>
+<li>
+<p>Moreover, we used a curly-braced code block instead of a content block. This
+way, we don't need to prefix all set rules and function calls with a <code>#</code>. In
+exchange, we cannot write markup directly in the code block anymore.</p>
+</li>
+</ol>
+<p>Also note where the title comes from: We previously had it inside of a variable.
+Now, we are receiving it as the first parameter of the template function. To do
+so, we passed a closure (that's a function without a name that is used right
+away) to the everything show rule. We did that because the <code>conf</code> function
+expects two positional arguments, the title and the body, but the show rule will
+only pass the body. Therefore, we add a new function definition that allows us
+to set a paper title and use the single parameter from the show rule.</p>
+<h2 id="named-arguments">Templates with named arguments</h2>
+<p>Our paper in the previous chapter had a title and an author list. Let's add
+these things to our template. In addition to the title, we want our template to
+accept a list of authors with their affiliations and the paper's abstract. To
+keep things readable, we'll add those as named arguments. In the end, we want it
+to work like this:</p>
+<pre><code><span class="typ-key">#</span><span class="typ-key">show</span><span class="typ-punct">:</span> doc <span class="typ-op">=&gt;</span> <span class="typ-func">conf</span><span class="typ-punct">(</span>
+  title<span class="typ-punct">:</span> <span class="typ-punct">[</span>Towards Improved Modelling<span class="typ-punct">]</span><span class="typ-punct">,</span>
+  authors<span class="typ-punct">:</span> <span class="typ-punct">(</span>
+    <span class="typ-punct">(</span>
+      name<span class="typ-punct">:</span> <span class="typ-str">&quot;Theresa Tungsten&quot;</span><span class="typ-punct">,</span>
+      affiliation<span class="typ-punct">:</span> <span class="typ-str">&quot;Artos Institute&quot;</span><span class="typ-punct">,</span>
+      email<span class="typ-punct">:</span> <span class="typ-str">&quot;tung@artos.edu&quot;</span><span class="typ-punct">,</span>
+    <span class="typ-punct">)</span><span class="typ-punct">,</span>
+    <span class="typ-punct">(</span>
+      name<span class="typ-punct">:</span> <span class="typ-str">&quot;Eugene Deklan&quot;</span><span class="typ-punct">,</span>
+      affiliation<span class="typ-punct">:</span> <span class="typ-str">&quot;Honduras State&quot;</span><span class="typ-punct">,</span>
+      email<span class="typ-punct">:</span> <span class="typ-str">&quot;e.deklan@hstate.hn&quot;</span><span class="typ-punct">,</span>
+    <span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">)</span><span class="typ-punct">,</span>
+  abstract<span class="typ-punct">:</span> <span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">80</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  doc<span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-escape">...</span>
+</code></pre>
+<p>Let's build this new template function. First, we add a default value to the
+<code>title</code> argument. This way, we can call the template without specifying a title.
+We also add the named <code>authors</code> and <code>abstract</code> parameters with empty defaults.
+Next, we copy the code that generates title, abstract and authors from the
+previous chapter into the template, replacing the fixed details with the
+parameters.</p>
+<p>The new <code>authors</code> parameter expects an <a href="/docs/reference/foundations/array/" title="array">array</a> of <a href="/docs/reference/foundations/dictionary/">dictionaries</a>
+with the keys <code>name</code>, <code>affiliation</code> and <code>email</code>. Because we can have an
+arbitrary number of authors, we dynamically determine if we need one, two or
+three columns for the author list. First, we determine the number of authors
+using the <a href="/docs/reference/foundations/array/#definitions-len"><code>.len()</code></a> method on the <code>authors</code> array. Then, we set the
+number of columns as the minimum of this count and three, so that we never
+create more than three columns. If there are more than three authors, a new row
+will be inserted instead. For this purpose, we have also added a <code>row-gutter</code>
+parameter to the <code>grid</code> function. Otherwise, the rows would be too close
+together. To extract the details about the authors from the dictionary, we use
+the <a href="/docs/reference/scripting/#fields">field access syntax</a>.</p>
+<p>We still have to provide an argument to the grid for each author: Here is where
+the array's <a href="/docs/reference/foundations/array/#definitions-map"><code>map</code> method</a> comes in handy. It takes a function as an
+argument that gets called with each item of the array. We pass it a function
+that formats the details for each author and returns a new array containing
+content values. We've now got one array of values that we'd like to use as
+multiple arguments for the grid. We can do that by using the
+<a href="/docs/reference/foundations/arguments/"><code>spread</code> operator</a>. It takes an array and applies each of its items
+as a separate argument to the function.</p>
+<p>The resulting template function looks like this:</p>
+<pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">conf</span><span class="typ-punct">(</span>
+  title<span class="typ-punct">:</span> <span class="typ-key">none</span><span class="typ-punct">,</span>
+  authors<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  abstract<span class="typ-punct">:</span> <span class="typ-punct">[</span><span class="typ-punct">]</span><span class="typ-punct">,</span>
+  doc<span class="typ-punct">,</span>
+<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">{</span>
+  <span class="typ-comment">// Set and show rules from before.</span>
+  ...
+
+  <span class="typ-key">set</span> <span class="typ-func">align</span><span class="typ-punct">(</span>center<span class="typ-punct">)</span>
+  <span class="typ-func">text</span><span class="typ-punct">(</span><span class="typ-num">17pt</span><span class="typ-punct">,</span> title<span class="typ-punct">)</span>
+
+  <span class="typ-key">let</span> count <span class="typ-op">=</span> authors<span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+  <span class="typ-key">let</span> ncols <span class="typ-op">=</span> calc<span class="typ-punct">.</span><span class="typ-func">min</span><span class="typ-punct">(</span>count<span class="typ-punct">,</span> <span class="typ-num">3</span><span class="typ-punct">)</span>
+  <span class="typ-func">grid</span><span class="typ-punct">(</span>
+    columns<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">1fr</span><span class="typ-punct">,</span><span class="typ-punct">)</span> <span class="typ-op">*</span> ncols<span class="typ-punct">,</span>
+    row-gutter<span class="typ-punct">:</span> <span class="typ-num">24pt</span><span class="typ-punct">,</span>
+    <span class="typ-op">..</span>authors<span class="typ-punct">.</span><span class="typ-func">map</span><span class="typ-punct">(</span>author <span class="typ-op">=&gt;</span> <span class="typ-punct">[</span>
+      <span class="typ-pol">#</span><span class="typ-pol">author</span><span class="typ-punct">.</span><span class="typ-pol">name</span> <span class="typ-escape">\</span>
+      <span class="typ-pol">#</span><span class="typ-pol">author</span><span class="typ-punct">.</span><span class="typ-pol">affiliation</span> <span class="typ-escape">\</span>
+      <span class="typ-func">#</span><span class="typ-func">link</span><span class="typ-punct">(</span><span class="typ-str">&quot;mailto:&quot;</span> <span class="typ-op">+</span> author<span class="typ-punct">.</span>email<span class="typ-punct">)</span>
+    <span class="typ-punct">]</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">)</span>
+
+  <span class="typ-func">par</span><span class="typ-punct">(</span>justify<span class="typ-punct">:</span> <span class="typ-key">false</span><span class="typ-punct">)</span><span class="typ-punct">[</span>
+    <span class="typ-strong">*Abstract*</span> <span class="typ-escape">\</span>
+    <span class="typ-pol">#</span><span class="typ-pol">abstract</span>
+  <span class="typ-punct">]</span>
+
+  <span class="typ-key">set</span> <span class="typ-func">align</span><span class="typ-punct">(</span>left<span class="typ-punct">)</span>
+  doc
+<span class="typ-punct">}</span>
+</code></pre>
+<h2 id="separate-file">A separate file</h2>
+<p>Most of the time, a template is specified in a different file and then imported
+into the document. This way, the main file you write in is kept clutter free and
+your template is easily reused. Create a new text file in the file panel by
+clicking the plus button and name it <code>conf.typ</code>. Move the <code>conf</code> function
+definition inside of that new file. Now you can access it from your main file by
+adding an import before the show rule. Specify the path of the file between the
+<code><span class="typ-key">import</span></code> keyword and a colon, then name the function that you want to import.</p>
+<p>Another thing that you can do to make applying templates just a bit more elegant
+is to use the <a href="/docs/reference/foundations/function/#definitions-with"><code>.with</code></a> method on functions to pre-populate all
+the named arguments. This way, you can avoid spelling out a closure and
+appending the content argument at the bottom of your template list. Templates on
+<a href="https://typst.app/universe/">Typst Universe</a> are designed to work with this style of function
+call.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">import</span> <span class="typ-str">&quot;conf.typ&quot;</span><span class="typ-punct">:</span> conf
+<span class="typ-key">#</span><span class="typ-key">show</span><span class="typ-punct">:</span> conf<span class="typ-punct">.</span><span class="typ-func">with</span><span class="typ-punct">(</span>
+  title<span class="typ-punct">:</span> <span class="typ-punct">[</span>
+    Towards Improved Modelling
+  <span class="typ-punct">]</span><span class="typ-punct">,</span>
+  authors<span class="typ-punct">:</span> <span class="typ-punct">(</span>
+    <span class="typ-punct">(</span>
+      name<span class="typ-punct">:</span> <span class="typ-str">&quot;Theresa Tungsten&quot;</span><span class="typ-punct">,</span>
+      affiliation<span class="typ-punct">:</span> <span class="typ-str">&quot;Artos Institute&quot;</span><span class="typ-punct">,</span>
+      email<span class="typ-punct">:</span> <span class="typ-str">&quot;tung@artos.edu&quot;</span><span class="typ-punct">,</span>
+    <span class="typ-punct">)</span><span class="typ-punct">,</span>
+    <span class="typ-punct">(</span>
+      name<span class="typ-punct">:</span> <span class="typ-str">&quot;Eugene Deklan&quot;</span><span class="typ-punct">,</span>
+      affiliation<span class="typ-punct">:</span> <span class="typ-str">&quot;Honduras State&quot;</span><span class="typ-punct">,</span>
+      email<span class="typ-punct">:</span> <span class="typ-str">&quot;e.deklan@hstate.hn&quot;</span><span class="typ-punct">,</span>
+    <span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">)</span><span class="typ-punct">,</span>
+  abstract<span class="typ-punct">:</span> <span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">80</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">90</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">== Motivation</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">140</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">== Problem Statement</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">50</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Related Work</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">200</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/30e6422b2124e660979f19312c8e3691.png" alt="Preview" width="480" height="190"/></div></div>
+<p>We have now converted the conference paper into a reusable template for that
+conference! Why not share it in the <a href="https://forum.typst.app/">Forum</a> or on
+<a href="https://discord.gg/2uDybryKPe">Typst's Discord server</a> so that others can use
+it too?</p>
+<h2 id="review">Review</h2>
+<p>Congratulations, you have completed Typst's Tutorial! In this section, you have
+learned how to define your own functions and how to create and apply templates
+that define reusable document styles. You've made it far and learned a lot. You
+can now use Typst to write your own documents and share them with others.</p>
+<p>We are still a super young project and are looking for feedback. If you have any
+questions, suggestions or you found a bug, please let us know
+in the <a href="https://forum.typst.app/">Forum</a>,
+on our <a href="https://discord.gg/2uDybryKPe">Discord server</a>,
+on <a href="https://github.com/typst/typst/">GitHub</a>,
+or via the web app's feedback form (always available in the Help menu).</p>
+<p>So what are you waiting for? <a href="https://typst.app">Sign up</a> and write something!</p>
+
+
+
+      
+      <div class="page-end-buttons"><a href="/docs/tutorial/advanced-styling/" class="previous"><img
+            src="/assets/icons/16-arrow-right.svg" alt="←">
+          <div><span class="page-title">高度なスタイリング</span><span class="hint">前に戻る</span></div>
+        </a><a href="/docs/japanese/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
+          <div><span class="page-title">日本語ユーザーガイド</span><span class="hint">次に進む</span></div>
+        </a></div>
+      
+    </main>
+
+    
+    <nav id="page-overview"><strong>目次</strong>
+      <ul>
+        
+        <li data-assoc="toy-template"><a href="#toy-template">Toy Template</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="set-and-show-rules"><a href="#set-and-show-rules">Set And Show Rules</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="named-arguments"><a href="#named-arguments">Named Arguments</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="separate-file"><a href="#separate-file">Separate File</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="review"><a href="#review">Review</a>
+          <ul></ul>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  </div>
+  <footer>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/">（公式）ホームページ</a></li>
+        <li><a href="https://typst.app/docs/">（公式）ドキュメント（英語）</a></li>
+        <li><a href="https://typst.app/universe/">（公式）拡張パッケージ・テンプレートの宇宙</a></li>
+        <li><a href="https://typst.app/about/">（公式）Typstについて</a></li>
+        <li><a href="https://typst.app/contact/">（公式）連絡先</a></li>
+        <li><a href="https://typst.app/privacy/">（公式）プライバシーポリシー</a></li>
+        <li><a href="https://typst.app/terms/">（公式）サービス規約</a></li>
+        <li><a href="https://typst.app/legal/">（公式）免責事項</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/tools/">（公式）ツール</a></li>
+        <li><a href="https://typst.app/blog/">（公式）ブログ</a></li>
+        <li><a href="https://twitter.com/typstapp/">（公式）Twitter</a></li>
+        <li><a href="https://discord.gg/2uDybryKPe">（公式）Discord</a></li>
+        <li><a rel="me" href="https://mastodon.social/@typst">（公式）Mastodon</a></li>
+        <li><a href="https://www.linkedin.com/company/typst/">（公式）LinkedIn</a></li>
+        <li><a href="https://instagram.com/typstapp/">（公式）Instagram</a></li>
+        <li><a href="https://github.com/typst/">（公式）GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <p>Made in Berlin</p>
+      <p>Translated by <a href="https://github.com/typst-jp">Typst Japan Community</a></p>
+    </div>
+  </footer>
+  <script src="/scripts/fuse.basic.min.js"></script>
+  <script src="/scripts/docs.js?bust=20230913"></script>
+  <script src="/scripts/analytics.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,1479 @@
+
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>Counter – Typstドキュメント日本語版</title>
+  <meta name="description" content="Documentation for the Counter type.">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#239dad">
+  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/introspection/counter/">
+  <meta property="og:title" content="Counter – Typstドキュメント日本語版">
+  <meta property="og:site_name" content="Typst">
+  <meta property="og:description" content="Documentation for the Counter type.">
+  <meta property="og:type">
+  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@typstapp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/introspection/counter/">
+  <meta name="twitter:image:alt"
+    content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico"> -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#239dad">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="stylesheet" href="/styles/default.css?bust=20230913?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/docs.css?bust=20230915?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/custom.css">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Regular.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Bold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-SemiBold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/CascadiaMono-Regular-Sub.woff2" as="font">
+  <link rel="preload" href="/assets/images/blur.webp" as="image">
+  
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js"), document.addEventListener("DOMContentLoaded", (() => { const e = document.cookie.split("; ").find((e => e.startsWith("INSECURE_SIGNED_IN=")))?.split("=")[1].toLowerCase(); if ("1" === e || "true" === e || "yes" === e) { document.documentElement.classList.add("signed-in"); const e = document.querySelector("header nav a.nav-btn"), t = document.querySelector("header nav a.sign-in"); e && (e.innerHTML = "Go to app", e.setAttribute("href", "/app/")), t && (t.innerHTML = "Sign out", t.setAttribute("href", "https://api.typst.app/v1/auth/logout")) } }))</script>
+</head>
+
+<body class="no-js docs has-outline">
+  <div class="alert">
+    <div class="alert-content">
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <br />
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+    </div>
+    <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+  </div>
+  <header class="boring">
+    <div><a href="/docs" class="logo-box"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label">
+          <title id="logo-label">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a><button class="hamburger"><img alt="Open navigation"
+          src="/assets/icons/16-hamburger-dark.svg" width="16" height="16"></button>
+      <nav>
+        <ul>
+          <li class="social"><a href="https://x.com/mkpoli/status/1802227029447725538" title="関連ツイート"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-twitter-label">
+                <title id="svg-twitter-label">Twitter</title>
+                <use href="/assets/icons/social.svg#twitter"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://discord.gg/9xF7k4aAuH" title="「くみはんクラブ」Discordサーバー"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-discord-label">
+                <title id="svg-discord-label">Discord</title>
+                <use href="/assets/icons/social.svg#discord"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://github.com/typst-jp/typst-jp.github.io" title="本プロジェクトのGitHubレポジトリ"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-github-label">
+                <title id="svg-github-label">GitHub</title>
+                <use href="/assets/icons/social.svg#github"></use>
+              </svg></a></li>
+          <li class="secondary"><a href="https://typst.app/">Typst公式サイト</a></li>
+          <li class="secondary"><a href="https://typst.app/docs/">Typst公式ドキュメント</a></li>
+          <!-- <li class="secondary"><a href="/signin/" class="sign-in">Sign in</a></li>
+          <li><a href="/signup" id="header-btn" class="nav-btn btn">Sign up</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="main-grid">
+    <nav class="folding"><a href="/docs" class="title-row"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label-nav">
+          <title id="logo-label-nav">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a>
+      <button class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+      <div class="search"><img src="/assets/icons/16-search-gray.svg" alt="Search" width="16" height="16"><input
+          type="search" placeholder="検索" id="docs-search"></div>
+      <ul class="search-results hidden" id="search-results"></ul>
+      <ul>
+        
+        
+        <li>
+          <a href="/docs/" >Typstについて</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/tutorial/" >チュートリアル</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/tutorial/writing-in-typst/" >Typstで執筆するには</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/formatting/" >書式を設定する</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/advanced-styling/" >高度なスタイリング</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/making-a-template/" >テンプレートを作成する</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/japanese/" >日本語ユーザーガイド</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/reference/" >リファレンス</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li class="category">Language</li>
+            
+            <li>
+              <a href="/docs/reference/syntax/" >構文</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/styling/" >スタイル設定</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/scripting/" >スクリプト記述</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/context/" >コンテキスト</a>
+              
+            </li>
+            
+            
+            <li class="category">Library</li>
+            
+            <li>
+              <a href="/docs/reference/foundations/" >Foundations</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/foundations/arguments/" >Arguments</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/array/" >Array</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/assert/" >Assert</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/auto/" >Auto</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bool/" >Boolean</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bytes/" >Bytes</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/calc" >Calculation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/content/" >Content</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/datetime/" >Datetime</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/decimal/" >Decimal</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/dictionary/" >Dictionary</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/duration/" >Duration</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/eval/" >Evaluate</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/float/" >Float</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/function/" >Function</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/int/" >Integer</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/label/" >Label</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/module/" >Module</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/none/" >None</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/panic/" >Panic</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/plugin/" >Plugin</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/regex/" >Regex</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/repr/" >Representation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/selector/" >Selector</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/str/" >String</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/type/" >Type</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/version/" >Version</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/model/" >Model</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/model/bibliography/" >Bibliography</a></li>
+                
+                
+                <li><a href="/docs/reference/model/list/" >Bullet List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/cite/" >Cite</a></li>
+                
+                
+                <li><a href="/docs/reference/model/document/" >Document</a></li>
+                
+                
+                <li><a href="/docs/reference/model/emph/" >Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/figure/" >Figure</a></li>
+                
+                
+                <li><a href="/docs/reference/model/footnote/" >Footnote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/heading/" >Heading</a></li>
+                
+                
+                <li><a href="/docs/reference/model/link/" >Link</a></li>
+                
+                
+                <li><a href="/docs/reference/model/enum/" >Numbered List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/numbering/" >Numbering</a></li>
+                
+                
+                <li><a href="/docs/reference/model/outline/" >Outline</a></li>
+                
+                
+                <li><a href="/docs/reference/model/par/" >Paragraph</a></li>
+                
+                
+                <li><a href="/docs/reference/model/parbreak/" >Paragraph Break</a></li>
+                
+                
+                <li><a href="/docs/reference/model/quote/" >Quote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/ref/" >Reference</a></li>
+                
+                
+                <li><a href="/docs/reference/model/strong/" >Strong Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/table/" >Table</a></li>
+                
+                
+                <li><a href="/docs/reference/model/terms/" >Term List</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/text/" >Text</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/text/highlight/" >Highlight</a></li>
+                
+                
+                <li><a href="/docs/reference/text/linebreak/" >Line Break</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lorem/" >Lorem</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lower/" >Lowercase</a></li>
+                
+                
+                <li><a href="/docs/reference/text/overline/" >Overline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/raw/" >Raw Text / Code</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smallcaps/" >Small Capitals</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smartquote/" >Smartquote</a></li>
+                
+                
+                <li><a href="/docs/reference/text/strike/" >Strikethrough</a></li>
+                
+                
+                <li><a href="/docs/reference/text/sub/" >Subscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/super/" >Superscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/text/" >Text</a></li>
+                
+                
+                <li><a href="/docs/reference/text/underline/" >Underline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/upper/" >Uppercase</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/math/" >Math</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/math/accent/" >Accent</a></li>
+                
+                
+                <li><a href="/docs/reference/math/attach" >Attach</a></li>
+                
+                
+                <li><a href="/docs/reference/math/binom/" >Binomial</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cancel/" >Cancel</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cases/" >Cases</a></li>
+                
+                
+                <li><a href="/docs/reference/math/class/" >Class</a></li>
+                
+                
+                <li><a href="/docs/reference/math/equation/" >Equation</a></li>
+                
+                
+                <li><a href="/docs/reference/math/frac/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/math/lr" >Left/Right</a></li>
+                
+                
+                <li><a href="/docs/reference/math/mat/" >Matrix</a></li>
+                
+                
+                <li><a href="/docs/reference/math/primes/" >Primes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/roots" >Roots</a></li>
+                
+                
+                <li><a href="/docs/reference/math/sizes" >Sizes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/stretch/" >Stretch</a></li>
+                
+                
+                <li><a href="/docs/reference/math/styles" >Styles</a></li>
+                
+                
+                <li><a href="/docs/reference/math/op/" >Text Operator</a></li>
+                
+                
+                <li><a href="/docs/reference/math/underover" >Under/Over</a></li>
+                
+                
+                <li><a href="/docs/reference/math/variants" >Variants</a></li>
+                
+                
+                <li><a href="/docs/reference/math/vec/" >Vector</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/symbols/" >Symbols</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/symbols/sym/" >General</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/layout/" >Layout</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/layout/align/" >Align</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/alignment/" >Alignment</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/angle/" >Angle</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/block/" >Block</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/box/" >Box</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/colbreak/" >Column Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/columns/" >Columns</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/direction/" >Direction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/fraction/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/grid/" >Grid</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/hide/" >Hide</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/layout/" >Layout</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/length/" >Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/measure/" >Measure</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/move/" >Move</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pad/" >Padding</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/page/" >Page</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pagebreak/" >Page Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/place/" >Place</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/ratio/" >Ratio</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/relative/" >Relative Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/repeat/" >Repeat</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/rotate/" >Rotate</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/scale/" >Scale</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/skew/" >Skew</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/h/" >Spacing (H)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/v/" >Spacing (V)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/stack/" >Stack</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/visualize/" >Visualize</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/visualize/circle/" >Circle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/color/" >Color</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/gradient/" >Gradient</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/image/" >Image</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/line/" >Line</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/path/" >Path</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/rect/" >Rectangle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/square/" >Square</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/introspection/" >Introspection</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/introspection/counter/"  aria-current="page" >Counter</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/here/" >Here</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/locate/" >Locate</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/location/" >Location</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/metadata/" >Metadata</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/query/" >Query</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/state/" >State</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/data-loading/" >Data Loading</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/data-loading/cbor/" >CBOR</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/csv/" >CSV</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/json/" >JSON</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/read/" >Read</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/toml/" >TOML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/xml/" >XML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/yaml/" >YAML</a></li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/guides/" >Guides</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/guides/guide-for-latex-users/" >Guide for LaTeX users</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/page-setup-guide/" >Page setup guide</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/table-guide/" >Table guide</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/changelog/" >Changelog</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.12.0/" >0.12.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.1/" >0.11.1</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.0/" >0.11.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.10.0/" >0.10.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.9.0/" >0.9.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.8.0/" >0.8.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.7.0/" >0.7.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.6.0/" >0.6.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.5.0/" >0.5.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.4.0/" >0.4.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.3.0/" >0.3.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.2.0/" >0.2.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.1.0/" >0.1.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/earlier/" >Earlier</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/glossary/" >用語集</a>
+          
+        </li>
+        
+      </ul>
+
+    </nav>
+    <main>
+      <ul class="breadcrumbs" aria-label="Breadcrumbs">
+        <li class="root"><a href="/docs/"><img src="/assets/icons/16-docs-dark.svg" alt="Docs" width="16"
+              height="16"></a></li>
+
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/">リファレンス</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/introspection/">Introspection</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/introspection/counter/">Counter</a></li>
+        
+      </ul>
+
+      
+
+<h1 id="summary"><span class="pill pill-obj">counter</span></h1>
+<p>Counts through pages, elements, and more.</p>
+<p>With the counter function, you can access and modify counters for pages,
+headings, figures, and more. Moreover, you can define custom counters for
+other things you want to count.</p>
+<p>Since counters change throughout the course of the document, their current
+value is <em>contextual.</em> It is recommended to read the chapter on <a href="/docs/reference/context/" title="context">context</a>
+before continuing here.</p>
+<h2 id="accessing">Accessing a counter</h2>
+<p>To access the raw value of a counter, we can use the <a href="/docs/reference/introspection/counter/#definitions-get"><code>get</code></a>
+function. This function returns an <a href="/docs/reference/foundations/array/" title="array">array</a>: Counters can have multiple
+levels (in the case of headings for sections, subsections, and so on), and
+each item in the array corresponds to one level.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">heading</span><span class="typ-punct">(</span>numbering<span class="typ-punct">:</span> <span class="typ-str">&quot;1.&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span>
+Raw value of heading counter is
+<span class="typ-key">#</span><span class="typ-key">context</span> <span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">get</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/f0000cf7b18d1b2ca2529086d06d3eff.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="displaying">Displaying a counter</h2>
+<p>Often, we want to display the value of a counter in a more human-readable
+way. To do that, we can call the <a href="/docs/reference/introspection/counter/#definitions-display"><code>display</code></a> function on
+the counter. This function retrieves the current counter value and formats
+it either with a provided or with an automatically inferred <a href="/docs/reference/model/numbering/" title="numbering">numbering</a>.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">heading</span><span class="typ-punct">(</span>numbering<span class="typ-punct">:</span> <span class="typ-str">&quot;1.&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span>
+Some text here.
+
+<span class="typ-heading">= Background</span>
+The current value is: <span class="typ-key">#</span><span class="typ-key">context</span> <span class="typ-punct">{</span>
+  <span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+<span class="typ-punct">}</span>
+
+Or in roman numerals: <span class="typ-key">#</span><span class="typ-key">context</span> <span class="typ-punct">{</span>
+  <span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-str">&quot;I&quot;</span><span class="typ-punct">)</span>
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/ab2436dd536a100339549def96a8068a.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="modifying">Modifying a counter</h2>
+<p>To modify a counter, you can use the <code>step</code> and <code>update</code> methods:</p>
+<ul>
+<li>
+<p>The <code>step</code> method increases the value of the counter by one. Because
+counters can have multiple levels , it optionally takes a <code>level</code>
+argument. If given, the counter steps at the given depth.</p>
+</li>
+<li>
+<p>The <code>update</code> method allows you to arbitrarily modify the counter. In its
+basic form, you give it an integer (or an array for multiple levels). For
+more flexibility, you can instead also give it a function that receives
+the current value and returns a new value.</p>
+</li>
+</ul>
+<p>The heading counter is stepped before the heading is displayed, so
+<code>Analysis</code> gets the number seven even though the counter is at six after the
+second update.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">heading</span><span class="typ-punct">(</span>numbering<span class="typ-punct">:</span> <span class="typ-str">&quot;1.&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span>
+<span class="typ-func">#</span><span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Background</span>
+<span class="typ-func">#</span><span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">update</span><span class="typ-punct">(</span><span class="typ-num">3</span><span class="typ-punct">)</span>
+<span class="typ-func">#</span><span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">update</span><span class="typ-punct">(</span>n <span class="typ-op">=&gt;</span> n <span class="typ-op">*</span> <span class="typ-num">2</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Analysis</span>
+Let&#39;s skip 7.1.
+<span class="typ-func">#</span><span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span>level<span class="typ-punct">:</span> <span class="typ-num">2</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">== Analysis</span>
+Still at <span class="typ-key">#</span><span class="typ-key">context</span> <span class="typ-punct">{</span>
+  <span class="typ-func">counter</span><span class="typ-punct">(</span>heading<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/88fb4b6bcd763483f95d2ed86200bc95.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="page-counter">Page counter</h2>
+<p>The page counter is special. It is automatically stepped at each pagebreak.
+But like other counters, you can also step it manually. For example, you
+could have Roman page numbers for your preface, then switch to Arabic page
+numbers for your main content and reset the page counter to one.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">page</span><span class="typ-punct">(</span>numbering<span class="typ-punct">:</span> <span class="typ-str">&quot;(i)&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Preface</span>
+The preface is numbered with
+roman numerals.
+
+<span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">page</span><span class="typ-punct">(</span>numbering<span class="typ-punct">:</span> <span class="typ-str">&quot;1 / 1&quot;</span><span class="typ-punct">)</span>
+<span class="typ-func">#</span><span class="typ-func">counter</span><span class="typ-punct">(</span>page<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">update</span><span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Main text</span>
+Here, the counter is reset to one.
+We also display both the current
+page and total number of pages in
+Arabic numbers.
+</code></pre><div class="preview"><img src="/assets/docs/6e042ee9b3964a4ce84bb21b9ca876e8.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="custom-counters">Custom counters</h2>
+<p>To define your own counter, call the <code>counter</code> function with a string as a
+key. This key identifies the counter globally.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> mine <span class="typ-op">=</span> <span class="typ-func">counter</span><span class="typ-punct">(</span><span class="typ-str">&quot;mycounter&quot;</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">context</span> mine<span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">context</span> mine<span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">update</span><span class="typ-punct">(</span>c <span class="typ-op">=&gt;</span> c <span class="typ-op">*</span> <span class="typ-num">3</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">context</span> mine<span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/04d7c42c410aa3e442052c6ecdce5d3a.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="how-to-step">How to step</h2>
+<p>When you define and use a custom counter, in general, you should first step
+the counter and then display it. This way, the stepping behaviour of a
+counter can depend on the element it is stepped for. If you were writing a
+counter for, let's say, theorems, your theorem's definition would thus first
+include the counter step and only then display the counter and the theorem's
+contents.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> c <span class="typ-op">=</span> <span class="typ-func">counter</span><span class="typ-punct">(</span><span class="typ-str">&quot;theorem&quot;</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">theorem</span><span class="typ-punct">(</span>it<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-func">block</span><span class="typ-punct">[</span>
+  <span class="typ-pol">#</span><span class="typ-pol">c</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+  <span class="typ-strong">*Theorem <span class="typ-key">#</span><span class="typ-key">context</span> c<span class="typ-punct">.</span><span class="typ-func">display</span><span class="typ-punct">(</span><span class="typ-punct">)</span>:*</span>
+  <span class="typ-pol">#</span><span class="typ-pol">it</span>
+<span class="typ-punct">]</span>
+
+<span class="typ-func">#</span><span class="typ-func">theorem</span><span class="typ-punct">[</span><span class="typ-math-delim">$</span>1 = 1<span class="typ-math-delim">$</span><span class="typ-punct">]</span>
+<span class="typ-func">#</span><span class="typ-func">theorem</span><span class="typ-punct">[</span><span class="typ-math-delim">$</span>2 &lt; 3<span class="typ-math-delim">$</span><span class="typ-punct">]</span>
+</code></pre><div class="preview"><img src="/assets/docs/c8a2c4e5de1a6dbf1e6b53005ea99f1d.png" alt="Preview" width="480" height="190"/></div></div>
+<p>The rationale behind this is best explained on the example of the heading
+counter: An update to the heading counter depends on the heading's level. By
+stepping directly before the heading, we can correctly step from <code>1</code> to
+<code>1.1</code> when encountering a level 2 heading. If we were to step after the
+heading, we wouldn't know what to step to.</p>
+<p>Because counters should always be stepped before the elements they count,
+they always start at zero. This way, they are at one for the first display
+(which happens after the first step).</p>
+<h2 id="time-travel">Time travel</h2>
+<p>Counters can travel through time! You can find out the final value of the
+counter before it is reached and even determine what the value was at any
+particular location in the document.</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> mine <span class="typ-op">=</span> <span class="typ-func">counter</span><span class="typ-punct">(</span><span class="typ-str">&quot;mycounter&quot;</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Values</span>
+<span class="typ-key">#</span><span class="typ-key">context</span> <span class="typ-punct">[</span>
+  Value here: <span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">get</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+  At intro: <span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">at</span><span class="typ-punct">(</span><span class="typ-label">&lt;intro&gt;</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+  Final value: <span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">final</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+<span class="typ-punct">]</span>
+
+<span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">update</span><span class="typ-punct">(</span>n <span class="typ-op">=&gt;</span> n <span class="typ-op">+</span> <span class="typ-num">3</span><span class="typ-punct">)</span>
+
+<span class="typ-heading">= Introduction</span> <span class="typ-label">&lt;intro&gt;</span>
+<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">10</span><span class="typ-punct">)</span>
+
+<span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+<span class="typ-pol">#</span><span class="typ-pol">mine</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/45afacb654d448206f10f3a6401ebe71.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="other-state">Other kinds of state</h2>
+<p>The <code>counter</code> type is closely related to <a href="/docs/reference/introspection/state/" title="state">state</a> type. Read its
+documentation for more details on state management in Typst and why it
+doesn't just use normal variables for counters.</p>
+
+
+<h2 id="constructor">
+  
+<span aria-describedby="constructor-tooltip">Constructor</span>
+<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+    aria-labelledby="constructor-tooltip-qm-label">
+    <title id="constructor-tooltip-qm-label">If a type has a constructor, you can call it like a function to create a new value of the type.</title>
+    <use href="/assets/icons/12-tooltip.svg#icon"></use>
+  </svg>
+  <div role="tooltip" id="constructor-tooltip" tabindex="-1">If a type has a constructor, you can call it like a function to create a new value of the type.</div>
+</div>
+
+</h2>
+
+<p>Create a new counter identified by a key.</p>
+
+<div class="code code-definition single-arg"><span
+    class="typ-func">counter</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/str" class="pill pill-str">str</a><a href="/docs/reference/types/label" class="pill pill-obj">label</a><a href="/docs/reference/types/selector" class="pill pill-obj">selector</a><a href="/docs/reference/types/location" class="pill pill-obj">location</a><a href="/docs/reference/types/function" class="pill pill-fn">function</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/counter" class="pill pill-obj">counter</a></div>
+
+
+
+
+
+<h4 id="constructor-counter-parameters-key"><code>key</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+      <a href="/docs/reference/types/label" class="pill pill-obj">label</a>
+      
+      <a href="/docs/reference/types/selector" class="pill pill-obj">selector</a>
+      
+      <a href="/docs/reference/types/location" class="pill pill-obj">location</a>
+      
+      <a href="/docs/reference/types/function" class="pill pill-fn">function</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="constructor-counter-parameters-key-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="constructor-counter-parameters-key-positional-tooltip-qm-label">
+          <title id="constructor-counter-parameters-key-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="constructor-counter-parameters-key-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The key that identifies this counter.</p>
+<ul>
+<li>If it is a string, creates a custom counter that is only affected
+by manual updates,</li>
+<li>If it is the <a href="/docs/reference/layout/page/" title="`page`"><code>page</code></a> function, counts through pages,</li>
+<li>If it is a <a href="/docs/reference/foundations/selector/" title="selector">selector</a>, counts through elements that matches with the
+selector. For example,
+<ul>
+<li>provide an element function: counts elements of that type,</li>
+<li>provide a <a href="/docs/reference/foundations/label/"><code><span class="typ-label">&lt;label&gt;</span></code></a>: counts elements with that label.</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+<h2 id="definitions">
+  
+<span aria-describedby="definitions-tooltip">Definitions</span>
+<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+    aria-labelledby="definitions-tooltip-qm-label">
+    <title id="definitions-tooltip-qm-label">Functions and types and can have associated definitions. These are accessed by specifying the function or type, followed by a period, and then the definition's name.</title>
+    <use href="/assets/icons/12-tooltip.svg#icon"></use>
+  </svg>
+  <div role="tooltip" id="definitions-tooltip" tabindex="-1">Functions and types and can have associated definitions. These are accessed by specifying the function or type, followed by a period, and then the definition's name.</div>
+</div>
+
+</h2>
+
+
+  <h3 id="-get" class="method-head"><span><code>get</code></span></h3>
+  
+<p>Retrieves the value of the counter at the current location. Always
+returns an array of integers, even if the counter has just one number.</p>
+<p>This is equivalent to <code>counter<span class="typ-punct">.</span><span class="typ-func">at</span><span class="typ-punct">(</span><span class="typ-func">here</span><span class="typ-punct">(</span><span class="typ-punct">)</span><span class="typ-punct">)</span></code>.</p>
+
+<div class="code code-definition single-arg">self.<span
+    class="typ-func">get</span>(<div class="arguments"></div>) <!-- -->-&gt; <a href="/docs/reference/types/int" class="pill pill-num">int</a><a href="/docs/reference/types/array" class="pill pill-obj">array</a></div>
+
+
+
+
+
+
+
+
+  <h3 id="-display" class="method-head"><span><code>display</code></span></h3>
+  
+<p>Displays the current value of the counter with a numbering and returns
+the formatted output.</p>
+<p><em>Compatibility:</em> For compatibility with Typst 0.10 and lower, this
+function also works without an established context. Then, it will create
+opaque contextual content rather than directly returning the output of
+the numbering. This behaviour will be removed in a future release.</p>
+
+<div class="code code-definition ">self.<span
+    class="typ-func">display</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/auto" class="pill pill-kw">auto</a><a href="/docs/reference/types/str" class="pill pill-str">str</a><a href="/docs/reference/types/function" class="pill pill-fn">function</a>, </span><span
+      class="overview-param"><a href="#parameters-both">both<!-- -->: </a><a href="/docs/reference/types/bool" class="pill pill-bool">bool</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/any" class="pill pill-obj">any</a></div>
+
+
+
+
+
+<h4 id="definitions-display-display-parameters-numbering"><code>numbering</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/auto" class="pill pill-kw">auto</a>
+      
+      <a href="/docs/reference/types/str" class="pill pill-str">str</a>
+      
+      <a href="/docs/reference/types/function" class="pill pill-fn">function</a>
+      
+    </div>
+    <small><span
+        aria-describedby="definitions-display-display-parameters-numbering-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-display-display-parameters-numbering-positional-tooltip-qm-label">
+          <title id="definitions-display-display-parameters-numbering-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-display-display-parameters-numbering-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>A <a href="/docs/reference/model/numbering/">numbering pattern or a function</a>, which specifies how
+to display the counter. If given a function, that function receives
+each number of the counter as a separate argument. If the amount of
+numbers varies, e.g. for the heading argument, you can use an
+<a href="/docs/reference/foundations/arguments/">argument sink</a>.</p>
+<p>If this is omitted or set to <code><span class="typ-key">auto</span></code>, displays the counter with the
+numbering style for the counted element or with the pattern
+<code><span class="typ-str">&quot;1.1&quot;</span></code> if no such style exists.</p>
+
+
+<p>Default:<code><span class="typ-key">auto</span></code></p>
+
+
+
+<h4 id="definitions-display-display-parameters-both"><code>both</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/bool" class="pill pill-bool">bool</a>
+      
+    </div>
+    
+  </div>
+</h4>
+<p>If enabled, displays the current and final top-level count together.
+Both can be styled through a single numbering pattern. This is used
+by the page numbering property to display the current and total
+number of pages when a pattern like <code><span class="typ-str">&quot;1 / 1&quot;</span></code> is given.</p>
+
+
+<p>Default:<code><span class="typ-key">false</span></code></p>
+
+
+
+
+
+
+  <h3 id="-at" class="method-head"><span><code>at</code></span></h3>
+  
+<p>Retrieves the value of the counter at the given location. Always returns
+an array of integers, even if the counter has just one number.</p>
+<p>The <code>selector</code> must match exactly one element in the document. The most
+useful kinds of selectors for this are <a href="/docs/reference/foundations/label/">labels</a> and
+<a href="/docs/reference/introspection/location/">locations</a>.</p>
+<p><em>Compatibility:</em> For compatibility with Typst 0.10 and lower, this
+function also works without a known context if the <code>selector</code> is a
+location. This behaviour will be removed in a future release.</p>
+
+<div class="code code-definition single-arg">self.<span
+    class="typ-func">at</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/label" class="pill pill-obj">label</a><a href="/docs/reference/types/selector" class="pill pill-obj">selector</a><a href="/docs/reference/types/location" class="pill pill-obj">location</a><a href="/docs/reference/types/function" class="pill pill-fn">function</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/int" class="pill pill-num">int</a><a href="/docs/reference/types/array" class="pill pill-obj">array</a></div>
+
+
+
+
+
+<h4 id="definitions-at-at-parameters-selector"><code>selector</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/label" class="pill pill-obj">label</a>
+      
+      <a href="/docs/reference/types/selector" class="pill pill-obj">selector</a>
+      
+      <a href="/docs/reference/types/location" class="pill pill-obj">location</a>
+      
+      <a href="/docs/reference/types/function" class="pill pill-fn">function</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-at-at-parameters-selector-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-at-at-parameters-selector-positional-tooltip-qm-label">
+          <title id="definitions-at-at-parameters-selector-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-at-at-parameters-selector-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>The place at which the counter's value should be retrieved.</p>
+
+
+
+
+
+
+
+  <h3 id="-final" class="method-head"><span><code>final</code></span></h3>
+  
+<p>Retrieves the value of the counter at the end of the document. Always
+returns an array of integers, even if the counter has just one number.</p>
+
+<div class="code code-definition single-arg">self.<span
+    class="typ-func">final</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/none" class="pill pill-kw">none</a><a href="/docs/reference/types/location" class="pill pill-obj">location</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/int" class="pill pill-num">int</a><a href="/docs/reference/types/array" class="pill pill-obj">array</a></div>
+
+
+
+
+
+<h4 id="definitions-final-final-parameters-location"><code>location</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/none" class="pill pill-kw">none</a>
+      
+      <a href="/docs/reference/types/location" class="pill pill-obj">location</a>
+      
+    </div>
+    <small><span
+        aria-describedby="definitions-final-final-parameters-location-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-final-final-parameters-location-positional-tooltip-qm-label">
+          <title id="definitions-final-final-parameters-location-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-final-final-parameters-location-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p><em>Compatibility:</em> This argument is deprecated. It only exists for
+compatibility with Typst 0.10 and lower and shouldn't be used
+anymore.</p>
+
+
+<p>Default:<code><span class="typ-key">none</span></code></p>
+
+
+
+
+
+
+  <h3 id="-step" class="method-head"><span><code>step</code></span></h3>
+  
+<p>Increases the value of the counter by one.</p>
+<p>The update will be in effect at the position where the returned content
+is inserted into the document. If you don't put the output into the
+document, nothing happens! This would be the case, for example, if you
+write <code><span class="typ-key">let</span> _ <span class="typ-op">=</span> <span class="typ-func">counter</span><span class="typ-punct">(</span>page<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">step</span><span class="typ-punct">(</span><span class="typ-punct">)</span></code>. Counter updates are always
+applied in layout order and in that case, Typst wouldn't know when to
+step the counter.</p>
+
+<div class="code code-definition single-arg">self.<span
+    class="typ-func">step</span>(<div class="arguments"><span
+      class="overview-param"><a href="#parameters-level">level<!-- -->: </a><a href="/docs/reference/types/int" class="pill pill-num">int</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/content" class="pill pill-con">content</a></div>
+
+
+
+
+
+<h4 id="definitions-step-step-parameters-level"><code>level</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/int" class="pill pill-num">int</a>
+      
+    </div>
+    
+  </div>
+</h4>
+<p>The depth at which to step the counter. Defaults to <code><span class="typ-num">1</span></code>.</p>
+
+
+<p>Default:<code><span class="typ-num">1</span></code></p>
+
+
+
+
+
+
+  <h3 id="-update" class="method-head"><span><code>update</code></span></h3>
+  
+<p>Updates the value of the counter.</p>
+<p>Just like with <code>step</code>, the update only occurs if you put the resulting
+content into the document.</p>
+
+<div class="code code-definition single-arg">self.<span
+    class="typ-func">update</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/types/int" class="pill pill-num">int</a><a href="/docs/reference/types/array" class="pill pill-obj">array</a><a href="/docs/reference/types/function" class="pill pill-fn">function</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/types/content" class="pill pill-con">content</a></div>
+
+
+
+
+
+<h4 id="definitions-update-update-parameters-update"><code>update</code>
+  <div class="additional-info">
+    <div>
+      
+      <a href="/docs/reference/types/int" class="pill pill-num">int</a>
+      
+      <a href="/docs/reference/types/array" class="pill pill-obj">array</a>
+      
+      <a href="/docs/reference/types/function" class="pill pill-fn">function</a>
+      
+    </div>
+    <small>Required</small><small><span
+        aria-describedby="definitions-update-update-parameters-update-positional-tooltip">Positional</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="definitions-update-update-parameters-update-positional-tooltip-qm-label">
+          <title id="definitions-update-update-parameters-update-positional-tooltip-qm-label">
+            Positional parameters are specified in order, without names.</title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="definitions-update-update-parameters-update-positional-tooltip"
+          tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small>
+  </div>
+</h4>
+<p>If given an integer or array of integers, sets the counter to that
+value. If given a function, that function receives the previous
+counter value (with each number as a separate argument) and has to
+return the new value (integer or array).</p>
+
+
+
+
+
+
+
+
+
+
+      
+      <div class="page-end-buttons"><a href="/docs/reference/introspection/" class="previous"><img
+            src="/assets/icons/16-arrow-right.svg" alt="←">
+          <div><span class="page-title">Introspection</span><span class="hint">前に戻る</span></div>
+        </a><a href="/docs/reference/introspection/here/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
+          <div><span class="page-title">Here</span><span class="hint">次に進む</span></div>
+        </a></div>
+      
+    </main>
+
+    
+    <nav id="page-overview"><strong>目次</strong>
+      <ul>
+        
+        <li data-assoc="summary"><a href="#summary">Summary</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="accessing"><a href="#accessing">Accessing</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="displaying"><a href="#displaying">Displaying</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="modifying"><a href="#modifying">Modifying</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="page-counter"><a href="#page-counter">Page Counter</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="custom-counters"><a href="#custom-counters">Custom Counters</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="how-to-step"><a href="#how-to-step">How To Step</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="time-travel"><a href="#time-travel">Time Travel</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="other-state"><a href="#other-state">Other State</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="constructor"><a href="#constructor">Constructor</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="definitions"><a href="#definitions">Definitions</a>
+          <ul></ul>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  </div>
+  <footer>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/">（公式）ホームページ</a></li>
+        <li><a href="https://typst.app/docs/">（公式）ドキュメント（英語）</a></li>
+        <li><a href="https://typst.app/universe/">（公式）拡張パッケージ・テンプレートの宇宙</a></li>
+        <li><a href="https://typst.app/about/">（公式）Typstについて</a></li>
+        <li><a href="https://typst.app/contact/">（公式）連絡先</a></li>
+        <li><a href="https://typst.app/privacy/">（公式）プライバシーポリシー</a></li>
+        <li><a href="https://typst.app/terms/">（公式）サービス規約</a></li>
+        <li><a href="https://typst.app/legal/">（公式）免責事項</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/tools/">（公式）ツール</a></li>
+        <li><a href="https://typst.app/blog/">（公式）ブログ</a></li>
+        <li><a href="https://twitter.com/typstapp/">（公式）Twitter</a></li>
+        <li><a href="https://discord.gg/2uDybryKPe">（公式）Discord</a></li>
+        <li><a rel="me" href="https://mastodon.social/@typst">（公式）Mastodon</a></li>
+        <li><a href="https://www.linkedin.com/company/typst/">（公式）LinkedIn</a></li>
+        <li><a href="https://instagram.com/typstapp/">（公式）Instagram</a></li>
+        <li><a href="https://github.com/typst/">（公式）GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <p>Made in Berlin</p>
+      <p>Translated by <a href="https://github.com/typst-jp">Typst Japan Community</a></p>
+    </div>
+  </footer>
+  <script src="/scripts/fuse.basic.min.js"></script>
+  <script src="/scripts/docs.js?bust=20230913"></script>
+  <script src="/scripts/analytics.js" defer></script>
+</body>
+
+</html>

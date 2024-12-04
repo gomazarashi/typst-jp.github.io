@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <title>スクリプト記述 – Typstドキュメント日本語版</title>
+  <meta name="description" content="Typstのスクリプト記述機能を用いて、ドキュメントを自動化しましょう。">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#239dad">
+  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/scripting/">
+  <meta property="og:title" content="スクリプト記述 – Typstドキュメント日本語版">
+  <meta property="og:site_name" content="Typst">
+  <meta property="og:description" content="Typstのスクリプト記述機能を用いて、ドキュメントを自動化しましょう。">
+  <meta property="og:type">
+  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:site" content="@typstapp">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/scripting/">
+  <meta name="twitter:image:alt"
+    content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
+  <!-- <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.ico"> -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#239dad">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="stylesheet" href="/styles/default.css?bust=20230913?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/docs.css?bust=20230915?d=2023-09-16">
+  <link rel="stylesheet" href="/styles/custom.css">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Regular.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-Bold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/HKGrotesk-SemiBold.woff2" as="font">
+  <link rel="preload" href="/assets/fonts/CascadiaMono-Regular-Sub.woff2" as="font">
+  <link rel="preload" href="/assets/images/blur.webp" as="image">
+  
+  <script>document.documentElement.className = document.documentElement.className.replace("no-js", "js"), document.addEventListener("DOMContentLoaded", (() => { const e = document.cookie.split("; ").find((e => e.startsWith("INSECURE_SIGNED_IN=")))?.split("=")[1].toLowerCase(); if ("1" === e || "true" === e || "yes" === e) { document.documentElement.classList.add("signed-in"); const e = document.querySelector("header nav a.nav-btn"), t = document.querySelector("header nav a.sign-in"); e && (e.innerHTML = "Go to app", e.setAttribute("href", "/app/")), t && (t.innerHTML = "Sign out", t.setAttribute("href", "https://api.typst.app/v1/auth/logout")) } }))</script>
+</head>
+
+<body class="no-js docs has-outline">
+  <div class="alert">
+    <div class="alert-content">
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <br />
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+    </div>
+    <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+  </div>
+  <header class="boring">
+    <div><a href="/docs" class="logo-box"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label">
+          <title id="logo-label">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a><button class="hamburger"><img alt="Open navigation"
+          src="/assets/icons/16-hamburger-dark.svg" width="16" height="16"></button>
+      <nav>
+        <ul>
+          <li class="social"><a href="https://x.com/mkpoli/status/1802227029447725538" title="関連ツイート"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-twitter-label">
+                <title id="svg-twitter-label">Twitter</title>
+                <use href="/assets/icons/social.svg#twitter"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://discord.gg/9xF7k4aAuH" title="「くみはんクラブ」Discordサーバー"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-discord-label">
+                <title id="svg-discord-label">Discord</title>
+                <use href="/assets/icons/social.svg#discord"></use>
+              </svg></a></li>
+          <li class="social"><a href="https://github.com/typst-jp/typst-jp.github.io" title="本プロジェクトのGitHubレポジトリ"><svg width="16" height="16" role="img"
+                aria-labelledby="svg-github-label">
+                <title id="svg-github-label">GitHub</title>
+                <use href="/assets/icons/social.svg#github"></use>
+              </svg></a></li>
+          <li class="secondary"><a href="https://typst.app/">Typst公式サイト</a></li>
+          <li class="secondary"><a href="https://typst.app/docs/">Typst公式ドキュメント</a></li>
+          <!-- <li class="secondary"><a href="/signin/" class="sign-in">Sign in</a></li>
+          <li><a href="/signup" id="header-btn" class="nav-btn btn">Sign up</a></li> -->
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="main-grid">
+    <nav class="folding"><a href="/docs" class="title-row"><svg width="91" height="35" viewBox="0 0 91 35" role="img"
+          aria-labelledby="logo-label-nav">
+          <title id="logo-label-nav">Typst</title>
+          <use href="/assets/images/typst.svg#logo"></use>
+        </svg><span>ドキュメント日本語版</span></a>
+      <button class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
+          width="16" height="16"></button>
+      <div class="search"><img src="/assets/icons/16-search-gray.svg" alt="Search" width="16" height="16"><input
+          type="search" placeholder="検索" id="docs-search"></div>
+      <ul class="search-results hidden" id="search-results"></ul>
+      <ul>
+        
+        
+        <li>
+          <a href="/docs/" >Typstについて</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/tutorial/" >チュートリアル</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/tutorial/writing-in-typst/" >Typstで執筆するには</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/formatting/" >書式を設定する</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/advanced-styling/" >高度なスタイリング</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/tutorial/making-a-template/" >テンプレートを作成する</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/japanese/" >日本語ユーザーガイド</a>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/reference/" >リファレンス</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li class="category">Language</li>
+            
+            <li>
+              <a href="/docs/reference/syntax/" >構文</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/styling/" >スタイル設定</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/scripting/"  aria-current="page" >スクリプト記述</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/context/" >コンテキスト</a>
+              
+            </li>
+            
+            
+            <li class="category">Library</li>
+            
+            <li>
+              <a href="/docs/reference/foundations/" >Foundations</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/foundations/arguments/" >Arguments</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/array/" >Array</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/assert/" >Assert</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/auto/" >Auto</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bool/" >Boolean</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/bytes/" >Bytes</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/calc" >Calculation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/content/" >Content</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/datetime/" >Datetime</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/decimal/" >Decimal</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/dictionary/" >Dictionary</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/duration/" >Duration</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/eval/" >Evaluate</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/float/" >Float</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/function/" >Function</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/int/" >Integer</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/label/" >Label</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/module/" >Module</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/none/" >None</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/panic/" >Panic</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/plugin/" >Plugin</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/regex/" >Regex</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/repr/" >Representation</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/selector/" >Selector</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/str/" >String</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/type/" >Type</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/version/" >Version</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/model/" >Model</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/model/bibliography/" >Bibliography</a></li>
+                
+                
+                <li><a href="/docs/reference/model/list/" >Bullet List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/cite/" >Cite</a></li>
+                
+                
+                <li><a href="/docs/reference/model/document/" >Document</a></li>
+                
+                
+                <li><a href="/docs/reference/model/emph/" >Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/figure/" >Figure</a></li>
+                
+                
+                <li><a href="/docs/reference/model/footnote/" >Footnote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/heading/" >Heading</a></li>
+                
+                
+                <li><a href="/docs/reference/model/link/" >Link</a></li>
+                
+                
+                <li><a href="/docs/reference/model/enum/" >Numbered List</a></li>
+                
+                
+                <li><a href="/docs/reference/model/numbering/" >Numbering</a></li>
+                
+                
+                <li><a href="/docs/reference/model/outline/" >Outline</a></li>
+                
+                
+                <li><a href="/docs/reference/model/par/" >Paragraph</a></li>
+                
+                
+                <li><a href="/docs/reference/model/parbreak/" >Paragraph Break</a></li>
+                
+                
+                <li><a href="/docs/reference/model/quote/" >Quote</a></li>
+                
+                
+                <li><a href="/docs/reference/model/ref/" >Reference</a></li>
+                
+                
+                <li><a href="/docs/reference/model/strong/" >Strong Emphasis</a></li>
+                
+                
+                <li><a href="/docs/reference/model/table/" >Table</a></li>
+                
+                
+                <li><a href="/docs/reference/model/terms/" >Term List</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/text/" >Text</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/text/highlight/" >Highlight</a></li>
+                
+                
+                <li><a href="/docs/reference/text/linebreak/" >Line Break</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lorem/" >Lorem</a></li>
+                
+                
+                <li><a href="/docs/reference/text/lower/" >Lowercase</a></li>
+                
+                
+                <li><a href="/docs/reference/text/overline/" >Overline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/raw/" >Raw Text / Code</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smallcaps/" >Small Capitals</a></li>
+                
+                
+                <li><a href="/docs/reference/text/smartquote/" >Smartquote</a></li>
+                
+                
+                <li><a href="/docs/reference/text/strike/" >Strikethrough</a></li>
+                
+                
+                <li><a href="/docs/reference/text/sub/" >Subscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/super/" >Superscript</a></li>
+                
+                
+                <li><a href="/docs/reference/text/text/" >Text</a></li>
+                
+                
+                <li><a href="/docs/reference/text/underline/" >Underline</a></li>
+                
+                
+                <li><a href="/docs/reference/text/upper/" >Uppercase</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/math/" >Math</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/math/accent/" >Accent</a></li>
+                
+                
+                <li><a href="/docs/reference/math/attach" >Attach</a></li>
+                
+                
+                <li><a href="/docs/reference/math/binom/" >Binomial</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cancel/" >Cancel</a></li>
+                
+                
+                <li><a href="/docs/reference/math/cases/" >Cases</a></li>
+                
+                
+                <li><a href="/docs/reference/math/class/" >Class</a></li>
+                
+                
+                <li><a href="/docs/reference/math/equation/" >Equation</a></li>
+                
+                
+                <li><a href="/docs/reference/math/frac/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/math/lr" >Left/Right</a></li>
+                
+                
+                <li><a href="/docs/reference/math/mat/" >Matrix</a></li>
+                
+                
+                <li><a href="/docs/reference/math/primes/" >Primes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/roots" >Roots</a></li>
+                
+                
+                <li><a href="/docs/reference/math/sizes" >Sizes</a></li>
+                
+                
+                <li><a href="/docs/reference/math/stretch/" >Stretch</a></li>
+                
+                
+                <li><a href="/docs/reference/math/styles" >Styles</a></li>
+                
+                
+                <li><a href="/docs/reference/math/op/" >Text Operator</a></li>
+                
+                
+                <li><a href="/docs/reference/math/underover" >Under/Over</a></li>
+                
+                
+                <li><a href="/docs/reference/math/variants" >Variants</a></li>
+                
+                
+                <li><a href="/docs/reference/math/vec/" >Vector</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/symbols/" >Symbols</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/symbols/sym/" >General</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
+                
+                
+                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/layout/" >Layout</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/layout/align/" >Align</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/alignment/" >Alignment</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/angle/" >Angle</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/block/" >Block</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/box/" >Box</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/colbreak/" >Column Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/columns/" >Columns</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/direction/" >Direction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/fraction/" >Fraction</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/grid/" >Grid</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/hide/" >Hide</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/layout/" >Layout</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/length/" >Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/measure/" >Measure</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/move/" >Move</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pad/" >Padding</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/page/" >Page</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/pagebreak/" >Page Break</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/place/" >Place</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/ratio/" >Ratio</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/relative/" >Relative Length</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/repeat/" >Repeat</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/rotate/" >Rotate</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/scale/" >Scale</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/skew/" >Skew</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/h/" >Spacing (H)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/v/" >Spacing (V)</a></li>
+                
+                
+                <li><a href="/docs/reference/layout/stack/" >Stack</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/visualize/" >Visualize</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/visualize/circle/" >Circle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/color/" >Color</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/gradient/" >Gradient</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/image/" >Image</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/line/" >Line</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/path/" >Path</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/rect/" >Rectangle</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/square/" >Square</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/introspection/" >Introspection</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/introspection/counter/" >Counter</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/here/" >Here</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/locate/" >Locate</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/location/" >Location</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/metadata/" >Metadata</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/query/" >Query</a></li>
+                
+                
+                <li><a href="/docs/reference/introspection/state/" >State</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/data-loading/" >Data Loading</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/data-loading/cbor/" >CBOR</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/csv/" >CSV</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/json/" >JSON</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/read/" >Read</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/toml/" >TOML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/xml/" >XML</a></li>
+                
+                
+                <li><a href="/docs/reference/data-loading/yaml/" >YAML</a></li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/guides/" >Guides</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/guides/guide-for-latex-users/" >Guide for LaTeX users</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/page-setup-guide/" >Page setup guide</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/guides/table-guide/" >Table guide</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/changelog/" >Changelog</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.12.0/" >0.12.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.1/" >0.11.1</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.11.0/" >0.11.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.10.0/" >0.10.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.9.0/" >0.9.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.8.0/" >0.8.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.7.0/" >0.7.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.6.0/" >0.6.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.5.0/" >0.5.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.4.0/" >0.4.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.3.0/" >0.3.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.2.0/" >0.2.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.1.0/" >0.1.0</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/changelog/earlier/" >Earlier</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/glossary/" >用語集</a>
+          
+        </li>
+        
+      </ul>
+
+    </nav>
+    <main>
+      <ul class="breadcrumbs" aria-label="Breadcrumbs">
+        <li class="root"><a href="/docs/"><img src="/assets/icons/16-docs-dark.svg" alt="Docs" width="16"
+              height="16"></a></li>
+
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/">リファレンス</a></li>
+        
+        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
+        <li><a href="/docs/reference/scripting/">スクリプト記述</a></li>
+        
+      </ul>
+
+      
+
+<h1>スクリプト記述</h1>
+<p>Typstには強力なスクリプト言語が組み込まれています。これにより、ドキュメントを自動化し、コードを使用してより洗練されたスタイルを作成できます。
+以下は、スクリプト記述の概念の概要です。</p>
+<h2 id="expressions">式</h2>
+<p>Typstでは、マークアップとコードが一体となっています。
+最も一般的な要素以外のものは　<em>関数</em> を使って作成されます。
+これを可能な限り便利にするため、Typstはコード式をマークアップに埋め込むためのコンパクトな構文を提供しています。式はハッシュ(<code>#</code>)で始まり、
+この式が終了すると通常のマークアップの解析が再開されます。
+式の直後に通常の文字列として解釈されるべき文字が続く場合、セミコロン(<code>;</code>)を使って式を強制的に終了できます。</p>
+<div class="previewed-code"><pre><code><span class="typ-func">#</span><span class="typ-func">emph</span><span class="typ-punct">[</span>Hello<span class="typ-punct">]</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">emoji</span><span class="typ-punct">.</span><span class="typ-pol">face</span> <span class="typ-escape">\</span>
+<span class="typ-str">#</span><span class="typ-str">&quot;hello&quot;</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/f225eedcb810ced31df3dfe3b3e7dda6.png" alt="Preview" width="480" height="190"/></div></div>
+<p>上記の例では、<a href="/docs/reference/foundations/function/">関数呼び出し</a>、
+<a href="/docs/reference/scripting/#fields">フィールドアクセス</a>、
+そして<a href="/docs/reference/scripting/#methods">メソッド呼び出し</a>などのいくつかの使用可能な式を示しています。
+この章の残りでは、より多くの種類の式について説明します。
+いくつかの種類の式はハッシュ構文と互換性がありません(例えば二項演算子式)。
+このような式をマークアップに埋め込むためには、<code><span class="typ-punct">#</span><span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-op">+</span><span class="typ-num">2</span><span class="typ-punct">)</span></code>のように丸括弧を使用します。</p>
+<h2 id="blocks">ブロック</h2>
+<p>コードを構造化し、マークアップを埋め込むために、Typstは次の二種類の <em>ブロック</em> を提供します。</p>
+<ul>
+<li>
+<p><strong>コードブロック</strong> <code><span class="typ-punct">{</span> <span class="typ-key">let</span> x <span class="typ-op">=</span> <span class="typ-num">1</span><span class="typ-punct">;</span> x <span class="typ-op">+</span> <span class="typ-num">2</span> <span class="typ-punct">}</span></code> <br />
+コードを書く際には、計算を複数のステートメントに分割したり、中間変数を作成したりすることがあるでしょう。
+コードブロックを使用すると、複数の式を一つのブロックにまとめられます。ブロック内の個々の式は改行またはセミコロンで区切られます。
+コードブロック内の個々の式の出力値は結合され、ブロックの値を決定します。
+<code><span class="typ-key">let</span></code>バインディングのように有用な出力のない式は<code><span class="typ-key">none</span></code>を生成し、これはどの値とも影響なく結合できます。</p>
+</li>
+<li>
+<p><strong>コンテンツブロック</strong> <code><span class="typ-punct">[</span><span class="typ-strong">*Hey*</span> there!<span class="typ-punct">]</span></code> <br />
+コンテンツブロックを使用すると、マークアップやコンテンツをプログラム的な値として扱い、変数に保存したり、<a href="/docs/reference/foundations/function/">関数</a>に渡したりできます。
+コンテンツブロックは角括弧で囲まれ、任意のマークアップを含められます。
+コンテンツブロックは<a href="/docs/reference/foundations/content/">content</a>型の値を生成します。
+任意の数のコンテンツブロックを可変長引数として関数に渡せます。つまり、<code><span class="typ-func">list</span><span class="typ-punct">[</span>A<span class="typ-punct">]</span><span class="typ-punct">[</span>B<span class="typ-punct">]</span></code>は<code><span class="typ-func">list</span><span class="typ-punct">(</span><span class="typ-punct">[</span>A<span class="typ-punct">]</span><span class="typ-punct">,</span> <span class="typ-punct">[</span>B<span class="typ-punct">]</span><span class="typ-punct">)</span></code>と等価です。</p>
+</li>
+</ul>
+<p>コンテンツブロックとコードブロックは任意にネストできます。以下の例では、<code><span class="typ-punct">[</span>hello<span class="typ-punct">]</span></code>が<code>a <span class="typ-op">+</span> <span class="typ-punct">[</span> the <span class="typ-punct">]</span> <span class="typ-op">+</span> b</code>の出力と結合され、<code><span class="typ-punct">[</span>hello from the <span class="typ-strong">*world*</span><span class="typ-punct">]</span></code>が生成されます。</p>
+<div class="previewed-code"><pre><code><span class="typ-punct">#</span><span class="typ-punct">{</span>
+  <span class="typ-key">let</span> a <span class="typ-op">=</span> <span class="typ-punct">[</span>from<span class="typ-punct">]</span>
+  <span class="typ-key">let</span> b <span class="typ-op">=</span> <span class="typ-punct">[</span><span class="typ-strong">*world*</span><span class="typ-punct">]</span>
+  <span class="typ-punct">[</span>hello <span class="typ-punct">]</span>
+  a <span class="typ-op">+</span> <span class="typ-punct">[</span> the <span class="typ-punct">]</span> <span class="typ-op">+</span> b
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/7fb6c8bb26570187a3d8f3a560c32d60.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="bindings">バインディングと分割</h2>
+<p>前述のように、変数は<code><span class="typ-key">let</span></code>バインディングで定義できます。
+変数には<code>=</code>記号のあとに続く式の値が代入されます。値の代入は任意であり、値が代入されなければ変数は<code><span class="typ-key">none</span></code>として初期化されます。
+<code><span class="typ-key">let</span></code>キーワードは、<a href="/docs/reference/foundations/function/#defining-functions">カスタム名前付き関数</a>を作成するためにも使用できます。
+変数は、それが含まれるブロックの残りの部分(または、変数が含まれるブロックがない場合はファイル全体)の中でアクセスできます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> name <span class="typ-op">=</span> <span class="typ-str">&quot;Typst&quot;</span>
+This is <span class="typ-pol">#</span><span class="typ-pol">name</span>&#39;s documentation.
+It explains <span class="typ-pol">#</span><span class="typ-pol">name</span>.
+
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">add</span><span class="typ-punct">(</span>x<span class="typ-punct">,</span> y<span class="typ-punct">)</span> <span class="typ-op">=</span> x <span class="typ-op">+</span> y
+Sum is <span class="typ-func">#</span><span class="typ-func">add</span><span class="typ-punct">(</span><span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">3</span><span class="typ-punct">)</span>.
+</code></pre><div class="preview"><img src="/assets/docs/06bda5b4dc5513a30aebfe2c273ada2a.png" alt="Preview" width="480" height="190"/></div></div>
+<p>letバインディングは<a href="/docs/reference/foundations/array/">配列</a>や<a href="/docs/reference/foundations/dictionary/">辞書</a>の分割にも使用できます。
+この場合、代入の左辺は配列や辞書と同じ形式でなければなりません。
+<code>..</code>演算子はパターン内で一度だけ、配列や辞書の残りの項目を受け取るために使用できます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>x<span class="typ-punct">,</span> y<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">,</span> <span class="typ-num">2</span><span class="typ-punct">)</span>
+The coordinates are <span class="typ-pol">#</span><span class="typ-pol">x</span>, <span class="typ-pol">#</span><span class="typ-pol">y</span>.
+
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>a<span class="typ-punct">,</span> <span class="typ-op">..</span><span class="typ-punct">,</span> b<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">,</span> <span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">3</span><span class="typ-punct">,</span> <span class="typ-num">4</span><span class="typ-punct">)</span>
+The first element is <span class="typ-pol">#</span><span class="typ-pol">a</span>.
+The last element is <span class="typ-pol">#</span><span class="typ-pol">b</span>.
+
+<span class="typ-key">#</span><span class="typ-key">let</span> books <span class="typ-op">=</span> <span class="typ-punct">(</span>
+  Shakespeare<span class="typ-punct">:</span> <span class="typ-str">&quot;Hamlet&quot;</span><span class="typ-punct">,</span>
+  Homer<span class="typ-punct">:</span> <span class="typ-str">&quot;The Odyssey&quot;</span><span class="typ-punct">,</span>
+  Austen<span class="typ-punct">:</span> <span class="typ-str">&quot;Persuasion&quot;</span><span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
+
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>Austen<span class="typ-punct">,</span><span class="typ-punct">)</span> <span class="typ-op">=</span> books
+Austen wrote <span class="typ-pol">#</span><span class="typ-pol">Austen</span>.
+
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>Homer<span class="typ-punct">:</span> h<span class="typ-punct">)</span> <span class="typ-op">=</span> books
+Homer wrote <span class="typ-pol">#</span><span class="typ-pol">h</span>.
+
+<span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>Homer<span class="typ-punct">,</span> <span class="typ-op">..</span>other<span class="typ-punct">)</span> <span class="typ-op">=</span> books
+<span class="typ-key">#</span><span class="typ-key">for</span> <span class="typ-punct">(</span>author<span class="typ-punct">,</span> title<span class="typ-punct">)</span> <span class="typ-key">in</span> other <span class="typ-punct">[</span>
+  <span class="typ-pol">#</span><span class="typ-pol">author</span> wrote <span class="typ-pol">#</span><span class="typ-pol">title</span>.
+<span class="typ-punct">]</span>
+</code></pre><div class="preview"><img src="/assets/docs/e8d5f46bdffe454e3c436c807600b1cd.png" alt="Preview" width="480" height="190"/></div></div>
+<p>分割パターンでアンダースコアを使用して、要素を破棄できます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-punct">(</span>_<span class="typ-punct">,</span> y<span class="typ-punct">,</span> _<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">,</span> <span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">3</span><span class="typ-punct">)</span>
+The y coordinate is <span class="typ-pol">#</span><span class="typ-pol">y</span>.
+</code></pre><div class="preview"><img src="/assets/docs/2e4ee4d0fbe81f88bae2db44bb024d07.png" alt="Preview" width="480" height="190"/></div></div>
+<p>分割は関数の引数リスト内でも機能します。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> left <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">4</span><span class="typ-punct">,</span> <span class="typ-num">5</span><span class="typ-punct">)</span>
+<span class="typ-key">#</span><span class="typ-key">let</span> right <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">3</span><span class="typ-punct">,</span> <span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">6</span><span class="typ-punct">)</span>
+<span class="typ-pol">#</span><span class="typ-pol">left</span><span class="typ-punct">.</span><span class="typ-func">zip</span><span class="typ-punct">(</span>right<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">map</span><span class="typ-punct">(</span>
+  <span class="typ-punct">(</span><span class="typ-punct">(</span>a<span class="typ-punct">,</span>b<span class="typ-punct">)</span><span class="typ-punct">)</span> <span class="typ-op">=&gt;</span> a <span class="typ-op">+</span> b
+<span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/6e18caba37cf9be991248e7d3aab314d.png" alt="Preview" width="480" height="190"/></div></div>
+<p>そして通常の代入の左辺でも機能します。これは、変数の値を交換するなどの場合に便利です。</p>
+<div class="previewed-code"><pre><code><span class="typ-punct">#</span><span class="typ-punct">{</span>
+  <span class="typ-key">let</span> a <span class="typ-op">=</span> <span class="typ-num">1</span>
+  <span class="typ-key">let</span> b <span class="typ-op">=</span> <span class="typ-num">2</span>
+  <span class="typ-punct">(</span>a<span class="typ-punct">,</span> b<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-punct">(</span>b<span class="typ-punct">,</span> a<span class="typ-punct">)</span>
+  <span class="typ-punct">[</span>a = <span class="typ-pol">#</span><span class="typ-pol">a</span>, b = <span class="typ-pol">#</span><span class="typ-pol">b</span><span class="typ-punct">]</span>
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/4aa3ec10ee748ed1116c7eae1e4df9e2.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="conditionals">条件式</h2>
+<p>条件式を使用すると、ある条件が満たされているかどうかに応じて、異なるものを表示したり計算したりできます。
+Typstは<code><span class="typ-key">if</span></code>式、<code>else <span class="typ-key">if</span></code>式、および<code>else</code>式をサポートしています。
+条件が<code><span class="typ-key">true</span></code>の場合、条件式は<code>if</code>の部分の結果が得られ、そうでない場合は<code>else</code>の部分の結果が得られます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">if</span> <span class="typ-num">1</span> <span class="typ-op">&lt;</span> <span class="typ-num">2</span> <span class="typ-punct">[</span>
+  This is shown
+<span class="typ-punct">]</span> <span class="typ-key">else</span> <span class="typ-punct">[</span>
+  This is not.
+<span class="typ-punct">]</span>
+</code></pre><div class="preview"><img src="/assets/docs/e76379a33a676c5b7d921a6e96a07127.png" alt="Preview" width="480" height="190"/></div></div>
+<p>各条件分岐は、その本文としてコードブロックまたはコンテンツブロックを含められます。</p>
+<ul>
+<li><code><span class="typ-key">if</span> condition <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code></li>
+<li><code><span class="typ-key">if</span> condition <span class="typ-punct">[</span>..<span class="typ-punct">]</span></code></li>
+<li><code><span class="typ-key">if</span> condition <span class="typ-punct">[</span>..<span class="typ-punct">]</span> <span class="typ-key">else</span> <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code></li>
+<li><code><span class="typ-key">if</span> condition <span class="typ-punct">[</span>..<span class="typ-punct">]</span> <span class="typ-key">else</span> <span class="typ-key">if</span> condition <span class="typ-punct">{</span>..<span class="typ-punct">}</span> <span class="typ-key">else</span> <span class="typ-punct">[</span>..<span class="typ-punct">]</span></code></li>
+</ul>
+<h2 id="loops">ループ</h2>
+<p>ループを使用すると、コンテンツを繰り返したり、何かを反復的に計算したりできます。
+Typstは、<code><span class="typ-key">for</span></code>ループと<code><span class="typ-key">while</span></code>ループの2つのループをサポートしています。
+前者は指定されたコレクションを反復するのに対し、後者は条件が満たされている限り反復を続けます。
+ブロックと同様に、ループは各反復からの結果を一つの値に <em>結合</em> します。</p>
+<p>以下の例では、forループによって作成された3つの文が1つのコンテンツ値に結合され、whileループの中の長さ1の配列が1つの大きな配列に結合されます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">for</span> c <span class="typ-key">in</span> <span class="typ-str">&quot;ABC&quot;</span> <span class="typ-punct">[</span>
+  <span class="typ-pol">#</span><span class="typ-pol">c</span> is a letter.
+<span class="typ-punct">]</span>
+
+<span class="typ-key">#</span><span class="typ-key">let</span> n <span class="typ-op">=</span> <span class="typ-num">2</span>
+<span class="typ-key">#</span><span class="typ-key">while</span> n <span class="typ-op">&lt;</span> <span class="typ-num">10</span> <span class="typ-punct">{</span>
+  n <span class="typ-op">=</span> <span class="typ-punct">(</span>n <span class="typ-op">*</span> <span class="typ-num">2</span><span class="typ-punct">)</span> <span class="typ-op">-</span> <span class="typ-num">1</span>
+  <span class="typ-punct">(</span>n<span class="typ-punct">,</span><span class="typ-punct">)</span>
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/339e68e646d2611ea2860b332106e017.png" alt="Preview" width="480" height="190"/></div></div>
+<p>forループはさまざまなコレクションを反復処理できます。</p>
+<ul>
+<li>
+<p><code><span class="typ-key">for</span> value <span class="typ-key">in</span> array <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code> <br />
+<a href="/docs/reference/foundations/array/">配列</a>内の各項目を反復処理します。<a href="/docs/reference/scripting/#bindings">letバインディング</a>で説明されている分割構文もここで使用できます。</p>
+</li>
+<li>
+<p><code><span class="typ-key">for</span> pair <span class="typ-key">in</span> dict <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code> <br />
+<a href="/docs/reference/foundations/dictionary/">辞書</a>のキーと値のペアを反復処理します。ペアは<code><span class="typ-key">for</span> <span class="typ-punct">(</span>key<span class="typ-punct">,</span> value<span class="typ-punct">)</span> <span class="typ-key">in</span> dict <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code>を使用しても分割できます。これは、すべてのキーと値のペアの一時配列を作成しないため、<code><span class="typ-key">for</span> pair <span class="typ-key">in</span> dict<span class="typ-punct">.</span><span class="typ-func">pairs</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code>よりも効率的です。</p>
+</li>
+<li>
+<p><code><span class="typ-key">for</span> letter <span class="typ-key">in</span> <span class="typ-str">&quot;abc&quot;</span> <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code> <br />
+<a href="/docs/reference/foundations/str/">文字列</a>の各文字を反復処理します。厳密に言うと、文字列の書記素クラスタの反復処理を行います。ほとんどの場合、書記素クラスタは単一のコードポイントに対応します。しかし、書記素クラスタは複数のコードポイントを含むことがあります。例えば、国旗の絵文字などです。</p>
+</li>
+<li>
+<p><code><span class="typ-key">for</span> byte <span class="typ-key">in</span> <span class="typ-func">bytes</span><span class="typ-punct">(</span><span class="typ-str">&quot;😀&quot;</span><span class="typ-punct">)</span> <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code> <br />
+<a href="/docs/reference/foundations/str/">文字列</a>から変換されたり、エンコーディングなしでファイルから<a href="/docs/reference/data-loading/read/">読み取る</a>ことができる<a href="/docs/reference/foundations/bytes/">バイト</a>を反復処理します。各バイト値は<code><span class="typ-num">0</span></code>から<code><span class="typ-num">255</span></code>までの<a href="/docs/reference/foundations/int/">整数</a>です。</p>
+</li>
+</ul>
+<p>ループの実行を制御するために、Typstは<code><span class="typ-key">break</span></code>と<code><span class="typ-key">continue</span></code>ステートメントを提供しています。
+前者はループを早期終了し、後者はループの次の反復を開始します。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">for</span> letter <span class="typ-key">in</span> <span class="typ-str">&quot;abc nope&quot;</span> <span class="typ-punct">{</span>
+  <span class="typ-key">if</span> letter <span class="typ-op">==</span> <span class="typ-str">&quot; &quot;</span> <span class="typ-punct">{</span>
+    <span class="typ-key">break</span>
+  <span class="typ-punct">}</span>
+
+  letter
+<span class="typ-punct">}</span>
+</code></pre><div class="preview"><img src="/assets/docs/842d9007ec92471251bbf3dbd7553f36.png" alt="Preview" width="480" height="190"/></div></div>
+<p>ループの本体はコードブロックまたはコンテンツブロックにできます。</p>
+<ul>
+<li><code><span class="typ-key">for</span> .. in collection <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code></li>
+<li><code><span class="typ-key">for</span> .. in collection <span class="typ-punct">[</span>..<span class="typ-punct">]</span></code></li>
+<li><code><span class="typ-key">while</span> condition <span class="typ-punct">{</span>..<span class="typ-punct">}</span></code></li>
+<li><code><span class="typ-key">while</span> condition <span class="typ-punct">[</span>..<span class="typ-punct">]</span></code></li>
+</ul>
+<h2 id="fields">フィールド</h2>
+<p><em>ドット記法</em> を使用することで値のフィールドにアクセスできます。<a href="/docs/reference/foundations/content/">コンテンツ</a>型の値については、<a href="/docs/reference/foundations/content/#definitions-fields">fields</a>関数を使用してフィールドを一覧表示できます。</p>
+<p>対象の値は以下のいずれかです。</p>
+<ul>
+<li>指定されたキーを持つ<a href="/docs/reference/foundations/dictionary/">辞書</a>、</li>
+<li>指定された修飾子を持つ<a href="/docs/reference/symbols/symbol/">記号</a>、</li>
+<li>指定された定義を含む<a href="/docs/reference/foundations/module/">モジュール</a>、</li>
+<li>指定されたフィールドを持つ要素で構成された<a href="/docs/reference/foundations/content/">コンテンツ</a>。利用可能なフィールドは、その要素が構築された際に与えられた<a href="/docs/reference/foundations/function/#element-functions">要素関数</a>の引数と一致します。</li>
+</ul>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> it <span class="typ-op">=</span> <span class="typ-punct">[</span><span class="typ-heading">= Heading</span><span class="typ-punct">]</span>
+<span class="typ-pol">#</span><span class="typ-pol">it</span><span class="typ-punct">.</span><span class="typ-pol">body</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">it</span><span class="typ-punct">.</span><span class="typ-pol">depth</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">it</span><span class="typ-punct">.</span><span class="typ-func">fields</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+
+<span class="typ-key">#</span><span class="typ-key">let</span> dict <span class="typ-op">=</span> <span class="typ-punct">(</span>greet<span class="typ-punct">:</span> <span class="typ-str">&quot;Hello&quot;</span><span class="typ-punct">)</span>
+<span class="typ-pol">#</span><span class="typ-pol">dict</span><span class="typ-punct">.</span><span class="typ-pol">greet</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">emoji</span><span class="typ-punct">.</span><span class="typ-pol">face</span>
+
+</code></pre><div class="preview"><img src="/assets/docs/17bff7eddd2d2e8252e8085b408bbc49.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="methods">メソッド</h2>
+<p>メソッド呼び出しは、値の<a href="/docs/reference/foundations/type/">型</a>で定義された関数を呼び出す便利な方法です。
+例えば、<a href="/docs/reference/foundations/str/#definitions-len"><code>str.len</code></a>関数は下記の2つの同等の方法で呼び出せます。</p>
+<div class="previewed-code"><pre><code><span class="typ-pol">#</span><span class="typ-pol">str</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-str">&quot;abc&quot;</span><span class="typ-punct">)</span> is the same as
+<span class="typ-str">#</span><span class="typ-str">&quot;abc&quot;</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/68a97a415ea8fd416893c9f6da91d031.png" alt="Preview" width="480" height="190"/></div></div>
+<p>メソッド呼び出しの構造は<code>value<span class="typ-punct">.</span><span class="typ-func">method</span><span class="typ-punct">(</span><span class="typ-op">..</span>args<span class="typ-punct">)</span></code>であり、これと等価である完全な関数呼び出しは<code><span class="typ-func">type</span><span class="typ-punct">(</span>value<span class="typ-punct">)</span><span class="typ-punct">.</span><span class="typ-func">method</span><span class="typ-punct">(</span>value<span class="typ-punct">,</span> <span class="typ-op">..</span>args<span class="typ-punct">)</span></code>です。各型のドキュメントには、その型に関連付けられた関数が一覧表示されています。現在、独自のメソッドは定義できません</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> values <span class="typ-op">=</span> <span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">,</span> <span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">3</span><span class="typ-punct">,</span> <span class="typ-num">4</span><span class="typ-punct">)</span>
+<span class="typ-pol">#</span><span class="typ-pol">values</span><span class="typ-punct">.</span><span class="typ-func">pop</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">values</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-punct">)</span> <span class="typ-escape">\</span>
+
+<span class="typ-punct">#</span><span class="typ-punct">(</span><span class="typ-str">&quot;a, b, c&quot;</span>
+    <span class="typ-punct">.</span><span class="typ-func">split</span><span class="typ-punct">(</span><span class="typ-str">&quot;, &quot;</span><span class="typ-punct">)</span>
+    <span class="typ-punct">.</span><span class="typ-func">join</span><span class="typ-punct">[</span> <span class="typ-escape">---</span> <span class="typ-punct">]</span><span class="typ-punct">)</span>
+
+<span class="typ-str">#</span><span class="typ-str">&quot;abc&quot;</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-punct">)</span> is the same as
+<span class="typ-pol">#</span><span class="typ-pol">str</span><span class="typ-punct">.</span><span class="typ-func">len</span><span class="typ-punct">(</span><span class="typ-str">&quot;abc&quot;</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/0548ab013972482f019079267f128a44.png" alt="Preview" width="480" height="190"/></div></div>
+<p>特定の値に対して呼び出された際に、その値を変更する特別な関数がいくつかあります(例: <a href="/docs/reference/foundations/array/#definitions-push"><code>array.push</code></a>)。
+これらの関数は、<em>必ず</em> メソッド形式で呼び出す必要があります。
+場合によっては、メソッドが副作用のためだけに呼び出されるとき、その戻り値は無視されるべきです(結合に加わるべきではありません)。
+値を破棄する標準的な方法は、<code><span class="typ-key">let</span> _ <span class="typ-op">=</span> array<span class="typ-punct">.</span><span class="typ-func">remove</span><span class="typ-punct">(</span><span class="typ-num">1</span><span class="typ-punct">)</span></code>のように
+letバインディングを使用することです。</p>
+<h2 id="modules">モジュール</h2>
+<p>Typstプロジェクトを、<em>モジュール</em> と呼ばれる複数のファイルに分割できます。
+モジュールは他のモジュールの内容や定義を複数の方法で参照できます。</p>
+<ul>
+<li>
+<p><strong>インクルード：</strong> <code><span class="typ-key">include</span> <span class="typ-str">&quot;bar.typ&quot;</span></code> <br />
+パス<code>bar.typ</code>にあるファイルを評価し、その結果として得られる<a href="/docs/reference/foundations/content/">コンテンツ</a>を返します。</p>
+</li>
+<li>
+<p><strong>インポート：</strong> <code><span class="typ-key">import</span> <span class="typ-str">&quot;bar.typ&quot;</span></code> <br />
+パス<code>bar.typ</code>にあるファイルを評価し、その結果として得られる
+<a href="/docs/reference/foundations/module/">モジュール</a>を現在のスコープに<code>bar</code>(拡張子なしのファイル名)として挿入します。次のように、<code>as</code>キーワードを使用してモジュール名を変更できます。
+<code><span class="typ-key">import</span> <span class="typ-str">&quot;bar.typ&quot;</span> <span class="typ-key">as</span> baz</code>
+You can import nested items using dot notation: <code><span class="typ-key">import</span> <span class="typ-str">&quot;bar.typ&quot;</span><span class="typ-punct">:</span> baz<span class="typ-punct">.</span>a</code>.</p>
+</li>
+<li>
+<p><strong>アイテムのインポート:</strong> <code><span class="typ-key">import</span> <span class="typ-str">&quot;bar.typ&quot;</span><span class="typ-punct">:</span> a<span class="typ-punct">,</span> b</code> <br />
+パス<code>bar.typ</code>にあるファイルを評価して、変数<code>a</code>と<code>b</code>の値
+(これらは<code>bar.typ</code>で、例えば<code><span class="typ-key">let</span></code>バインディングを通じて定義されている必要があります)
+を抽出し、現在のファイルで定義します。  <code>a, b</code>を<code>*</code>に置き換えると、モジュールで定義されたすべての変数が読み込まれます。
+次のように、<code>as</code>キーワードを使用してモジュール名を変更できます。
+<code><span class="typ-key">import</span> <span class="typ-str">&quot;bar.typ&quot;</span><span class="typ-punct">:</span> a <span class="typ-key">as</span> one<span class="typ-punct">,</span> b <span class="typ-key">as</span> two</code></p>
+</li>
+</ul>
+<p>以下の例に示すように、パスの代わりに<a href="/docs/reference/foundations/module/">モジュール値</a>を使用できます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">import</span> emoji<span class="typ-punct">:</span> face
+<span class="typ-pol">#</span><span class="typ-pol">face</span><span class="typ-punct">.</span><span class="typ-pol">grin</span>
+</code></pre><div class="preview"><img src="/assets/docs/43014000497d459ced7b19ec99fd35ae.png" alt="Preview" width="480" height="190"/></div></div>
+<h2 id="packages">パッケージ</h2>
+<p>プロジェクト間でビルド中のブロックを再利用するために、Typstの <em>パッケージ</em> を作成してインポートできます。
+パッケージのインポートは、名前空間、名前、バージョンの3つの組み合わせとして指定されます。</p>
+<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">import</span> <span class="typ-str">&quot;@preview/example:0.1.0&quot;</span><span class="typ-punct">:</span> add
+<span class="typ-func">#</span><span class="typ-func">add</span><span class="typ-punct">(</span><span class="typ-num">2</span><span class="typ-punct">,</span> <span class="typ-num">7</span><span class="typ-punct">)</span>
+</code></pre><div class="preview"><img src="/assets/docs/5611b1fc00245c60ed0fd4942d77dcf9.png" alt="Preview" width="480" height="190"/></div></div>
+<p><code>preview</code>名前空間には、コミュニティで共有されているパッケージが含まれています。すべての利用可能なコミュニティパッケージは<a href="https://typst.app/universe/">Typst Universe</a>にあります。</p>
+<p>Typstをローカルで使用している場合、独自のシステムローカルパッケージを作成できます。詳細については、<a href="https://github.com/typst/packages">パッケージリポジトリ</a>を参照してください。</p>
+<h2 id="operators">演算子</h2>
+<p>以下の表は、使用可能なすべての単項および二項演算子の効果、引数の個数（単項あるいは二項）、および優先度（高いほど強く結合）を示しています。</p>
+<table><thead><tr><th style="text-align: center">演算子</th><th>効果</th><th style="text-align: center">引数の個数</th><th style="text-align: center">優先度</th></tr></thead><tbody>
+<tr><td style="text-align: center"><code><span class="typ-op">-</span></code></td><td>負号</td><td style="text-align: center">単項</td><td style="text-align: center">7</td></tr>
+<tr><td style="text-align: center"><code><span class="typ-op">+</span></code></td><td>効果なし (対称性のために存在)</td><td style="text-align: center">単項</td><td style="text-align: center">7</td></tr>
+<tr><td style="text-align: center"><code>*</code></td><td>乗算</td><td style="text-align: center">二項</td><td style="text-align: center">6</td></tr>
+<tr><td style="text-align: center"><code>/</code></td><td>除算</td><td style="text-align: center">二項</td><td style="text-align: center">6</td></tr>
+<tr><td style="text-align: center"><code><span class="typ-op">+</span></code></td><td>加算</td><td style="text-align: center">二項</td><td style="text-align: center">5</td></tr>
+<tr><td style="text-align: center"><code><span class="typ-op">-</span></code></td><td>減算</td><td style="text-align: center">二項</td><td style="text-align: center">5</td></tr>
+<tr><td style="text-align: center"><code>==</code></td><td>等価性の評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>!=</code></td><td>非等価性の評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>&lt;</code></td><td>小なりの評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>&lt;=</code></td><td>以下の評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>&gt;</code></td><td>大なりの評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>&gt;=</code></td><td>以上の評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code>in</code></td><td>コレクション内に存在することの評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code><span class="typ-key">not</span> <span class="typ-key">in</span></code></td><td>コレクション内に存在しないことの評価</td><td style="text-align: center">二項</td><td style="text-align: center">4</td></tr>
+<tr><td style="text-align: center"><code><span class="typ-key">not</span></code></td><td>論理否定</td><td style="text-align: center">単項</td><td style="text-align: center">3</td></tr>
+<tr><td style="text-align: center"><code>and</code></td><td>短絡論理積</td><td style="text-align: center">二項</td><td style="text-align: center">3</td></tr>
+<tr><td style="text-align: center"><code>or</code></td><td>短絡論理和</td><td style="text-align: center">二項</td><td style="text-align: center">2</td></tr>
+<tr><td style="text-align: center"><code>=</code></td><td>代入</td><td style="text-align: center">二項</td><td style="text-align: center">1</td></tr>
+<tr><td style="text-align: center"><code>+=</code></td><td>加算代入</td><td style="text-align: center">二項</td><td style="text-align: center">1</td></tr>
+<tr><td style="text-align: center"><code>-=</code></td><td>減算代入</td><td style="text-align: center">二項</td><td style="text-align: center">1</td></tr>
+<tr><td style="text-align: center"><code>*=</code></td><td>乗算代入</td><td style="text-align: center">二項</td><td style="text-align: center">1</td></tr>
+<tr><td style="text-align: center"><code>/=</code></td><td>除算代入</td><td style="text-align: center">二項</td><td style="text-align: center">1</td></tr>
+</tbody></table>
+
+
+
+      
+      <div class="page-end-buttons"><a href="/docs/reference/styling/" class="previous"><img
+            src="/assets/icons/16-arrow-right.svg" alt="←">
+          <div><span class="page-title">スタイル設定</span><span class="hint">前に戻る</span></div>
+        </a><a href="/docs/reference/context/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
+          <div><span class="page-title">コンテキスト</span><span class="hint">次に進む</span></div>
+        </a></div>
+      
+    </main>
+
+    
+    <nav id="page-overview"><strong>目次</strong>
+      <ul>
+        
+        <li data-assoc="expressions"><a href="#expressions">式</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="blocks"><a href="#blocks">ブロック</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="bindings"><a href="#bindings">バインディングと分割</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="conditionals"><a href="#conditionals">条件式</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="loops"><a href="#loops">ループ</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="fields"><a href="#fields">フィールド</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="methods"><a href="#methods">メソッド</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="modules"><a href="#modules">モジュール</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="packages"><a href="#packages">パッケージ</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="operators"><a href="#operators">演算子</a>
+          <ul></ul>
+        </li>
+        
+      </ul>
+    </nav>
+    
+  </div>
+  <footer>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/">（公式）ホームページ</a></li>
+        <li><a href="https://typst.app/docs/">（公式）ドキュメント（英語）</a></li>
+        <li><a href="https://typst.app/universe/">（公式）拡張パッケージ・テンプレートの宇宙</a></li>
+        <li><a href="https://typst.app/about/">（公式）Typstについて</a></li>
+        <li><a href="https://typst.app/contact/">（公式）連絡先</a></li>
+        <li><a href="https://typst.app/privacy/">（公式）プライバシーポリシー</a></li>
+        <li><a href="https://typst.app/terms/">（公式）サービス規約</a></li>
+        <li><a href="https://typst.app/legal/">（公式）免責事項</a></li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li><a href="https://typst.app/tools/">（公式）ツール</a></li>
+        <li><a href="https://typst.app/blog/">（公式）ブログ</a></li>
+        <li><a href="https://twitter.com/typstapp/">（公式）Twitter</a></li>
+        <li><a href="https://discord.gg/2uDybryKPe">（公式）Discord</a></li>
+        <li><a rel="me" href="https://mastodon.social/@typst">（公式）Mastodon</a></li>
+        <li><a href="https://www.linkedin.com/company/typst/">（公式）LinkedIn</a></li>
+        <li><a href="https://instagram.com/typstapp/">（公式）Instagram</a></li>
+        <li><a href="https://github.com/typst/">（公式）GitHub</a></li>
+      </ul>
+    </div>
+    <div>
+      <p>Made in Berlin</p>
+      <p>Translated by <a href="https://github.com/typst-jp">Typst Japan Community</a></p>
+    </div>
+  </footer>
+  <script src="/scripts/fuse.basic.min.js"></script>
+  <script src="/scripts/docs.js?bust=20230913"></script>
+  <script src="/scripts/analytics.js" defer></script>
+</body>
+
+</html>
