@@ -135,12 +135,6 @@
         
         
         <li>
-          <a href="/docs/japanese/" >日本語ユーザーガイド</a>
-          
-        </li>
-        
-        
-        <li>
           <a href="/docs/reference/" >リファレンス</a>
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
@@ -176,7 +170,7 @@
             <li class="category">Library</li>
             
             <li>
-              <a href="/docs/reference/foundations/" >Foundations</a>
+              <a href="/docs/reference/foundations/" >基礎</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -274,7 +268,7 @@
             
             
             <li>
-              <a href="/docs/reference/model/" >Model</a>
+              <a href="/docs/reference/model/" >モデル</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -342,7 +336,7 @@
             
             
             <li>
-              <a href="/docs/reference/text/" >Text</a>
+              <a href="/docs/reference/text/" >文章</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -395,7 +389,7 @@
             
             
             <li>
-              <a href="/docs/reference/math/" >Math</a>
+              <a href="/docs/reference/math/" >数式</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -463,7 +457,7 @@
             
             
             <li>
-              <a href="/docs/reference/symbols/" >Symbols</a>
+              <a href="/docs/reference/symbols/" >記号</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -483,7 +477,7 @@
             
             
             <li>
-              <a href="/docs/reference/layout/" >Layout</a>
+              <a href="/docs/reference/layout/" >レイアウト</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -578,7 +572,7 @@
             
             
             <li>
-              <a href="/docs/reference/visualize/" >Visualize</a>
+              <a href="/docs/reference/visualize/" >視覚化</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -625,7 +619,7 @@
             
             
             <li>
-              <a href="/docs/reference/introspection/" >Introspection</a>
+              <a href="/docs/reference/introspection/" >内省</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -657,7 +651,7 @@
             
             
             <li>
-              <a href="/docs/reference/data-loading/" >Data Loading</a>
+              <a href="/docs/reference/data-loading/" >データの読み込み</a>
               
               <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
               <ul>
@@ -693,7 +687,7 @@
         
         
         <li>
-          <a href="/docs/guides/" >Guides</a>
+          <a href="/docs/guides/" >ガイド</a>
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
           <ul>
@@ -722,7 +716,7 @@
         
         
         <li>
-          <a href="/docs/changelog/" >Changelog</a>
+          <a href="/docs/changelog/" >変更履歴</a>
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
           <ul>
@@ -808,6 +802,35 @@
             
             <li>
               <a href="/docs/changelog/earlier/" >Earlier</a>
+              
+            </li>
+            
+          </ul>
+          
+        </li>
+        
+        
+        <li>
+          <a href="/docs/japanese/" >日本語組版情報</a>
+          
+          <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+          <ul>
+            
+            
+            <li>
+              <a href="/docs/japanese/templates/" >日本語テンプレート</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/japanese/packages/" >日本語向けパッケージ</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/japanese/articles/" >日本語記事</a>
               
             </li>
             
@@ -926,7 +949,7 @@
 <span class="typ-punct">)</span>
 </code></pre><div class="preview"><img src="/assets/docs/574b815b90ad7adacf43395f58f77530.png" alt="Preview" width="480" height="190"/></div></div>
 <p>著者情報が記載された2つのブロックが隣り合わせにレイアウトされています。
-このレイアウトを作るために<a href="/docs/reference/layout/grid/" title="`grid`"><code>grid</code></a>関数を使っています。
+このレイアウトを作るために<a href="/docs/reference/layout/grid/"><code>grid</code></a>関数を使っています。
 これにより、各列の大きさや、どのコンテンツをどのセルに入れるかを正確に制御することができます。
 <code>columns</code>引数には、<a href="/docs/reference/layout/relative/">相対長さ</a>または<a href="/docs/reference/layout/fraction/">割合</a>の配列を渡します。
 この場合、2つの等しい割合のサイズを渡し、使用可能なスペースを2つの等しい列に分割するように指示します。
@@ -976,7 +999,7 @@ grid関数はセルを指定するcontent引数を任意の数で受け取れま
 こうすることで、別のタイトルに決めた場合、一箇所で簡単に変更することができます。</p>
 <h2 id="columns-and-headings">段組みと見出しの追加</h2>
 <p>上の論文は、残念ながら文字が単調にぎっしり詰まっていて読みにくい見た目をしています。
-これを修正するために、見出しを追加し、2段組のレイアウトに変更してみましょう。 
+これを修正するために、見出しを追加し、2段組のレイアウトに変更してみましょう。
 幸いなことに、setルールで<code>page</code>に<code>column</code>引数を追加することで簡単に行えます。</p>
 <p>引数リストに<code>columns: <span class="typ-num">2</span></code>を加えることで、文書全体を2段組みとなります。
 しかし、これではタイトルと著者、アブストラクトにも影響が出てしまいます。
@@ -1044,7 +1067,7 @@ place関数は引数として配置とコンテンツを受け取ります。
 すべての見出しに適用されるshowルールを使用しました。
 この関数にパラメータとして見出しを渡します。
 このパラメータはコンテンツとして使用することもできますが、<code>title</code>、<code>numbers</code>、<code>level</code>といったフィールドも持っているため、そこから独自の書式を構成することも可能です。
-ここではセンター揃えにし、見出しはデフォルトで太字なのでフォントのウェイトを <code><span class="typ-str">&quot;regular&quot;</span></code> に設定し、<a href="/docs/reference/text/smallcaps/" title="`smallcaps`"><code>smallcaps</code></a> 関数を使って見出しのタイトルを小さな大文字でレンダリングしています。</p>
+ここではセンター揃えにし、見出しはデフォルトで太字なのでフォントのウェイトを <code><span class="typ-str">&quot;regular&quot;</span></code> に設定し、<a href="/docs/reference/text/smallcaps/"><code>smallcaps</code></a> 関数を使って見出しのタイトルを小さな大文字でレンダリングしています。</p>
 <p>残る唯一の問題は、すべての見出しが同じように見えることです。
 MotivationとProblem Statementはサブセクションであり、イタリック体であるべきですが、今はセクションの見出しと見分けがつきません。
 この問題は、setルールに<code>where</code>セレクターを使うことで解決できます。
