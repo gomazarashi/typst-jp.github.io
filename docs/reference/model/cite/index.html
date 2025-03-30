@@ -9,17 +9,17 @@
   <meta name="description" content="Documentation for the `cite` function.">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#239dad">
-  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/model/cite/">
+  <meta property="og:url" content="https://typst-jp.github.io/docs/reference/model/cite/">
   <meta property="og:title" content="Cite – Typstドキュメント日本語版">
   <meta property="og:site_name" content="Typst">
   <meta property="og:description" content="Documentation for the `cite` function.">
   <meta property="og:type">
-  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image" content="https://typst-jp.github.io/assets/social.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:site" content="@typstapp">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/model/cite/">
+  <link rel="canonical" href="https://typst-jp.github.io/docs/reference/model/cite/">
   <meta name="twitter:image:alt"
     content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
@@ -253,10 +253,13 @@
                 <li><a href="/docs/reference/foundations/str/" >String</a></li>
                 
                 
-                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                <li><a href="/docs/reference/foundations/symbol/" >Symbol</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/target/" >Target</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/type/" >Type</a></li>
@@ -470,9 +473,6 @@
                 
                 <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
                 
-                
-                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
-                
               </ul>
               
             </li>
@@ -586,6 +586,9 @@
                 <li><a href="/docs/reference/visualize/color/" >Color</a></li>
                 
                 
+                <li><a href="/docs/reference/visualize/curve/" >Curve</a></li>
+                
+                
                 <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
                 
                 
@@ -601,9 +604,6 @@
                 <li><a href="/docs/reference/visualize/path/" >Path</a></li>
                 
                 
-                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
-                
-                
                 <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
                 
                 
@@ -614,6 +614,9 @@
                 
                 
                 <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/tiling/" >Tiling</a></li>
                 
               </ul>
               
@@ -683,6 +686,51 @@
               
             </li>
             
+            
+            <li class="category">Export</li>
+            
+            <li>
+              <a href="/docs/reference/pdf/" >PDF</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/pdf/embed/" >Embed</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/html/" >HTML</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/html/elem/" >Elem</a></li>
+                
+                
+                <li><a href="/docs/reference/html/frame/" >Frame</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/png/" >PNG</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/svg/" >SVG</a>
+              
+            </li>
+            
           </ul>
           
         </li>
@@ -722,6 +770,12 @@
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
           <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.13.0/" >0.13.0</a>
+              
+            </li>
             
             
             <li>
@@ -878,10 +932,9 @@
   <div role="tooltip" id="-tooltip" tabindex="-1">Element functions can be customized with <code>set</code> and <code>show</code> rules.</div>
 </div>
 </small></h1>
-<p>Cite a work from the bibliography.</p>
-<p>Before you starting citing, you need to add a <a href="/docs/reference/model/bibliography/" title="bibliography">bibliography</a> somewhere in
-your document.</p>
-<h2 id="example">Example</h2>
+<p>参考文献の引用。</p>
+<p>引用を始める前に、文書のどこかで<a href="/docs/reference/model/bibliography/" title="bibliography">bibliography</a>を追加しておく必要があります。</p>
+<h2 id="例">例</h2>
 <div class="previewed-code"><pre><code>This was already noted by
 pirates long ago. <span class="typ-ref">@arrgh</span>
 
@@ -893,15 +946,14 @@ explicitly. <span class="typ-func">#</span><span class="typ-func">cite</span><sp
 
 <span class="typ-func">#</span><span class="typ-func">bibliography</span><span class="typ-punct">(</span><span class="typ-str">&quot;works.bib&quot;</span><span class="typ-punct">)</span>
 </code></pre><div class="preview"><img src="/assets/docs/bb07d2a9021052ed3feb5a6b11284f4a.png" alt="Preview" width="480" height="190"/></div></div>
-<p>If your source name contains certain characters such as slashes, which are
-not recognized by the <code>&lt;&gt;</code> syntax, you can explicitly call <code>label</code> instead.</p>
+<p>ソース名にスラッシュなど<code>&lt;&gt;</code>構文では認識されない文字が含まれている場合は、代わりにlabelを明示的に呼び出すことで参照できます。</p>
 <pre><code>Computer Modern is an example of a modernist serif typeface.
 <span class="typ-func">#</span><span class="typ-func">cite</span><span class="typ-punct">(</span><span class="typ-func">label</span><span class="typ-punct">(</span><span class="typ-str">&quot;DBLP:books/lib/Knuth86a&quot;</span><span class="typ-punct">)</span><span class="typ-punct">)</span>.
 </code></pre>
-<h2 id="syntax">Syntax</h2>
-<p>This function indirectly has dedicated syntax. <a href="/docs/reference/model/ref/">References</a> can be
-used to cite works from the bibliography. The label then corresponds to the
-citation key.</p>
+<h2 id="構文">構文</h2>
+<p>この関数は間接的に専用の構文を持っています。
+<a href="/docs/reference/model/ref/">References</a>は参考文献を引用するために使用可能です。
+ラベルは参照キーに対応します。</p>
 <h2 id="parameters">
   
 <span aria-describedby="parameters-tooltip">引数</span>
@@ -920,7 +972,7 @@ citation key.</p>
       class="overview-param"><a href="/docs/reference/foundations/label" class="pill pill-obj">label</a>, </span><span
       class="overview-param"><a href="#parameters-supplement">supplement<!-- -->: </a><a href="/docs/reference/foundations/none" class="pill pill-kw">none</a><a href="/docs/reference/foundations/content" class="pill pill-con">content</a>, </span><span
       class="overview-param"><a href="#parameters-form">form<!-- -->: </a><a href="/docs/reference/foundations/none" class="pill pill-kw">none</a><a href="/docs/reference/foundations/str" class="pill pill-str">str</a>, </span><span
-      class="overview-param"><a href="#parameters-style">style<!-- -->: </a><a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a><a href="/docs/reference/foundations/str" class="pill pill-str">str</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/foundations/content" class="pill pill-con">content</a></div>
+      class="overview-param"><a href="#parameters-style">style<!-- -->: </a><a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a><a href="/docs/reference/foundations/str" class="pill pill-str">str</a><a href="/docs/reference/foundations/bytes" class="pill pill-obj">bytes</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/foundations/content" class="pill pill-con">content</a></div>
 
 
 
@@ -949,8 +1001,7 @@ citation key.</p>
     </small>
   </div>
 </h4>
-<p>The citation key that identifies the entry in the bibliography that
-shall be cited, as a label.</p>
+<p>引用する文献を特定するラベルである参照キー。</p>
 
 
 
@@ -994,8 +1045,8 @@ shall be cited, as a label.</p>
     </small>
   </div>
 </h4>
-<p>A supplement for the citation such as page or chapter number.</p>
-<p>In reference syntax, the supplement can be added in square brackets:</p>
+<p>ページ番号や章番号などの引用の補足。</p>
+<p><a href="/docs/reference/model/ref/">References</a>の構文では、角括弧で囲むことで補足を追加できます。</p>
 
 
 <p>Default:<code><span class="typ-key">none</span></code></p>
@@ -1040,12 +1091,9 @@ shall be cited, as a label.</p>
     </small>
   </div>
 </h4>
-<p>The kind of citation to produce. Different forms are useful in different
-scenarios: A normal citation is useful as a source at the end of a
-sentence, while a &quot;prose&quot; citation is more suitable for inclusion in the
-flow of text.</p>
-<p>If set to <code><span class="typ-key">none</span></code>, the cited work is included in the bibliography, but
-nothing will be displayed.</p>
+<p>作成する引用の種類。異なる形式は異なるシナリオで有用です。
+通常の引用は文末に置くソースとして有用ですが、&quot;prose&quot;引用は文章の途中に置くのに適しています。</p>
+<p>もし<code><span class="typ-key">none</span></code>と設定すると、引用文献は参考文献リストに含まれますが、文章内には表示されません。</p>
 
 <ul class="type-args">
   
@@ -1053,7 +1101,7 @@ nothing will be displayed.</p>
     <div class="break-box">
       <div><code class="typ-str">&quot;<!-- -->normal<!-- -->&quot;</code></div>
       <div>
-        <p>Display in the standard way for the active style.</p>
+        <p>現在設定しているスタイルの標準的な方法で表示する。</p>
       </div>
     </div>
   </li>
@@ -1062,7 +1110,7 @@ nothing will be displayed.</p>
     <div class="break-box">
       <div><code class="typ-str">&quot;<!-- -->prose<!-- -->&quot;</code></div>
       <div>
-        <p>Produces a citation that is suitable for inclusion in a sentence.</p>
+        <p>文章に含めるのに適した引用を作成する。</p>
       </div>
     </div>
   </li>
@@ -1071,7 +1119,7 @@ nothing will be displayed.</p>
     <div class="break-box">
       <div><code class="typ-str">&quot;<!-- -->full<!-- -->&quot;</code></div>
       <div>
-        <p>Mimics a bibliography entry, with full information about the cited work.</p>
+        <p>参考文献リストと同じく、引用された文献の完全な情報を表示する。</p>
       </div>
     </div>
   </li>
@@ -1080,7 +1128,7 @@ nothing will be displayed.</p>
     <div class="break-box">
       <div><code class="typ-str">&quot;<!-- -->author<!-- -->&quot;</code></div>
       <div>
-        <p>Shows only the cited work's author(s).</p>
+        <p>引用文献の著者らのみを表示する。</p>
       </div>
     </div>
   </li>
@@ -1089,7 +1137,7 @@ nothing will be displayed.</p>
     <div class="break-box">
       <div><code class="typ-str">&quot;<!-- -->year<!-- -->&quot;</code></div>
       <div>
-        <p>Shows only the cited work's year.</p>
+        <p>引用文献の発行年のみを表示する。</p>
       </div>
     </div>
   </li>
@@ -1125,6 +1173,11 @@ pirate life on the human psyche.
           <a href="/docs/reference/foundations/str" class="pill pill-str">str</a>
         
       
+        
+        
+          <a href="/docs/reference/foundations/bytes" class="pill pill-obj">bytes</a>
+        
+      
     </div>
     <small><span
         aria-describedby="cite-cite-parameters-style-settable-tooltip">Settable</span>
@@ -1139,13 +1192,18 @@ pirate life on the human psyche.
     </small>
   </div>
 </h4>
-<p>The citation style.</p>
-<p>Should be either <code><span class="typ-key">auto</span></code>, one of the built-in styles (see below) or a
-path to a <a href="https://citationstyles.org/">CSL file</a>. Some of the styles
-listed below appear twice, once with their full name and once with a
-short alias.</p>
-<p>When set to <code><span class="typ-key">auto</span></code>, automatically use the
-<a href="/docs/reference/model/bibliography/#parameters-style">bibliography's style</a> for the citations.</p>
+<p>引用スタイル。</p>
+<p>This can be:</p>
+<ul>
+<li><code><span class="typ-key">auto</span></code> to automatically use the
+<a href="/docs/reference/model/bibliography/#parameters-style">bibliography's style</a> for citations.</li>
+<li>A string with the name of one of the built-in styles (see below). Some
+of the styles listed below appear twice, once with their full name and
+once with a short alias.</li>
+<li>A path string to a <a href="https://citationstyles.org/">CSL file</a>. For more
+details about paths, see the <a href="/docs/reference/syntax/#paths">Paths section</a>.</li>
+<li>Raw bytes from which a CSL style should be decoded.</li>
+</ul>
 
 <ul class="type-args">
   
@@ -1911,11 +1969,11 @@ short alias.</p>
           <ul></ul>
         </li>
         
-        <li data-assoc="example"><a href="#example">Example</a>
+        <li data-assoc="例"><a href="#例">例</a>
           <ul></ul>
         </li>
         
-        <li data-assoc="syntax"><a href="#syntax">Syntax</a>
+        <li data-assoc="構文"><a href="#構文">構文</a>
           <ul></ul>
         </li>
         

@@ -5,21 +5,21 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Style – Typstドキュメント日本語版</title>
-  <meta name="description" content="Documentation for the `style` function.">
+  <title>Symbol – Typstドキュメント日本語版</title>
+  <meta name="description" content="Documentation for the Symbol type.">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#239dad">
-  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/foundations/style/">
-  <meta property="og:title" content="Style – Typstドキュメント日本語版">
+  <meta property="og:url" content="https://typst-jp.github.io/docs/reference/foundations/symbol/">
+  <meta property="og:title" content="Symbol – Typstドキュメント日本語版">
   <meta property="og:site_name" content="Typst">
-  <meta property="og:description" content="Documentation for the `style` function.">
+  <meta property="og:description" content="Documentation for the Symbol type.">
   <meta property="og:type">
-  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image" content="https://typst-jp.github.io/assets/social.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:site" content="@typstapp">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/foundations/style/">
+  <link rel="canonical" href="https://typst-jp.github.io/docs/reference/foundations/symbol/">
   <meta name="twitter:image:alt"
     content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
@@ -253,10 +253,13 @@
                 <li><a href="/docs/reference/foundations/str/" >String</a></li>
                 
                 
-                <li><a href="/docs/reference/foundations/style/"  aria-current="page" >Style</a></li>
+                <li><a href="/docs/reference/foundations/symbol/"  aria-current="page" >Symbol</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/target/" >Target</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/type/" >Type</a></li>
@@ -470,9 +473,6 @@
                 
                 <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
                 
-                
-                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
-                
               </ul>
               
             </li>
@@ -586,6 +586,9 @@
                 <li><a href="/docs/reference/visualize/color/" >Color</a></li>
                 
                 
+                <li><a href="/docs/reference/visualize/curve/" >Curve</a></li>
+                
+                
                 <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
                 
                 
@@ -601,9 +604,6 @@
                 <li><a href="/docs/reference/visualize/path/" >Path</a></li>
                 
                 
-                <li><a href="/docs/reference/visualize/pattern/" >Pattern</a></li>
-                
-                
                 <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
                 
                 
@@ -614,6 +614,9 @@
                 
                 
                 <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/tiling/" >Tiling</a></li>
                 
               </ul>
               
@@ -683,6 +686,51 @@
               
             </li>
             
+            
+            <li class="category">Export</li>
+            
+            <li>
+              <a href="/docs/reference/pdf/" >PDF</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/pdf/embed/" >Embed</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/html/" >HTML</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/html/elem/" >Elem</a></li>
+                
+                
+                <li><a href="/docs/reference/html/frame/" >Frame</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/png/" >PNG</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/svg/" >SVG</a>
+              
+            </li>
+            
           </ul>
           
         </li>
@@ -722,6 +770,12 @@
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
           <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.13.0/" >0.13.0</a>
+              
+            </li>
             
             
             <li>
@@ -862,72 +916,124 @@
         <li><a href="/docs/reference/foundations/">基礎</a></li>
         
         <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
-        <li><a href="/docs/reference/foundations/style/">Style</a></li>
+        <li><a href="/docs/reference/foundations/symbol/">Symbol</a></li>
         
       </ul>
 
       
 
-<h1 id="summary"><code>style</code><small></small></h1>
-<p>Provides access to active styles.</p>
-<p><strong>Deprecation planned.</strong> Use <a href="/docs/reference/context/" title="context">context</a> instead.</p>
-<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> <span class="typ-func">thing</span><span class="typ-punct">(</span>body<span class="typ-punct">)</span> <span class="typ-op">=</span> <span class="typ-func">style</span><span class="typ-punct">(</span>styles <span class="typ-op">=&gt;</span> <span class="typ-punct">{</span>
-  <span class="typ-key">let</span> size <span class="typ-op">=</span> <span class="typ-func">measure</span><span class="typ-punct">(</span>body<span class="typ-punct">,</span> styles<span class="typ-punct">)</span>
-  <span class="typ-punct">[</span>Width of &quot;<span class="typ-pol">#</span><span class="typ-pol">body</span>&quot; is <span class="typ-pol">#</span><span class="typ-pol">size</span><span class="typ-punct">.</span><span class="typ-pol">width</span><span class="typ-punct">]</span>
-<span class="typ-punct">}</span><span class="typ-punct">)</span>
+<h1 id="summary"><span class="pill pill-obj">symbol</span></h1>
+<p>A Unicode symbol.</p>
+<p>Typst defines common symbols so that they can easily be written with
+standard keyboards. The symbols are defined in modules, from which they can
+be accessed using <a href="/docs/reference/scripting/#fields">field access notation</a>:</p>
+<ul>
+<li>General symbols are defined in the <a href="/docs/reference/symbols/sym/"><code>sym</code> module</a></li>
+<li>Emoji are defined in the <a href="/docs/reference/symbols/emoji/"><code>emoji</code> module</a></li>
+</ul>
+<p>Moreover, you can define custom symbols with this type's constructor
+function.</p>
+<div class="previewed-code"><pre><code><span class="typ-pol">#</span><span class="typ-pol">sym</span><span class="typ-punct">.</span><span class="typ-pol">arrow</span><span class="typ-punct">.</span><span class="typ-pol">r</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">sym</span><span class="typ-punct">.</span><span class="typ-pol">gt</span><span class="typ-punct">.</span><span class="typ-pol">eq</span><span class="typ-punct">.</span><span class="typ-pol">not</span> <span class="typ-escape">\</span>
+<span class="typ-math-delim">$</span><span class="typ-pol">gt</span><span class="typ-punct">.</span><span class="typ-pol">eq</span><span class="typ-punct">.</span><span class="typ-pol">not</span><span class="typ-math-delim">$</span> <span class="typ-escape">\</span>
+<span class="typ-pol">#</span><span class="typ-pol">emoji</span><span class="typ-punct">.</span><span class="typ-pol">face</span><span class="typ-punct">.</span><span class="typ-pol">halo</span>
+</code></pre><div class="preview"><img src="/assets/docs/bb68a65e391fa7ac5366cd6743423ecb.png" alt="Preview" width="480" height="190"/></div></div>
+<p>Many symbols have different variants, which can be selected by appending the
+modifiers with dot notation. The order of the modifiers is not relevant.
+Visit the documentation pages of the symbol modules and click on a symbol to
+see its available variants.</p>
+<div class="previewed-code"><pre><code><span class="typ-math-delim">$</span><span class="typ-pol">arrow</span><span class="typ-punct">.</span><span class="typ-pol">l</span><span class="typ-math-delim">$</span> <span class="typ-escape">\</span>
+<span class="typ-math-delim">$</span><span class="typ-pol">arrow</span><span class="typ-punct">.</span><span class="typ-pol">r</span><span class="typ-math-delim">$</span> <span class="typ-escape">\</span>
+<span class="typ-math-delim">$</span><span class="typ-pol">arrow</span><span class="typ-punct">.</span><span class="typ-pol">t</span><span class="typ-punct">.</span><span class="typ-pol">quad</span><span class="typ-math-delim">$</span>
+</code></pre><div class="preview"><img src="/assets/docs/08c9505e3725dc389cb54be7b067baff.png" alt="Preview" width="480" height="190"/></div></div>
 
-<span class="typ-func">#</span><span class="typ-func">thing</span><span class="typ-punct">[</span>Hey<span class="typ-punct">]</span> <span class="typ-escape">\</span>
-<span class="typ-func">#</span><span class="typ-func">thing</span><span class="typ-punct">[</span>Welcome<span class="typ-punct">]</span>
-</code></pre><div class="preview"><img src="/assets/docs/83a224c4e09a77e16796d6bccb0b41fd.png" alt="Preview" width="480" height="190"/></div></div>
-<h2 id="parameters">
+
+<h2 id="constructor">
   
-<span aria-describedby="parameters-tooltip">引数</span>
+<span aria-describedby="constructor-tooltip">コンストラクタ</span>
 <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
-    aria-labelledby="parameters-tooltip-qm-label">
-    <title id="parameters-tooltip-qm-label">Parameters are the inputs to a function. They are specified in parentheses after the function name.</title>
+    aria-labelledby="constructor-tooltip-qm-label">
+    <title id="constructor-tooltip-qm-label">If a type has a constructor, you can call it like a function to create a new value of the type.</title>
     <use href="/assets/icons/12-tooltip.svg#icon"></use>
   </svg>
-  <div role="tooltip" id="parameters-tooltip" tabindex="-1">Parameters are the inputs to a function. They are specified in parentheses after the function name.</div>
+  <div role="tooltip" id="constructor-tooltip" tabindex="-1">If a type has a constructor, you can call it like a function to create a new value of the type.</div>
 </div>
 
 </h2>
 
+<p>Create a custom symbol with modifiers.</p>
+
 <div class="code code-definition single-arg"><span
-    class="typ-func">style</span>(<div class="arguments"><span
-      class="overview-param"><a href="/docs/reference/foundations/function" class="pill pill-fn">function</a> </span></div>) <!-- -->-&gt; <a href="/docs/reference/foundations/content" class="pill pill-con">content</a></div>
+    class="typ-func">symbol</span>(<div class="arguments"><span
+      class="overview-param"><a href="/docs/reference/foundations/str" class="pill pill-str">str</a><a href="/docs/reference/foundations/array" class="pill pill-obj">array</a> </span></div>) <!-- -->-&gt; <span class="pill pill-obj">symbol</span></div>
 
 
 
+  <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> envelope <span class="typ-op">=</span> <span class="typ-func">symbol</span><span class="typ-punct">(</span>
+  <span class="typ-str">&quot;🖂&quot;</span><span class="typ-punct">,</span>
+  <span class="typ-punct">(</span><span class="typ-str">&quot;stamped&quot;</span><span class="typ-punct">,</span> <span class="typ-str">&quot;🖃&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">(</span><span class="typ-str">&quot;stamped.pen&quot;</span><span class="typ-punct">,</span> <span class="typ-str">&quot;🖆&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">(</span><span class="typ-str">&quot;lightning&quot;</span><span class="typ-punct">,</span> <span class="typ-str">&quot;🖄&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+  <span class="typ-punct">(</span><span class="typ-str">&quot;fly&quot;</span><span class="typ-punct">,</span> <span class="typ-str">&quot;🖅&quot;</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
+<span class="typ-punct">)</span>
 
-<h4 id="style-style-parameters-func"><code>func</code>
+<span class="typ-pol">#</span><span class="typ-pol">envelope</span>
+<span class="typ-pol">#</span><span class="typ-pol">envelope</span><span class="typ-punct">.</span><span class="typ-pol">stamped</span>
+<span class="typ-pol">#</span><span class="typ-pol">envelope</span><span class="typ-punct">.</span><span class="typ-pol">stamped</span><span class="typ-punct">.</span><span class="typ-pol">pen</span>
+<span class="typ-pol">#</span><span class="typ-pol">envelope</span><span class="typ-punct">.</span><span class="typ-pol">lightning</span>
+<span class="typ-pol">#</span><span class="typ-pol">envelope</span><span class="typ-punct">.</span><span class="typ-pol">fly</span>
+</code></pre><div class="preview"><img src="/assets/docs/ab5c4a1b2fedea0f8e7ef305b0f686ad.png" alt="Preview" width="480" height="190"/></div></div>
+
+
+
+<h4 id="constructor-symbol-parameters-variants"><code>variants</code>
   <div class="additional-info">
     <div>
       
         
         
-          <a href="/docs/reference/foundations/function" class="pill pill-fn">function</a>
+          <a href="/docs/reference/foundations/str" class="pill pill-str">str</a>
+        
+      
+        
+        
+          <a href="/docs/reference/foundations/array" class="pill pill-obj">array</a>
         
       
     </div>
     <small>Required</small><small><span
-        aria-describedby="style-style-parameters-func-positional-tooltip">Positional</span>
+        aria-describedby="constructor-symbol-parameters-variants-positional-tooltip">Positional</span>
       <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
-          aria-labelledby="style-style-parameters-func-positional-tooltip-qm-label">
-          <title id="style-style-parameters-func-positional-tooltip-qm-label">
+          aria-labelledby="constructor-symbol-parameters-variants-positional-tooltip-qm-label">
+          <title id="constructor-symbol-parameters-variants-positional-tooltip-qm-label">
             Positional parameters are specified in order, without names.</title>
           <use href="/assets/icons/12-tooltip.svg#icon"></use>
         </svg>
-        <div role="tooltip" id="style-style-parameters-func-positional-tooltip"
+        <div role="tooltip" id="constructor-symbol-parameters-variants-positional-tooltip"
           tabindex="-1">Positional parameters are specified in order, without names.</div>
+      </div>
+    </small><small><span
+        aria-describedby="constructor-symbol-parameters-variants-variadic-tooltip">Variadic</span>
+      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
+          aria-labelledby="constructor-symbol-parameters-variants-variadic-tooltip-qm-label">
+          <title id="constructor-symbol-parameters-variants-variadic-tooltip-qm-label">Variadic parameters can be specified multiple times.
+          </title>
+          <use href="/assets/icons/12-tooltip.svg#icon"></use>
+        </svg>
+        <div role="tooltip" id="constructor-symbol-parameters-variants-variadic-tooltip"
+          tabindex="-1">Variadic parameters can be specified multiple times.</div>
       </div>
     </small>
   </div>
 </h4>
-<p>A function to call with the styles. Its return value is displayed
-in the document.</p>
-<p>This function is called once for each time the content returned by
-<code>style</code> appears in the document. That makes it possible to generate
-content that depends on the style context it appears in.</p>
+<p>The variants of the symbol.</p>
+<p>Can be a just a string consisting of a single character for the
+modifierless variant or an array with two strings specifying the modifiers
+and the symbol. Individual modifiers should be separated by dots. When
+displaying a symbol, Typst selects the first from the variants that have
+all attached modifiers and the minimum number of other modifiers.</p>
+
+
 
 
 
@@ -958,7 +1064,7 @@ content that depends on the style context it appears in.</p>
           <ul></ul>
         </li>
         
-        <li data-assoc="parameters"><a href="#parameters">引数</a>
+        <li data-assoc="constructor"><a href="#constructor">コンストラクタ</a>
           <ul></ul>
         </li>
         

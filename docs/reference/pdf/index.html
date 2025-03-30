@@ -1,25 +1,23 @@
-
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
   <meta charset="utf-8">
-  <title>Pattern – Typstドキュメント日本語版</title>
-  <meta name="description" content="Documentation for the Pattern type.">
+  <title>PDF – Typstドキュメント日本語版</title>
+  <meta name="description" content="Documentation for functions related to PDF in Typst.">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#239dad">
-  <meta property="og:url" content="https://typst-doc-cn.github.io/docs/reference/visualize/pattern/">
-  <meta property="og:title" content="Pattern – Typstドキュメント日本語版">
+  <meta property="og:url" content="https://typst-jp.github.io/docs/reference/pdf/">
+  <meta property="og:title" content="PDF – Typstドキュメント日本語版">
   <meta property="og:site_name" content="Typst">
-  <meta property="og:description" content="Documentation for the Pattern type.">
+  <meta property="og:description" content="Documentation for functions related to PDF in Typst.">
   <meta property="og:type">
-  <meta property="og:image" content="https://typst-doc-cn.github.io/assets/social.png">
+  <meta property="og:image" content="https://typst-jp.github.io/assets/social.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:site" content="@typstapp">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://typst-doc-cn.github.io/docs/reference/visualize/pattern/">
+  <link rel="canonical" href="https://typst-jp.github.io/docs/reference/pdf/">
   <meta name="twitter:image:alt"
     content="The left side of a text editor with colorful cursors, as well as the text &#x27;Compose papers faster, Typst&#x27;">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.ico">
@@ -253,10 +251,13 @@
                 <li><a href="/docs/reference/foundations/str/" >String</a></li>
                 
                 
-                <li><a href="/docs/reference/foundations/style/" >Style</a></li>
+                <li><a href="/docs/reference/foundations/symbol/" >Symbol</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/sys" >System</a></li>
+                
+                
+                <li><a href="/docs/reference/foundations/target/" >Target</a></li>
                 
                 
                 <li><a href="/docs/reference/foundations/type/" >Type</a></li>
@@ -470,9 +471,6 @@
                 
                 <li><a href="/docs/reference/symbols/emoji/" >Emoji</a></li>
                 
-                
-                <li><a href="/docs/reference/symbols/symbol/" >Symbol</a></li>
-                
               </ul>
               
             </li>
@@ -586,6 +584,9 @@
                 <li><a href="/docs/reference/visualize/color/" >Color</a></li>
                 
                 
+                <li><a href="/docs/reference/visualize/curve/" >Curve</a></li>
+                
+                
                 <li><a href="/docs/reference/visualize/ellipse/" >Ellipse</a></li>
                 
                 
@@ -601,9 +602,6 @@
                 <li><a href="/docs/reference/visualize/path/" >Path</a></li>
                 
                 
-                <li><a href="/docs/reference/visualize/pattern/"  aria-current="page" >Pattern</a></li>
-                
-                
                 <li><a href="/docs/reference/visualize/polygon/" >Polygon</a></li>
                 
                 
@@ -614,6 +612,9 @@
                 
                 
                 <li><a href="/docs/reference/visualize/stroke/" >Stroke</a></li>
+                
+                
+                <li><a href="/docs/reference/visualize/tiling/" >Tiling</a></li>
                 
               </ul>
               
@@ -683,6 +684,51 @@
               
             </li>
             
+            
+            <li class="category">Export</li>
+            
+            <li>
+              <a href="/docs/reference/pdf/"  aria-current="page" >PDF</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/pdf/embed/" >Embed</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/html/" >HTML</a>
+              
+              <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
+              <ul>
+                
+                
+                <li><a href="/docs/reference/html/elem/" >Elem</a></li>
+                
+                
+                <li><a href="/docs/reference/html/frame/" >Frame</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/png/" >PNG</a>
+              
+            </li>
+            
+            
+            <li>
+              <a href="/docs/reference/svg/" >SVG</a>
+              
+            </li>
+            
           </ul>
           
         </li>
@@ -722,6 +768,12 @@
           
           <button><img alt="Expand" src="/assets/icons/16-arrow-right.svg" width="16" height="16"></button>
           <ul>
+            
+            
+            <li>
+              <a href="/docs/changelog/0.13.0/" >0.13.0</a>
+              
+            </li>
             
             
             <li>
@@ -859,272 +911,107 @@
         <li><a href="/docs/reference/">リファレンス</a></li>
         
         <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
-        <li><a href="/docs/reference/visualize/">視覚化</a></li>
-        
-        <li aria-hidden="true"><img src="/assets/icons/16-arrow-right.svg" width="16" height="16" alt=""></li>
-        <li><a href="/docs/reference/visualize/pattern/">Pattern</a></li>
+        <li><a href="/docs/reference/pdf/">PDF</a></li>
         
       </ul>
 
       
 
-<h1 id="summary"><span class="pill pill-obj">pattern</span></h1>
-<p>A repeating pattern fill.</p>
-<p>Typst supports the most common pattern type of tiled patterns, where a
-pattern is repeated in a grid-like fashion, covering the entire area of an
-element that is filled or stroked. The pattern is defined by a tile size and
-a body defining the content of each cell. You can also add horizontal or
-vertical spacing between the cells of the pattern.</p>
-<h2 id="examples">Examples</h2>
-<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> pat <span class="typ-op">=</span> <span class="typ-func">pattern</span><span class="typ-punct">(</span>size<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">30pt</span><span class="typ-punct">,</span> <span class="typ-num">30pt</span><span class="typ-punct">)</span><span class="typ-punct">)</span><span class="typ-punct">[</span>
-  <span class="typ-func">#</span><span class="typ-func">place</span><span class="typ-punct">(</span><span class="typ-func">line</span><span class="typ-punct">(</span>start<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">0%</span><span class="typ-punct">,</span> <span class="typ-num">0%</span><span class="typ-punct">)</span><span class="typ-punct">,</span> end<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">100%</span><span class="typ-punct">,</span> <span class="typ-num">100%</span><span class="typ-punct">)</span><span class="typ-punct">)</span><span class="typ-punct">)</span>
-  <span class="typ-func">#</span><span class="typ-func">place</span><span class="typ-punct">(</span><span class="typ-func">line</span><span class="typ-punct">(</span>start<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">0%</span><span class="typ-punct">,</span> <span class="typ-num">100%</span><span class="typ-punct">)</span><span class="typ-punct">,</span> end<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">100%</span><span class="typ-punct">,</span> <span class="typ-num">0%</span><span class="typ-punct">)</span><span class="typ-punct">)</span><span class="typ-punct">)</span>
-<span class="typ-punct">]</span>
-
-<span class="typ-func">#</span><span class="typ-func">rect</span><span class="typ-punct">(</span>fill<span class="typ-punct">:</span> pat<span class="typ-punct">,</span> width<span class="typ-punct">:</span> <span class="typ-num">100%</span><span class="typ-punct">,</span> height<span class="typ-punct">:</span> <span class="typ-num">60pt</span><span class="typ-punct">,</span> stroke<span class="typ-punct">:</span> <span class="typ-num">1pt</span><span class="typ-punct">)</span>
-</code></pre><div class="preview"><img src="/assets/docs/31b00da0a7ca87bdb01513869482280f.png" alt="Preview" width="480" height="190"/></div></div>
-<p>Patterns are also supported on text, but only when setting the
-<a href="/docs/reference/visualize/pattern/#parameters-relative">relativeness</a> to either <code><span class="typ-key">auto</span></code> (the default value) or
-<code><span class="typ-str">&quot;parent&quot;</span></code>. To create word-by-word or glyph-by-glyph patterns, you can
-wrap the words or characters of your text in <a href="/docs/reference/layout/box/">boxes</a> manually or
-through a <a href="/docs/reference/styling/#show-rules">show rule</a>.</p>
-<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> pat <span class="typ-op">=</span> <span class="typ-func">pattern</span><span class="typ-punct">(</span>
-  size<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">30pt</span><span class="typ-punct">,</span> <span class="typ-num">30pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
-  relative<span class="typ-punct">:</span> <span class="typ-str">&quot;parent&quot;</span><span class="typ-punct">,</span>
-  <span class="typ-func">square</span><span class="typ-punct">(</span>
-    size<span class="typ-punct">:</span> <span class="typ-num">30pt</span><span class="typ-punct">,</span>
-    fill<span class="typ-punct">:</span> gradient
-      <span class="typ-punct">.</span><span class="typ-func">conic</span><span class="typ-punct">(</span><span class="typ-op">..</span>color<span class="typ-punct">.</span>map<span class="typ-punct">.</span>rainbow<span class="typ-punct">)</span><span class="typ-punct">,</span>
-  <span class="typ-punct">)</span>
-<span class="typ-punct">)</span>
-
-<span class="typ-key">#</span><span class="typ-key">set</span> <span class="typ-func">text</span><span class="typ-punct">(</span>fill<span class="typ-punct">:</span> pat<span class="typ-punct">)</span>
-<span class="typ-func">#</span><span class="typ-func">lorem</span><span class="typ-punct">(</span><span class="typ-num">10</span><span class="typ-punct">)</span>
-</code></pre><div class="preview"><img src="/assets/docs/755713c6f7355129aa98b79448d379c5.png" alt="Preview" width="480" height="190"/></div></div>
-<p>You can also space the elements further or closer apart using the
-<a href="/docs/reference/visualize/pattern/#parameters-spacing"><code>spacing</code></a> feature of the pattern. If the spacing
-is lower than the size of the pattern, the pattern will overlap.
-If it is higher, the pattern will have gaps of the same color as the
-background of the pattern.</p>
-<div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> pat <span class="typ-op">=</span> <span class="typ-func">pattern</span><span class="typ-punct">(</span>
-  size<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">30pt</span><span class="typ-punct">,</span> <span class="typ-num">30pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
-  spacing<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">10pt</span><span class="typ-punct">,</span> <span class="typ-num">10pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
-  relative<span class="typ-punct">:</span> <span class="typ-str">&quot;parent&quot;</span><span class="typ-punct">,</span>
-  <span class="typ-func">square</span><span class="typ-punct">(</span>
-    size<span class="typ-punct">:</span> <span class="typ-num">30pt</span><span class="typ-punct">,</span>
-    fill<span class="typ-punct">:</span> gradient
-     <span class="typ-punct">.</span><span class="typ-func">conic</span><span class="typ-punct">(</span><span class="typ-op">..</span>color<span class="typ-punct">.</span>map<span class="typ-punct">.</span>rainbow<span class="typ-punct">)</span><span class="typ-punct">,</span>
-  <span class="typ-punct">)</span><span class="typ-punct">,</span>
-<span class="typ-punct">)</span>
-
-<span class="typ-func">#</span><span class="typ-func">rect</span><span class="typ-punct">(</span>
-  width<span class="typ-punct">:</span> <span class="typ-num">100%</span><span class="typ-punct">,</span>
-  height<span class="typ-punct">:</span> <span class="typ-num">60pt</span><span class="typ-punct">,</span>
-  fill<span class="typ-punct">:</span> pat<span class="typ-punct">,</span>
-<span class="typ-punct">)</span>
-</code></pre><div class="preview"><img src="/assets/docs/1ee101eed6536bf52a5d6f0ad58569ae.png" alt="Preview" width="480" height="190"/></div></div>
-<h2 id="relativeness">Relativeness</h2>
-<p>The location of the starting point of the pattern is dependent on the
-dimensions of a container. This container can either be the shape that it is
-being painted on, or the closest surrounding container. This is controlled
-by the <code>relative</code> argument of a pattern constructor. By default, patterns
-are relative to the shape they are being painted on, unless the pattern is
-applied on text, in which case they are relative to the closest ancestor
-container.</p>
-<p>Typst determines the ancestor container as follows:</p>
+<h1 id="summary">pdf</h1>
+<p>PDF files focus on accurately describing documents visually, but also have
+facilities for annotating their structure. This hybrid approach makes
+them a good fit for document exchange: They render exactly the same on every
+device, but also support extraction of a document's content and structure (at
+least to an extent). Unlike PNG files, PDFs are not bound to a specific
+resolution. Hence, you can view them at any size without incurring a loss of
+quality.</p>
+<h2 id="pdf-standards">PDF standards</h2>
+<p>The International Standards Organization (ISO) has published the base PDF
+standard and various standards that extend it to make PDFs more suitable for
+specific use-cases. By default, Typst exports PDF 1.7 files. Adobe Acrobat 8 and
+later as well as all other commonly used PDF viewers are compatible with this
+PDF version.</p>
+<h3 id="pdf-a">PDF/A</h3>
+<p>Typst optionally supports emitting PDF/A-conformant files. PDF/A files are
+geared towards maximum compatibility with current and future PDF tooling. They
+do not rely on difficult-to-implement or proprietary features and contain
+exhaustive metadata. This makes them suitable for long-term archival.</p>
+<p>The PDF/A Standard has multiple versions (<em>parts</em> in ISO terminology) and most
+parts have multiple profiles that indicate the file's conformance level.
+Currently, Typst supports these PDF/A output profiles:</p>
 <ul>
-<li>For shapes that are placed at the root/top level of the document, the
-closest ancestor is the page itself.</li>
-<li>For other shapes, the ancestor is the innermost <a href="/docs/reference/layout/block/" title="`block`"><code>block</code></a> or <a href="/docs/reference/layout/box/" title="`box`"><code>box</code></a> that
-contains the shape. This includes the boxes and blocks that are implicitly
-created by show rules and elements. For example, a <a href="/docs/reference/layout/rotate/" title="`rotate`"><code>rotate</code></a> will not
-affect the parent of a gradient, but a <a href="/docs/reference/layout/grid/" title="`grid`"><code>grid</code></a> will.</li>
+<li>
+<p>PDF/A-2b: The basic conformance level of ISO 19005-2. This version of PDF/A is
+based on PDF 1.7 and results in self-contained, archivable PDF files.</p>
+</li>
+<li>
+<p>PDF/A-3b: The basic conformance level of ISO 19005-3. This version of PDF/A is
+based on PDF 1.7 and results in archivable PDF files that can contain
+arbitrary other related files as <a href="/docs/reference/pdf/embed/">attachments</a>. The only
+difference between it and PDF/A-2b is the capability to embed
+non-PDF/A-conformant files within.</p>
+</li>
 </ul>
-
-
-<h2 id="constructor">
+<p>When choosing between exporting PDF/A and regular PDF, keep in mind that PDF/A
+files contain additional metadata, and that some readers will prevent the user
+from modifying a PDF/A file. Some features of Typst may be disabled depending on
+the PDF standard you choose.</p>
+<h2 id="exporting-as-pdf">Exporting as PDF</h2>
+<h3 id="command-line">Command Line</h3>
+<p>PDF is Typst's default export format. Running the <code>compile</code> or <code>watch</code>
+subcommand without specifying a format will create a PDF. When exporting to PDF,
+you have the following configuration options:</p>
+<ul>
+<li>
+<p>Which PDF standards Typst should enforce conformance with by specifying
+<code>--pdf-standard</code> followed by one or multiple comma-separated standards. Valid
+standards are <code>1.7</code>, <code>a-2b</code>, and <code>a-3b</code>. By default, Typst outputs
+PDF-1.7-compliant files.</p>
+</li>
+<li>
+<p>Which pages to export by specifying <code>--pages</code> followed by a comma-separated
+list of numbers or dash-separated number ranges. Ranges can be half-open.
+Example: <code>2,3,7-9,11-</code>.</p>
+</li>
+</ul>
+<h3 id="web-app">Web App</h3>
+<p>Click the quick download button at the top right to export a PDF with default
+settings. For further configuration, click &quot;File&quot; &gt; &quot;Export as&quot; &gt; &quot;PDF&quot; or click
+the downwards-facing arrow next to the quick download button and select &quot;Export
+as PDF&quot;. When exporting to PDF, you have the following configuration options:</p>
+<ul>
+<li>
+<p>Which PDF standards Typst should enforce conformance with. By default, Typst
+outputs PDF-1.7-compliant files. Valid additional standards are <code>A-2b</code> and
+<code>A-3b</code>.</p>
+</li>
+<li>
+<p>Which pages to export. Valid options are &quot;All pages&quot;, &quot;Current page&quot;, and
+&quot;Custom ranges&quot;. Custom ranges are a comma-separated list of numbers or
+dash-separated number ranges. Ranges can be half-open. Example: <code>2,3,7-9,11-</code>.</p>
+</li>
+</ul>
+<h2 id="pdf-specific-functionality">PDF-specific functionality</h2>
+<p>Typst exposes PDF-specific functionality in the global <code>pdf</code> module. See below
+for the definitions it contains.</p>
+<h2 id="definitions">定義</h2>
+<ul class="subgridded">
   
-<span aria-describedby="constructor-tooltip">コンストラクタ</span>
-<div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
-    aria-labelledby="constructor-tooltip-qm-label">
-    <title id="constructor-tooltip-qm-label">If a type has a constructor, you can call it like a function to create a new value of the type.</title>
-    <use href="/assets/icons/12-tooltip.svg#icon"></use>
-  </svg>
-  <div role="tooltip" id="constructor-tooltip" tabindex="-1">If a type has a constructor, you can call it like a function to create a new value of the type.</div>
-</div>
-
-</h2>
-
-<p>Construct a new pattern.</p>
-
-<div class="code code-definition "><span
-    class="typ-func">pattern</span>(<div class="arguments"><span
-      class="overview-param"><a href="#parameters-size">size<!-- -->: </a><a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a><a href="/docs/reference/foundations/array" class="pill pill-obj">array</a>, </span><span
-      class="overview-param"><a href="#parameters-spacing">spacing<!-- -->: </a><a href="/docs/reference/foundations/array" class="pill pill-obj">array</a>, </span><span
-      class="overview-param"><a href="#parameters-relative">relative<!-- -->: </a><a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a><a href="/docs/reference/foundations/str" class="pill pill-str">str</a>, </span><span
-      class="overview-param"><a href="/docs/reference/foundations/content" class="pill pill-con">content</a>, </span></div>) <!-- -->-&gt; <a href="/docs/reference/visualize/pattern" class="pill pill-obj">pattern</a></div>
-
-
-
-  <div class="previewed-code"><pre><code><span class="typ-key">#</span><span class="typ-key">let</span> pat <span class="typ-op">=</span> <span class="typ-func">pattern</span><span class="typ-punct">(</span>
-  size<span class="typ-punct">:</span> <span class="typ-punct">(</span><span class="typ-num">20pt</span><span class="typ-punct">,</span> <span class="typ-num">20pt</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
-  relative<span class="typ-punct">:</span> <span class="typ-str">&quot;parent&quot;</span><span class="typ-punct">,</span>
-  <span class="typ-func">place</span><span class="typ-punct">(</span>
-    dx<span class="typ-punct">:</span> <span class="typ-num">5pt</span><span class="typ-punct">,</span>
-    dy<span class="typ-punct">:</span> <span class="typ-num">5pt</span><span class="typ-punct">,</span>
-    <span class="typ-func">rotate</span><span class="typ-punct">(</span><span class="typ-num">45deg</span><span class="typ-punct">,</span> <span class="typ-func">square</span><span class="typ-punct">(</span>
-      size<span class="typ-punct">:</span> <span class="typ-num">5pt</span><span class="typ-punct">,</span>
-      fill<span class="typ-punct">:</span> black<span class="typ-punct">,</span>
-    <span class="typ-punct">)</span><span class="typ-punct">)</span><span class="typ-punct">,</span>
-  <span class="typ-punct">)</span><span class="typ-punct">,</span>
-<span class="typ-punct">)</span>
-
-<span class="typ-func">#</span><span class="typ-func">rect</span><span class="typ-punct">(</span>width<span class="typ-punct">:</span> <span class="typ-num">100%</span><span class="typ-punct">,</span> height<span class="typ-punct">:</span> <span class="typ-num">60pt</span><span class="typ-punct">,</span> fill<span class="typ-punct">:</span> pat<span class="typ-punct">)</span>
-</code></pre><div class="preview"><img src="/assets/docs/e7be6b2d0fa9595d1adf361c557387aa.png" alt="Preview" width="480" height="190"/></div></div>
-
-
-
-<h4 id="constructor-pattern-parameters-size"><code>size</code>
-  <div class="additional-info">
-    <div>
-      
-        
-        
-          <a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a>
-        
-      
-        
-        
-          <a href="/docs/reference/foundations/array" class="pill pill-obj">array</a>
-        
-      
-    </div>
-    
-  </div>
-</h4>
-<p>The bounding box of each cell of the pattern.</p>
-
-
-<p>Default:<code><span class="typ-key">auto</span></code></p>
-
-
-
-<h4 id="constructor-pattern-parameters-spacing"><code>spacing</code>
-  <div class="additional-info">
-    <div>
-      
-        
-        
-          <a href="/docs/reference/foundations/array" class="pill pill-obj">array</a>
-        
-      
-    </div>
-    
-  </div>
-</h4>
-<p>The spacing between cells of the pattern.</p>
-
-
-<p>Default:<code><span class="typ-punct">(</span><span class="typ-num">0pt</span><span class="typ-punct">,</span> <span class="typ-num">0pt</span><span class="typ-punct">)</span></code></p>
-
-
-
-<h4 id="constructor-pattern-parameters-relative"><code>relative</code>
-  <div class="additional-info">
-    <div>
-      
-        
-        
-          <a href="/docs/reference/foundations/auto" class="pill pill-kw">auto</a>
-        
-      
-        
-        
-          <a href="/docs/reference/foundations/str" class="pill pill-str">str</a>
-        
-      
-    </div>
-    
-  </div>
-</h4>
-<p>The <a href="#relativeness">relative placement</a> of the pattern.</p>
-<p>For an element placed at the root/top level of the document, the
-parent is the page itself. For other elements, the parent is the
-innermost block, box, column, grid, or stack that contains the
-element.</p>
-
-<ul class="type-args">
   
-  <li>
-    <div class="break-box">
-      <div><code class="typ-str">&quot;<!-- -->self<!-- -->&quot;</code></div>
-      <div>
-        <p>The gradient is relative to itself (its own bounding box).</p>
-      </div>
-    </div>
+  <li><a href="/docs/reference/pdf/embed/"><code>embed</code></a><span>A file that will be embedded into the output PDF.</span>
   </li>
   
-  <li>
-    <div class="break-box">
-      <div><code class="typ-str">&quot;<!-- -->parent<!-- -->&quot;</code></div>
-      <div>
-        <p>The gradient is relative to its parent (the parent's bounding box).</p>
-      </div>
-    </div>
-  </li>
   
 </ul>
 
 
-<p>Default:<code><span class="typ-key">auto</span></code></p>
-
-
-
-<h4 id="constructor-pattern-parameters-body"><code>body</code>
-  <div class="additional-info">
-    <div>
-      
-        
-        
-          <a href="/docs/reference/foundations/content" class="pill pill-con">content</a>
-        
-      
-    </div>
-    <small>Required</small><small><span
-        aria-describedby="constructor-pattern-parameters-body-positional-tooltip">Positional</span>
-      <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
-          aria-labelledby="constructor-pattern-parameters-body-positional-tooltip-qm-label">
-          <title id="constructor-pattern-parameters-body-positional-tooltip-qm-label">
-            Positional parameters are specified in order, without names.</title>
-          <use href="/assets/icons/12-tooltip.svg#icon"></use>
-        </svg>
-        <div role="tooltip" id="constructor-pattern-parameters-body-positional-tooltip"
-          tabindex="-1">Positional parameters are specified in order, without names.</div>
-      </div>
-    </small>
-  </div>
-</h4>
-<p>The content of each cell of the pattern.</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       
-      <div class="page-end-buttons"><a href="/docs/reference/visualize/path/" class="previous"><img
+      <div class="page-end-buttons"><a href="/docs/reference/data-loading/yaml/" class="previous"><img
             src="/assets/icons/16-arrow-right.svg" alt="←">
-          <div><span class="page-title">Path</span><span class="hint">前に戻る</span></div>
-        </a><a href="/docs/reference/visualize/polygon/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
-          <div><span class="page-title">Polygon</span><span class="hint">次に進む</span></div>
+          <div><span class="page-title">YAML</span><span class="hint">前に戻る</span></div>
+        </a><a href="/docs/reference/pdf/embed/" class="next"><img src="/assets/icons/16-arrow-right.svg" alt="→">
+          <div><span class="page-title">Embed</span><span class="hint">次に進む</span></div>
         </a></div>
       
     </main>
@@ -1137,15 +1024,19 @@ element.</p>
           <ul></ul>
         </li>
         
-        <li data-assoc="examples"><a href="#examples">Examples</a>
+        <li data-assoc="pdf-standards"><a href="#pdf-standards">Pdf Standards</a>
           <ul></ul>
         </li>
         
-        <li data-assoc="relativeness"><a href="#relativeness">Relativeness</a>
+        <li data-assoc="exporting-as-pdf"><a href="#exporting-as-pdf">Exporting As Pdf</a>
           <ul></ul>
         </li>
         
-        <li data-assoc="constructor"><a href="#constructor">コンストラクタ</a>
+        <li data-assoc="pdf-specific-functionality"><a href="#pdf-specific-functionality">Pdf Specific Functionality</a>
+          <ul></ul>
+        </li>
+        
+        <li data-assoc="definitions"><a href="#definitions">定義</a>
           <ul></ul>
         </li>
         
