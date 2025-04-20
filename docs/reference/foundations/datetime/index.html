@@ -42,9 +42,9 @@
 <body class="no-js docs has-outline">
   <div class="alert">
     <div class="alert-content">
-      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.13.1 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
       <br />
-      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.13.1 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
     </div>
     <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
           width="16" height="16"></button>
@@ -773,6 +773,12 @@
             
             
             <li>
+              <a href="/docs/changelog/0.13.1/" >0.13.1</a>
+              
+            </li>
+            
+            
+            <li>
               <a href="/docs/changelog/0.13.0/" >0.13.0</a>
               
             </li>
@@ -1237,7 +1243,13 @@ will choose a different formatting by default.</p>
 </h2>
 
 
-  <h3 id="-today" class="method-head"><span><code>today</code></span></h3>
+  <h3 id="definitions-today" class="method-head">
+    <code>today</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>Returns the current date.</p>
 
@@ -1287,7 +1299,13 @@ offset will be the local offset.</p>
 
 
 
-  <h3 id="-display" class="method-head"><span><code>display</code></span></h3>
+  <h3 id="definitions-display" class="method-head">
+    <code>display</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>Displays the datetime in a specified format.</p>
 <p>Depending on whether you have defined just a date, a time or both, the
@@ -1344,7 +1362,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-year" class="method-head"><span><code>year</code></span></h3>
+  <h3 id="definitions-year" class="method-head">
+    <code>year</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The year if it was specified, or <code><span class="typ-key">none</span></code> for times without a date.</p>
 
@@ -1358,7 +1382,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-month" class="method-head"><span><code>month</code></span></h3>
+  <h3 id="definitions-month" class="method-head">
+    <code>month</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The month if it was specified, or <code><span class="typ-key">none</span></code> for times without a date.</p>
 
@@ -1372,7 +1402,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-weekday" class="method-head"><span><code>weekday</code></span></h3>
+  <h3 id="definitions-weekday" class="method-head">
+    <code>weekday</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The weekday (counting Monday as 1) or <code><span class="typ-key">none</span></code> for times without a date.</p>
 
@@ -1386,7 +1422,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-day" class="method-head"><span><code>day</code></span></h3>
+  <h3 id="definitions-day" class="method-head">
+    <code>day</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The day if it was specified, or <code><span class="typ-key">none</span></code> for times without a date.</p>
 
@@ -1400,7 +1442,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-hour" class="method-head"><span><code>hour</code></span></h3>
+  <h3 id="definitions-hour" class="method-head">
+    <code>hour</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The hour if it was specified, or <code><span class="typ-key">none</span></code> for dates without a time.</p>
 
@@ -1414,7 +1462,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-minute" class="method-head"><span><code>minute</code></span></h3>
+  <h3 id="definitions-minute" class="method-head">
+    <code>minute</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The minute if it was specified, or <code><span class="typ-key">none</span></code> for dates without a time.</p>
 
@@ -1428,7 +1482,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-second" class="method-head"><span><code>second</code></span></h3>
+  <h3 id="definitions-second" class="method-head">
+    <code>second</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The second if it was specified, or <code><span class="typ-key">none</span></code> for dates without a time.</p>
 
@@ -1442,7 +1502,13 @@ default format will be different. If you specified a date, it will be
 
 
 
-  <h3 id="-ordinal" class="method-head"><span><code>ordinal</code></span></h3>
+  <h3 id="definitions-ordinal" class="method-head">
+    <code>ordinal</code>
+    <small>
+      
+      
+    </small>
+  </h3>
   
 <p>The ordinal (day of the year), or <code><span class="typ-key">none</span></code> for times without a date.</p>
 

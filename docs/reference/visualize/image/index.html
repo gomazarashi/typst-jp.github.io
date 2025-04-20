@@ -42,9 +42,9 @@
 <body class="no-js docs has-outline">
   <div class="alert">
     <div class="alert-content">
-      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.12.0 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
+      <span>⚠ <b>注意</b>  当サイトは、<a href="https://typst.app/docs/">Typst v0.13.1 公式ドキュメント</a>を、日本語コミュニティが非公式に翻訳したものです。誤訳・未訳・古い情報が含まれている可能性があるため、<a href="https://typst.app/docs/">公式ドキュメント</a> との併用を推奨します。このサイトの内容に誤りを発見された方は、<a href="https://github.com/typst-jp/typst-jp.github.io">GitHubリポジトリまでご報告を頂けましたら幸いです</a>。我々のコミュニティにご興味のある方は、ぜひ<a href="https://discord.gg/9xF7k4aAuH">非公式Discordサーバー「くみはんクラブ」</a>にご参加ください。</span>
       <br />
-      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.12.0 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
+      <span>⚠ <b>Warning:</b>   This site provides an unofficial translation of the <a href="https://typst.app/docs/">Typst v0.13.1 documentation</a> by the Japanese Community. Please note that there may be some inaccuracies, untranslated sections or outdated information. We highly recommend referring to <a href="https://typst.app/docs/">the latest official documentation</a> as well. If you find any errors in the content, <a href="https://github.com/typst-jp/typst-jp.github.io">please let us know through our GitHub repository.</a> If you are interested in our community, feel free to join <a href="https://discord.gg/9xF7k4aAuH">our unofficial Discord server, “Kumihan Club.”</a></span>
     </div>
     <button id="closeAlertButton" class="close"><img alt="Close" src="/assets/icons/16-close-dark.svg"
           width="16" height="16"></button>
@@ -773,6 +773,12 @@
             
             
             <li>
+              <a href="/docs/changelog/0.13.1/" >0.13.1</a>
+              
+            </li>
+            
+            
+            <li>
               <a href="/docs/changelog/0.13.0/" >0.13.0</a>
               
             </li>
@@ -922,7 +928,11 @@
 
       
 
-<h1 id="summary"><code>image</code><small>
+<h1 id="summary">
+  <code>image</code>
+  <small>
+    
+      
 <span aria-describedby="-tooltip">Element</span>
 <div class="tooltip-context"><svg width="12" height="12" viewBox="0 0 12 12" tabindex="0" role="img"
     aria-labelledby="-tooltip-qm-label">
@@ -931,7 +941,11 @@
   </svg>
   <div role="tooltip" id="-tooltip" tabindex="-1">Element functions can be customized with <code>set</code> and <code>show</code> rules.</div>
 </div>
-</small></h1>
+
+    
+    
+  </small>
+</h1>
 <p>A raster or vector graphic.</p>
 <p>You can wrap the image in a <a href="/docs/reference/model/figure/" title="`figure`"><code>figure</code></a> to give it a number and caption.</p>
 <p>Like most elements, images are <em>block-level</em> by default and thus do not
@@ -1467,7 +1481,30 @@ to <code><span class="typ-key">auto</span></code>, Typst will try to extract an 
 </h2>
 
 
-  <h3 id="-decode" class="method-head"><span><code>decode</code></span></h3>
+  <h3 id="definitions-decode" class="method-head">
+    <code style="text-decoration: line-through;">decode</code>
+
+    <small>
+      
+      
+    </small>
+    
+      <small class="deprecation">
+        <div class="tooltip-context">
+          <svg width="16" height="16" viewBox="0 0 16 16" tabindex="0" role="img"
+              aria-labelledby="definitions-decode-deprecation-tooltip">
+            <title id="definitions-decode-deprecation-tooltip">
+              Warning
+            </title>
+            <use href="/assets/icons/16-warn.svg#icon"></use>
+          </svg>
+        </div>
+        <span>
+          <span>`image.decode` is deprecated, directly pass bytes to `image` instead</span>
+        </span>
+      </small>
+    
+  </h3>
   
 <p>Decode a raster or vector graphic from bytes or a string.</p>
 
